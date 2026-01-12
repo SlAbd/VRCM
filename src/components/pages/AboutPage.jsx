@@ -411,7 +411,7 @@ const AboutPage = () => {
             Join thousands of climbers who have experienced the magic of Todra Gorge with VRCM
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link>
+            <Link href="/shop">
             <Button 
               size="lg"
               className="bg-white text-[#E86C36] hover:bg-gray-100 px-8 py-6 text-lg font-semibold"
@@ -420,6 +420,7 @@ const AboutPage = () => {
             </Button>
             </Link>
             
+            <Link href="/contact">
             <Button 
               size="lg"
               variant="outline"
@@ -427,6 +428,7 @@ const AboutPage = () => {
             >
               Contact Us
             </Button>
+            </Link>
           </div>
         </div>
       </section>
