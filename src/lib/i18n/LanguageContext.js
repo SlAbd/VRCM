@@ -6,15 +6,16 @@ import { translations } from './translations';
 const LanguageContext = createContext();
 
 export function LanguageProvider({ children }) {
-  const [language, setLanguage] = useState('en');
-
-  useEffect(() => {
-    // Load saved language from localStorage
-    const savedLanguage = localStorage.getItem('vrcm-language');
-    if (savedLanguage && ['en', 'fr', 'es'].includes(savedLanguage)) {
-      setLanguage(savedLanguage);
+  const [language, setLanguage] = useState(() => {
+    // Load saved language from localStorage on initial render
+    if (typeof window !== 'undefined') {
+      const savedLanguage = localStorage.getItem('vrcm-language');
+      if (savedLanguage && ['en', 'fr', 'es'].includes(savedLanguage)) {
+        return savedLanguage;
+      }
     }
-  }, []);
+    return 'en';
+  });
 
   const changeLanguage = (newLanguage) => {
     setLanguage(newLanguage);

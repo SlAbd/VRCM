@@ -35,18 +35,24 @@ const HeroSection = () => {
 
       {/* Floating Particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-2 h-2 bg-white/20 rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animation: `float ${5 + Math.random() * 10}s ease-in-out infinite`,
-              animationDelay: `${Math.random() * 5}s`,
-            }}
-          />
-        ))}
+        {[...Array(20)].map((_, i) => {
+          const left = (i * 5.26) % 100;
+          const top = ((i * 7.83) % 80) + 10;
+          const duration = 5 + (i % 10);
+          const delay = (i * 0.25) % 5;
+          return (
+            <div
+              key={i}
+              className="absolute w-2 h-2 bg-white/20 rounded-full"
+              style={{
+                left: `${left}%`,
+                top: `${top}%`,
+                animation: `float ${duration}s ease-in-out infinite`,
+                animationDelay: `${delay}s`,
+              }}
+            />
+          );
+        })}
       </div>
 
       {/* Content with animations */}
