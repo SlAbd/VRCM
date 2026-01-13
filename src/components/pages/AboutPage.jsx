@@ -57,50 +57,50 @@ const AboutPage = () => {
   const values = [
     {
       icon: Shield,
-      title: 'Safety First',
-      description: 'We prioritize your safety above all else with certified equipment and expert guides.',
+      title: t.aboutPage.safetyFirst,
+      description: t.aboutPage.safetyDesc,
       color: 'bg-red-50 text-red-600',
     },
     {
       icon: Heart,
-      title: 'Passion',
-      description: 'Our love for climbing and the mountains drives everything we do.',
+      title: t.aboutPage.passion,
+      description: t.aboutPage.passionDesc,
       color: 'bg-pink-50 text-pink-600',
     },
     {
       icon: Users,
-      title: 'Community',
-      description: 'Building lasting relationships with climbers from around the world.',
+      title: t.aboutPage.community,
+      description: t.aboutPage.communityDesc,
       color: 'bg-blue-50 text-blue-600',
     },
     {
       icon: Globe,
-      title: 'Authenticity',
-      description: 'Genuine Berber hospitality and authentic mountain experiences.',
+      title: t.aboutPage.authenticity,
+      description: t.aboutPage.authenticityDesc,
       color: 'bg-green-50 text-green-600',
     },
     {
       icon: Target,
-      title: 'Excellence',
-      description: 'Committed to providing world-class climbing experiences.',
+      title: t.aboutPage.excellence,
+      description: t.aboutPage.excellenceDesc,
       color: 'bg-purple-50 text-purple-600',
     },
     {
       icon: Compass,
-      title: 'Adventure',
-      description: 'Exploring new routes and pushing boundaries safely.',
+      title: t.aboutPage.adventure,
+      description: t.aboutPage.adventureDesc,
       color: 'bg-orange-50 text-orange-600',
     },
   ];
 
   const milestones = [
-    { year: '2010', event: 'VRCM Founded', description: 'Started with a passion for climbing and sharing the beauty of Todra Gorge.' },
-    { year: '2013', event: 'FFME N1 Certification', description: 'Achieved FFME N1 certification, meeting French Federation standards for mountain guides.' },
-    { year: '2016', event: 'Safety Certification', description: 'Achieved international climbing safety certification.' },
-    { year: '2019', event: '1,000th Client', description: 'Celebrated serving over 1,000 satisfied climbers from around the world.' },
-    { year: '2022', event: 'Expansion', description: 'Expanded services to include cultural tours and trekking expeditions.' },
-    { year: '2023', event: 'Landscap True Guide', description: 'Recognized as official Landscap True Guide in Morocco.' },
-    { year: '2024', event: '400+ Routes', description: 'Explored and documented over 400 climbing routes in Todra Gorge.' },
+    { year: '2010', event: t.aboutPage.milestone2010, description: t.aboutPage.milestone2010Desc },
+    { year: '2013', event: t.aboutPage.milestone2013, description: t.aboutPage.milestone2013Desc },
+    { year: '2016', event: t.aboutPage.milestone2016, description: t.aboutPage.milestone2016Desc },
+    { year: '2019', event: t.aboutPage.milestone2019, description: t.aboutPage.milestone2019Desc },
+    { year: '2022', event: t.aboutPage.milestone2022, description: t.aboutPage.milestone2022Desc },
+    { year: '2023', event: t.aboutPage.milestone2023, description: t.aboutPage.milestone2023Desc },
+    { year: '2024', event: t.aboutPage.milestone2024, description: t.aboutPage.milestone2024Desc },
   ];
 
   const certifications = [
@@ -186,19 +186,13 @@ const AboutPage = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <h2 className="text-4xl font-bold text-[#1A1A1A] mb-6">
-                Our Story
+                {t.aboutPage.ourStory}
               </h2>
               <p className="text-gray-700 leading-relaxed text-lg">
-                Vertical Rock Climbing Morocco (VRCM) was born from a deep passion for the 
-                magnificent limestone cliffs of Todra Gorge. Founded in 2010 by local climbing 
-                enthusiast Ait Abdellah Abdelhadi, we started with a simple mission: to share 
-                the beauty and thrill of climbing in one of the world's most spectacular locations.
+                {t.aboutPage.storyText1}
               </p>
               <p className="text-gray-700 leading-relaxed text-lg">
-                Over the years, we've grown from a small local operation to an internationally 
-                recognized climbing and adventure tourism company. Our team of expert guides 
-                combines traditional Berber knowledge with modern climbing techniques to create 
-                unforgettable experiences.
+                {t.aboutPage.storyText2}
               </p>
               <p className="text-gray-700 leading-relaxed text-lg">
                 Today, we welcome climbers of all levels from around the world, offering everything 
@@ -240,7 +234,7 @@ const AboutPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-[#1A1A1A] mb-4">
-              Our Values
+              {t.aboutPage.ourValues}
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               The principles that guide every adventure we create

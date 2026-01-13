@@ -145,10 +145,11 @@ const HeroSection = () => {
 
 // About Hadi Section
 const AboutHadiSection = () => {
+  const { t } = useLanguage();
   const services = [
-    { icon: Tent, title: 'Tents Rent', color: '#E86C36' },
-    { icon: Mountain, title: 'Activities', color: '#E86C36' },
-    { icon: Flame, title: 'Firewoods', color: '#E86C36' },
+    { icon: Tent, title: t.landingPage.tentsRent, color: '#E86C36' },
+    { icon: Mountain, title: t.landingPage.activities, color: '#E86C36' },
+    { icon: Flame, title: t.landingPage.firewoods, color: '#E86C36' },
   ];
 
   return (
@@ -158,17 +159,13 @@ const AboutHadiSection = () => {
           {/* Left Column - Text Content */}
           <div className="space-y-6">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A]">
-              Ait Abdellah Abdelhadi
+              {t.landingPage.aboutHadi}
             </h2>
             <p className="text-gray-600 leading-relaxed">
-              Hadi is a passionate local guide with over 15 years of experience in rock climbing 
-              and mountain adventures in the Todra Gorge region. Born and raised in the heart of 
-              the Atlas Mountains, he brings authentic knowledge of the terrain, culture, and the 
-              best climbing routes.
+              {t.landingPage.hadiDesc1}
             </p>
             <p className="text-gray-600 leading-relaxed">
-              With Hadi, you'll discover hidden gems, learn traditional Berber hospitality, 
-              and experience Morocco's natural beauty in the safest and most memorable way possible.
+              {t.landingPage.hadiDesc2}
             </p>
 
             {/* Service Icons */}
@@ -190,7 +187,7 @@ const AboutHadiSection = () => {
           {/* Right Column - Image with Overlay Card */}
           <div className="relative">
             <img
-              src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=800"
+              src="/assets/taljmart.jpg"
               alt="Mountain Climbing"
               className="rounded-lg shadow-xl w-full h-[400px] md:h-[500px] object-cover"
             />
@@ -200,7 +197,7 @@ const AboutHadiSection = () => {
               className="absolute bottom-4 right-4 bg-[#E86C36] text-white p-6 rounded-lg shadow-2xl max-w-[250px]"
             >
               <Mountain className="h-10 w-10 mb-3" />
-              <h3 className="text-xl font-bold mb-2">Let's Climb!</h3>
+              <h3 className="text-xl font-bold mb-2">{t.landingPage.climbing}!</h3>
               <p className="text-sm">Mountain Seekers</p>
             </div>
           </div>
@@ -212,37 +209,38 @@ const AboutHadiSection = () => {
 
 // Services Section
 const ServicesSection = () => {
+  const { t } = useLanguage();
   const services = [
     {
-      title: 'Climbing',
+      title: t.landingPage.climbing,
       image: 'https://images.unsplash.com/photo-1522163182402-834f871fd851?q=80&w=600',
     },
     {
-      title: 'Trekking',
+      title: t.landingPage.trekking,
       image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=600',
     },
     {
-      title: 'Biking',
+      title: t.landingPage.biking,
       image: 'https://images.unsplash.com/photo-1541625602330-2277a4c46182?q=80&w=600',
     },
     {
-      title: 'Donkey Riding',
+      title: t.landingPage.donkeyRiding,
       image: 'https://images.unsplash.com/photo-1547036967-23d11aacaee0?q=80&w=600',
     },
     {
-      title: 'Camping',
+      title: t.landingPage.camping,
       image: 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?q=80&w=600',
     },
     {
-      title: 'Cultural Tours',
+      title: t.landingPage.culturalTours,
       image: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=600',
     },
     {
-      title: 'Photography',
+      title: t.landingPage.photography,
       image: 'https://images.unsplash.com/photo-1452587925148-ce544e77e70d?q=80&w=600',
     },
     {
-      title: 'Rock Scrambling',
+      title: t.landingPage.rockScrambling,
       image: 'https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?q=80&w=600',
     },
   ];
@@ -252,11 +250,10 @@ const ServicesSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-4">
-            Our Amazing Services
+            {t.landingPage.services}
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Discover a wide range of outdoor activities designed for adventure seekers 
-            of all levels. From climbing to cultural experiences, we have it all.
+            {t.landingPage.servicesDesc}
           </p>
         </div>
 
@@ -320,17 +317,19 @@ const StatsSection = () => {
               {/* Text Content */}
               <div className="flex-1 p-8 md:p-12 text-center md:text-left">
                 <h3 className="text-2xl md:text-3xl font-bold text-[#1A1A1A] mb-4">
-                  Speak to our Destination Experts
+                  {t.landingPage.experts}
                 </h3>
                 <p className="text-gray-600 mb-6">
-                  Get personalized recommendations and plan your perfect climbing adventure 
-                  with our experienced team.
+                  {t.landingPage.expertsDesc}
                 </p>
+                <Link href="/contact">
                 <Button 
-                  className="bg-[#1A1A1A] hover:bg-[#E86C36] text-white px-8 py-6 text-lg"
+                  className="bg-[#1A1A1A] hover:bg-[#E86C36] text-white px-8 py-6 text-lg cursor-pointer"
                 >
-                  Request a Quote
+                  {t.landingPage.requestQuote}
                 </Button>
+                </Link>
+                
               </div>
             </div>
           </CardContent>
@@ -355,35 +354,36 @@ const StatsSection = () => {
 
 // Reviews Section
 const ReviewsSection = () => {
+  const { t } = useLanguage();
   const reviews = [
     {
       rating: 5,
-      title: 'Amazing Experience!',
-      text: 'Hadi was an incredible guide. The climbing routes were challenging yet safe, and the views were absolutely breathtaking. Highly recommended for anyone visiting Morocco!',
+      title: t.landingPage.amazingExperience,
+      text: t.landingPage.reviewText1,
       author: 'John Smith',
       country: 'United States',
       avatar: 'https://i.pravatar.cc/150?img=12',
     },
     {
       rating: 5,
-      title: 'Best Adventure Ever',
-      text: 'Our group had an unforgettable time climbing in Todra Gorge. Professional equipment, expert guidance, and stunning scenery. Will definitely come back!',
+      title: t.landingPage.bestAdventure,
+      text: t.landingPage.reviewText2,
       author: 'Marie Dubois',
       country: 'France',
       avatar: 'https://i.pravatar.cc/150?img=45',
     },
     {
       rating: 5,
-      title: 'Incredible Journey',
-      text: 'From the moment we arrived, everything was perfectly organized. The climbing was exhilarating, and the cultural experience was authentic and enriching.',
+      title: t.landingPage.incredibleJourney,
+      text: t.landingPage.reviewText3,
       author: 'Hans Mueller',
       country: 'Germany',
       avatar: 'https://i.pravatar.cc/150?img=33',
     },
     {
       rating: 5,
-      title: 'Perfect Family Trip',
-      text: 'We brought our teenage kids and everyone had a blast. Hadi adapted the activities to suit all skill levels. Truly a memorable family adventure!',
+      title: t.landingPage.perfectFamily,
+      text: t.landingPage.reviewText4,
       author: 'Sarah Johnson',
       country: 'Canada',
       avatar: 'https://i.pravatar.cc/150?img=25',
@@ -395,9 +395,9 @@ const ReviewsSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-4">
-            Traveller Reviews
+            {t.landingPage.reviews}
           </h2>
-          <p className="text-gray-600">What our clients say about their experiences</p>
+          <p className="text-gray-600">{t.landingPage.reviewsDesc}</p>
         </div>
 
         {/* Carousel */}

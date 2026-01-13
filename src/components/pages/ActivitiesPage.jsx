@@ -133,12 +133,12 @@ const ActivitiesPage = () => {
   ];
 
   const categories = [
-    { id: 'all', name: 'All Activities', icon: Compass },
-    { id: 'climbing', name: 'Climbing', icon: Mountain },
-    { id: 'trekking', name: 'Trekking', icon: Footprints },
-    { id: 'biking', name: 'Biking', icon: Bike },
-    { id: 'cultural', name: 'Cultural', icon: Map },
-    { id: 'camping', name: 'Camping', icon: Tent },
+    { id: 'all', name: t.activitiesPage.allActivities, icon: Compass },
+    { id: 'climbing', name: t.activitiesPage.climbing, icon: Mountain },
+    { id: 'trekking', name: t.activitiesPage.trekking, icon: Footprints },
+    { id: 'biking', name: t.activitiesPage.biking, icon: Bike },
+    { id: 'cultural', name: t.activitiesPage.cultural, icon: Map },
+    { id: 'camping', name: t.activitiesPage.camping, icon: Tent },
   ];
 
   const filteredActivities = selectedCategory === 'all' 
@@ -148,57 +148,57 @@ const ActivitiesPage = () => {
   const features = [
     {
       icon: Award,
-      title: 'Certified Guides',
-      description: 'All our guides are internationally certified and experienced',
+      title: t.activitiesPage.certifiedGuides,
+      description: t.activitiesPage.certifiedGuidesDesc,
     },
     {
       icon: CheckCircle,
-      title: 'Safety First',
-      description: 'Top-quality equipment and comprehensive safety protocols',
+      title: t.activitiesPage.safetyFirst,
+      description: t.activitiesPage.safetyFirstDesc,
     },
     {
       icon: Users,
-      title: 'Small Groups',
-      description: 'Intimate group sizes for personalized attention',
+      title: t.activitiesPage.smallGroups,
+      description: t.activitiesPage.smallGroupsDesc,
     },
     {
       icon: Heart,
-      title: 'All Levels Welcome',
-      description: 'Activities tailored for beginners to experts',
+      title: t.activitiesPage.allLevels,
+      description: t.activitiesPage.allLevelsDesc,
     },
   ];
 
   const seasons = [
     {
-      name: 'Spring',
+      name: t.activitiesPage.spring,
       icon: Droplets,
-      months: 'March - May',
-      description: 'Perfect climbing weather, wildflowers bloom',
-      activities: 'Best for: Climbing, Trekking, Photography',
+      months: t.activitiesPage.springMonths,
+      description: t.activitiesPage.springDesc,
+      activities: t.activitiesPage.springBest,
       color: 'bg-green-50 border-green-200',
     },
     {
-      name: 'Summer',
+      name: t.activitiesPage.summer,
       icon: Sun,
-      months: 'June - August',
-      description: 'Warm days, ideal for early morning activities',
-      activities: 'Best for: Mountain biking, Early climbs',
+      months: t.activitiesPage.summerMonths,
+      description: t.activitiesPage.summerDesc,
+      activities: t.activitiesPage.summerBest,
       color: 'bg-yellow-50 border-yellow-200',
     },
     {
-      name: 'Autumn',
+      name: t.activitiesPage.autumn,
       icon: Wind,
-      months: 'September - November',
-      description: 'Excellent conditions, fewer crowds',
-      activities: 'Best for: All activities, Photography',
+      months: t.activitiesPage.autumnMonths,
+      description: t.activitiesPage.autumnDesc,
+      activities: t.activitiesPage.autumnBest,
       color: 'bg-orange-50 border-orange-200',
     },
     {
-      name: 'Winter',
+      name: t.activitiesPage.winter,
       icon: Moon,
-      months: 'December - February',
-      description: 'Cool and crisp, dramatic landscapes',
-      activities: 'Best for: Climbing, Cultural tours',
+      months: t.activitiesPage.winterMonths,
+      description: t.activitiesPage.winterDesc,
+      activities: t.activitiesPage.winterBest,
       color: 'bg-blue-50 border-blue-200',
     },
   ];
@@ -384,7 +384,7 @@ const ActivitiesPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-[#1A1A1A] mb-4">
-              Best Time to Visit
+              {t.activitiesPage.bestSeasons}
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Discover the perfect season for your adventure in Todra Gorge

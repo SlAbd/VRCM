@@ -10,17 +10,19 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
+import { useLanguage } from '@/lib/i18n/LanguageContext';
 
 const BlogPage = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
+  const { t } = useLanguage();
 
   const categories = [
-    { id: 'all', name: 'All Posts', icon: BookOpen },
-    { id: 'climbing', name: 'Climbing Tips', icon: Mountain },
-    { id: 'stories', name: 'Adventure Stories', icon: Compass },
-    { id: 'guides', name: 'Travel Guides', icon: Map },
-    { id: 'photography', name: 'Photography', icon: Camera },
+    { id: 'all', name: t.blog.allPosts, icon: BookOpen },
+    { id: 'climbing', name: t.blog.climbingTips, icon: Mountain },
+    { id: 'stories', name: t.blog.adventureStories, icon: Compass },
+    { id: 'guides', name: t.blog.travelGuides, icon: Map },
+    { id: 'photography', name: t.blog.photography, icon: Camera },
   ];
 
   const featuredPost = {
@@ -198,7 +200,7 @@ const BlogPage = () => {
             <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
             <Input
               type="text"
-              placeholder="Search articles..."
+              placeholder={t.blog.searchPlaceholder}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="pl-12 pr-4 py-6 w-full text-lg"
@@ -236,7 +238,7 @@ const BlogPage = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="mb-6">
               <Badge className="bg-[#E86C36] text-white px-4 py-2 text-sm">
-                Featured Article
+                {t.blog.featured}
               </Badge>
             </div>
             

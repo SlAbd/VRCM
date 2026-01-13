@@ -21,11 +21,11 @@ const ShopPage = () => {
   const { t } = useLanguage();
 
   const categories = [
-    { id: 'all', name: 'All Products', icon: ShoppingBag },
-    { id: 'apparel', name: 'Apparel', icon: Shirt },
-    { id: 'equipment', name: 'Equipment', icon: Mountain },
-    { id: 'accessories', name: 'Accessories', icon: Backpack },
-    { id: 'souvenirs', name: 'Souvenirs', icon: Camera },
+    { id: 'all', name: t.shopPage.allProducts, icon: ShoppingBag },
+    { id: 'apparel', name: t.shopPage.apparel, icon: Shirt },
+    { id: 'equipment', name: t.shopPage.equipment, icon: Mountain },
+    { id: 'accessories', name: t.shopPage.accessories, icon: Backpack },
+    { id: 'souvenirs', name: t.shopPage.souvenirs, icon: Camera },
   ];
 
   const products = [
@@ -207,23 +207,23 @@ const ShopPage = () => {
   const features = [
     {
       icon: Truck,
-      title: t.shop.freeShipping,
+      title: t.shopPage.freeShipping,
       description: 'Free in Morocco',
     },
     {
       icon: Shield,
-      title: 'Secure Payment',
-      description: t.shop.paymentMethods,
+      title: t.shopPage.securePayment,
+      description: t.shopPage.securePaymentDesc,
     },
     {
       icon: RotateCcw,
-      title: '30-Day Returns',
-      description: 'Easy return policy',
+      title: t.shopPage.returns,
+      description: t.shopPage.returnsDesc,
     },
     {
       icon: Clock,
-      title: t.shop.rentOrBuy,
-      description: 'Available at shop',
+      title: t.shopPage.quality,
+      description: t.shopPage.qualityDesc,
     },
   ];
 
@@ -317,7 +317,7 @@ const ShopPage = () => {
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
               <Input
                 type="text"
-                placeholder="Search products..."
+                placeholder={t.shopPage.searchPlaceholder}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="pl-10 pr-4 py-6 w-full text-lg"

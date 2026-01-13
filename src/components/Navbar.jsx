@@ -3,17 +3,13 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, Search, X, Globe } from 'lucide-react';
+import { Menu, Search, X } from 'lucide-react';
 import Image from 'next/image';
 import { Button } from './ui/button';
 import { Sheet, SheetContent, SheetTrigger } from './ui/sheet';
 import { useLanguage } from '@/lib/i18n/LanguageContext';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from './ui/dropdown-menu';
+
+
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -30,9 +26,9 @@ const Navbar = () => {
   ];
 
   const languages = [
-    { code: 'en', name: 'English', flag: '🇬🇧' },
-    { code: 'fr', name: 'Français', flag: '🇫🇷' },
-    { code: 'es', name: 'Español', flag: '🇪🇸' },
+    { code: 'en', name: 'English', flag: '/assets/etats-unis.png' },
+    { code: 'fr', name: 'Français', flag: '/assets/france.png' },
+    { code: 'es', name: 'Español', flag: '/assets/espagne.png' },
   ];
 
   const isActive = (path) => {
@@ -75,30 +71,30 @@ const Navbar = () => {
 
           {/* Actions */}
           <div className="hidden md:flex items-center space-x-2">
-            {/* Language Selector */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button 
-                  variant="ghost" 
-                  size="icon"
-                  className="hover:bg-[#E86C36]/10 hover:text-[#E86C36] transition-all duration-300"
+            {/* Language Flags */}
+            <div className="flex items-center space-x-1 border-l pl-3 ml-2">
+              {languages.map((lang) => (
+                <button
+                  key={lang.code}
+                  onClick={() => changeLanguage(lang.code)}
+                  className={`transition-all duration-300 cursor-pointer hover:scale-125 ${
+                    language === lang.code 
+                      ? 'scale-110 opacity-100 ring-2 ring-[#E86C36] rounded-full p-1' 
+                      : 'opacity-50 hover:opacity-100'
+                  }`}
+                  title={lang.name}
+                  aria-label={`Switch to ${lang.name}`}
                 >
-                  <Globe className="h-5 w-5" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                {languages.map((lang) => (
-                  <DropdownMenuItem
-                    key={lang.code}
-                    onClick={() => changeLanguage(lang.code)}
-                    className={`cursor-pointer ${language === lang.code ? 'bg-[#E86C36]/10 text-[#E86C36]' : ''}`}
-                  >
-                    <span className="mr-2">{lang.flag}</span>
-                    {lang.name}
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
+                  <Image
+                    src={lang.flag}
+                    alt={lang.name}
+                    width={28}
+                    height={28}
+                    className="rounded-full object-cover"
+                  />
+                </button>
+              ))}
+            </div>
 
             {/* Search Button */}
             <Button 
@@ -124,20 +120,29 @@ const Navbar = () => {
               </SheetTrigger>
               <SheetContent className="w-[300px] sm:w-[400px]">
                 <div className="flex flex-col space-y-4 mt-8">
-                  {/* Language Selector in Mobile */}
-                  <div className="px-4 py-2 border-b">
-                    <p className="text-sm text-gray-500 mb-2">Language / Langue / Idioma</p>
-                    <div className="flex gap-2">
+                  {/* Language Flags in Mobile */}
+                  <div className="px-4 py-3 border-b">
+                    <p className="text-sm text-gray-500 mb-3">Language / Langue / Idioma</p>
+                    <div className="flex gap-3 justify-start">
                       {languages.map((lang) => (
-                        <Button
+                        <button
                           key={lang.code}
-                          variant={language === lang.code ? "default" : "outline"}
-                          size="sm"
                           onClick={() => changeLanguage(lang.code)}
-                          className={language === lang.code ? "bg-[#E86C36] hover:bg-[#d45a2a]" : ""}
+                          className={`transition-all duration-300 hover:scale-125 ${
+                            language === lang.code 
+                              ? 'scale-110 opacity-100 ring-2 ring-[#E86C36] rounded-full p-2' 
+                              : 'opacity-50 hover:opacity-100'
+                          }`}
+                          title={lang.name}
                         >
-                          {lang.flag} {lang.code.toUpperCase()}
-                        </Button>
+                          <Image
+                            src={lang.flag}
+                            alt={lang.name}
+                            width={40}
+                            height={40}
+                            className="rounded-full object-cover"
+                          />
+                        </button>
                       ))}
                     </div>
                   </div>
