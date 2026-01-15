@@ -1,10 +1,11 @@
 ﻿'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { 
   Mountain, Tent, Bike, Camera, Compass, Map, Users, Clock,
   Star, Heart, Share2, Calendar, MapPin, CheckCircle, Award,
-  Footprints, Sun, Moon, Wind, Droplets, AlertCircle
+  Footprints, Sun, Moon, Wind, Droplets, AlertCircle, ChevronLeft, ChevronRight
 } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -15,7 +16,25 @@ import { useLanguage } from '@/lib/i18n/LanguageContext';
 const ActivitiesPage = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [hoveredActivity, setHoveredActivity] = useState(null);
+  const [imageIndexes, setImageIndexes] = useState({});
   const { t } = useLanguage();
+
+  // Auto-rotate images every 3 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setImageIndexes(prev => {
+        const newIndexes = { ...prev };
+        for (let id of [1, 8, 9]) { // Activities with carousel images
+          if (activities.find(a => a.id === id)?.images) {
+            const imagesLength = activities.find(a => a.id === id).images.length;
+            newIndexes[id] = ((newIndexes[id] || 0) + 1) % imagesLength;
+          }
+        }
+        return newIndexes;
+      });
+    }, 3000);
+    return () => clearInterval(timer);
+  }, []);
 
   const activities = [
     {
@@ -25,12 +44,112 @@ const ActivitiesPage = () => {
       difficulty: 'All Levels',
       duration: 'Half Day / Full Day',
       groupSize: '2-8 people',
-      price: 'From â‚¬45',
+      price: 'From €45',
       image: 'https://images.unsplash.com/photo-1522163182402-834f871fd851?q=80&w=800',
+      images: [
+        '/assets/vrcm/rock 1 .jpg',
+        '/assets/vrcm/rock 2.jpg',
+        '/assets/vrcm/rock 3.jpg',
+        '/assets/vrcm/rock 4.jpg',
+        '/assets/vrcm/rock 6.jpg',
+      ],
       icon: Mountain,
       description: 'Experience the thrill of climbing on world-class limestone cliffs in Todra Gorge.',
       highlights: ['Expert guides', 'All equipment provided', 'Routes for all levels', 'Safety certified'],
       color: 'from-orange-500 to-red-500',
+    },
+    {
+      id: 8,
+      title: 'Via Ferrata',
+      category: 'climbing',
+      difficulty: 'Moderate',
+      duration: 'Half Day',
+      groupSize: '2-10 people',
+      price: 'From €55',
+      image: 'https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?q=80&w=800',
+      images: [
+        '/assets/vrcm/via ferrata 1.jpg',
+        '/assets/vrcm/via ferrata 2.jpg',
+        '/assets/vrcm/via ferrata 3.jpg',
+        '/assets/vrcm/via ferrata 4.jpg',
+        '/assets/vrcm/via ferrata 5.jpg',
+        '/assets/vrcm/via ferrata 6.jpg',
+        '/assets/vrcm/via ferrata 7.jpg',
+        '/assets/vrcm/via ferrata 8.jpg',
+      ],
+      icon: Compass,
+      description: 'Protected climbing routes combining hiking and climbing with spectacular views.',
+      highlights: ['Safety cables', 'Panoramic views', 'Suitable for beginners', 'Adventure thrill'],
+      color: 'from-indigo-500 to-blue-500',
+    },
+    {
+      id: 9,
+      title: 'Day Hikes',
+      category: 'trekking',
+      difficulty: 'Easy to Moderate',
+      duration: 'Half Day',
+      groupSize: '2-12 people',
+      price: 'From €25',
+      image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=800',
+      images: [
+        '/assets/vrcm/1day hike 1.jpg',
+        '/assets/vrcm/1day hike 2.jpg',
+        '/assets/vrcm/1day hike 3.jpg',
+        '/assets/vrcm/1day hike 4.jpg',
+      ],
+      icon: Footprints,
+      description: 'Explore Todra gorge and the surrounding high Atlas mountains on foot.',
+      highlights: ['Stunning Views', 'Berber Culture', 'Flexible Routes', 'All Levels', 'Professional Guide', 'Panoramic Plateaus'],
+      color: 'from-green-500 to-teal-500',
+    },
+    {
+      id: 10,
+      title: '3-Day Nomadic Hiking Adventure',
+      category: 'trekking',
+      difficulty: 'Moderate',
+      duration: '3 Days / 2 Nights',
+      groupSize: '2-12 people',
+      price: 'From €300',
+      image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=800',
+      // images: [
+      //   '/assets/vrcm/20251217_121317.jpg',
+      //   '/assets/vrcm/20251217_121351.jpg',
+      //   '/assets/vrcm/20251217_121437.jpg',
+      //   '/assets/vrcm/20251217_121441.jpg',
+      //   '/assets/vrcm/20251217_121443.jpg',
+      //   '/assets/vrcm/20251217_121455.jpg',
+      //   '/assets/vrcm/20251217_121511.jpg',
+      //   '/assets/vrcm/20251217_121521.jpg',
+      // ],
+      icon: Tent,
+      description: 'A truly nomadic experience across the high plateau.',
+      highlights: ['Nomadic Camps', 'Stargazing', 'Mule Support', 'Shepherd Culture', 'Remote Plateaus', 'Dades Valley'],
+      color: 'from-yellow-500 to-orange-500',
+    },
+    {
+      id: 11,
+      title: '7-Day Hiking Holiday',
+      category: 'trekking',
+      difficulty: 'Easy to Moderate',
+      duration: '7 Days / 5 Nights',
+      groupSize: '2-12 people',
+      price: 'From €500',
+      image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=800',
+      // images: [
+      //   '/assets/vrcm/IMG-20251215-WA0004.jpg',
+      //   '/assets/vrcm/IMG-20251215-WA0005.jpg',
+      //   '/assets/vrcm/IMG-20251215-WA0006.jpg',
+      //   '/assets/vrcm/IMG-20251215-WA0010.jpg',
+      //   '/assets/vrcm/IMG-20251215-WA0012.jpg',
+      //   '/assets/vrcm/IMG-20251215-WA0016.jpg',
+      //   '/assets/vrcm/IMG-20251215-WA0017.jpg',
+      //   '/assets/vrcm/IMG-20251215-WA0018.jpg',
+      //   '/assets/vrcm/IMG-20251215-WA0019.jpg',
+      // ],
+      icon: Footprints,
+      description: 'A complete week-long all-inclusive hiking holiday.',
+      highlights: ['5-Day Guided Hiking', 'Gorges Exploration', 'Market Visits', 'Plateau Trails', 'Marrakech Included', 'Mixed Activities'],
+      color: 'from-purple-500 to-blue-500',
     },
     {
       id: 2,
@@ -39,7 +158,7 @@ const ActivitiesPage = () => {
       difficulty: 'Advanced',
       duration: 'Full Day',
       groupSize: '2-4 people',
-      price: 'From â‚¬80',
+      price: 'From €80',
       image: 'https://images.unsplash.com/photo-1486311355911-65e04c1ae42e?q=80&w=800',
       icon: Mountain,
       description: 'Challenge yourself on spectacular multi-pitch routes with breathtaking views.',
@@ -53,7 +172,7 @@ const ActivitiesPage = () => {
       difficulty: 'Moderate',
       duration: '2-7 Days',
       groupSize: '4-12 people',
-      price: 'From â‚¬120',
+      price: 'From €120',
       image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=800',
       icon: Footprints,
       description: 'Explore the Atlas Mountains on guided treks through stunning landscapes.',
@@ -61,41 +180,13 @@ const ActivitiesPage = () => {
       color: 'from-green-500 to-teal-500',
     },
     {
-      id: 4,
-      title: 'Mountain Biking',
-      category: 'biking',
-      difficulty: 'Moderate to Hard',
-      duration: 'Half Day / Full Day',
-      groupSize: '2-10 people',
-      price: 'From â‚¬50',
-      image: 'https://images.unsplash.com/photo-1541625602330-2277a4c46182?q=80&w=800',
-      icon: Bike,
-      description: 'Ride through mountain trails and discover hidden valleys on two wheels.',
-      highlights: ['Quality bikes', 'Varied trails', 'Support vehicle', 'Refreshments included'],
-      color: 'from-blue-500 to-indigo-500',
-    },
-    // {
-    //   id: 5,
-    //   title: 'Photography Tours',
-    //   category: 'cultural',
-    //   difficulty: 'Easy',
-    //   duration: 'Half Day / Full Day',
-    //   groupSize: '2-8 people',
-    //   price: 'From â‚¬60',
-    //   image: 'https://images.unsplash.com/photo-1452587925148-ce544e77e70d?q=80&w=800',
-    //   icon: Camera,
-    //   description: 'Capture stunning landscapes and authentic moments with a local photography guide.',
-    //   highlights: ['Golden hour shoots', 'Local insights', 'Portrait opportunities', 'Hidden locations'],
-    //   color: 'from-purple-500 to-pink-500',
-    // },
-    {
       id: 6,
       title: 'Desert Camping',
       category: 'camping',
       difficulty: 'Easy',
       duration: '1-3 Nights',
       groupSize: '2-15 people',
-      price: 'From â‚¬90',
+      price: 'From €90',
       image: 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?q=80&w=800',
       icon: Tent,
       description: 'Sleep under the stars in traditional Berber camps with authentic local experience.',
@@ -109,26 +200,12 @@ const ActivitiesPage = () => {
       difficulty: 'Easy',
       duration: 'Half Day',
       groupSize: '2-12 people',
-      price: 'From â‚¬35',
+      price: 'From €35',
       image: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=800',
       icon: Map,
       description: 'Visit traditional Berber villages and experience authentic Moroccan hospitality.',
       highlights: ['Village visits', 'Traditional tea', 'Local crafts', 'Cultural exchange'],
       color: 'from-teal-500 to-green-500',
-    },
-    {
-      id: 8,
-      title: 'Via Ferrata',
-      category: 'climbing',
-      difficulty: 'Moderate',
-      duration: 'Half Day',
-      groupSize: '2-10 people',
-      price: 'From â‚¬55',
-      image: 'https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?q=80&w=800',
-      icon: Compass,
-      description: 'Protected climbing routes combining hiking and climbing with spectacular views.',
-      highlights: ['Safety cables', 'Panoramic views', 'Suitable for beginners', 'Adventure thrill'],
-      color: 'from-indigo-500 to-blue-500',
     },
   ];
 
@@ -136,7 +213,7 @@ const ActivitiesPage = () => {
     { id: 'all', name: t.activitiesPage.allActivities, icon: Compass },
     { id: 'climbing', name: t.activitiesPage.climbing, icon: Mountain },
     { id: 'trekking', name: t.activitiesPage.trekking, icon: Footprints },
-    { id: 'biking', name: t.activitiesPage.biking, icon: Bike },
+    // { id: 'biking', name: t.activitiesPage.biking, icon: Bike },
     { id: 'cultural', name: t.activitiesPage.cultural, icon: Map },
     { id: 'camping', name: t.activitiesPage.camping, icon: Tent },
   ];
@@ -283,19 +360,79 @@ const ActivitiesPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredActivities.map((activity, index) => (
-              <Card
-                key={activity.id}
-                className="group overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 cursor-pointer"
-                onMouseEnter={() => setHoveredActivity(activity.id)}
-                onMouseLeave={() => setHoveredActivity(null)}
-              >
-                {/* Image */}
-                <div className="relative h-64 overflow-hidden">
-                  <img
-                    src={activity.image}
-                    alt={activity.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
+              <Link key={activity.id} href={`/activities/${activity.id}`}>
+                <Card
+                  className="group overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 cursor-pointer h-full"
+                  onMouseEnter={() => setHoveredActivity(activity.id)}
+                  onMouseLeave={() => setHoveredActivity(null)}
+                >
+                  {/* Image */}
+                  <div className="relative h-64 overflow-hidden">
+                    {activity.images ? (
+                      // Via Ferrata Carousel
+                      <div className="relative h-full w-full">
+                        <img
+                          src={activity.images[imageIndexes[activity.id] || 0]}
+                          alt={`${activity.title} ${imageIndexes[activity.id] || 0 + 1}`}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        />
+                        {/* Previous Button */}
+                        <button
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            setImageIndexes(prev => ({
+                              ...prev,
+                              [activity.id]: ((prev[activity.id] || 0) - 1 + activity.images.length) % activity.images.length
+                            }));
+                          }}
+                          className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
+                        >
+                          <ChevronLeft className="h-5 w-5 text-[#E86C36]" />
+                        </button>
+                        {/* Next Button */}
+                        <button
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            setImageIndexes(prev => ({
+                              ...prev,
+                              [activity.id]: ((prev[activity.id] || 0) + 1) % activity.images.length
+                            }));
+                          }}
+                          className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
+                        >
+                          <ChevronRight className="h-5 w-5 text-[#E86C36]" />
+                        </button>
+                        {/* Image Counter */}
+                        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-black/60 text-white px-3 py-1 rounded-full text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          {(imageIndexes[activity.id] || 0) + 1} / {activity.images.length}
+                        </div>
+                        {/* Image Dots */}
+                        <div className="absolute bottom-4 right-4 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          {activity.images.map((_, idx) => (
+                            <button
+                              key={idx}
+                              onClick={(e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                setImageIndexes(prev => ({ ...prev, [activity.id]: idx }));
+                              }}
+                              className={`w-2 h-2 rounded-full transition-all ${
+                                idx === (imageIndexes[activity.id] || 0) ? 'bg-[#E86C36] w-6' : 'bg-white/60'
+                              }`}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    ) : (
+                      // Regular Image
+                      <img
+                        src={activity.image}
+                        alt={activity.title}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                  )}
                   <div className={`absolute inset-0 bg-gradient-to-t ${activity.color} opacity-0 group-hover:opacity-60 transition-opacity duration-300`}></div>
                   
                   {/* Floating Icon */}
@@ -373,7 +510,8 @@ const ActivitiesPage = () => {
                     </Button>
                   </div>
                 </CardContent>
-              </Card>
+                </Card>
+              </Link>
             ))}
           </div>
         </div>
