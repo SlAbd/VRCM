@@ -39,6 +39,7 @@ const ActivitiesPage = () => {
   const activities = [
     {
       id: 1,
+      slug: 'rock-climbing',
       title: 'Rock Climbing',
       category: 'climbing',
       difficulty: 'All Levels',
@@ -60,6 +61,7 @@ const ActivitiesPage = () => {
     },
     {
       id: 8,
+      slug: 'via-ferrata',
       title: 'Via Ferrata',
       category: 'climbing',
       difficulty: 'Moderate',
@@ -84,6 +86,7 @@ const ActivitiesPage = () => {
     },
     {
       id: 9,
+      slug: 'day-hikes',
       title: 'Day Hikes',
       category: 'trekking',
       difficulty: 'Easy to Moderate',
@@ -104,6 +107,7 @@ const ActivitiesPage = () => {
     },
     {
       id: 10,
+      slug: '3-day-nomadic-hiking-adventure',
       title: '3-Day Nomadic Hiking Adventure',
       category: 'trekking',
       difficulty: 'Moderate',
@@ -128,6 +132,7 @@ const ActivitiesPage = () => {
     },
     {
       id: 11,
+      slug: '7-day-hiking-holiday',
       title: '7-Day Hiking Holiday',
       category: 'trekking',
       difficulty: 'Easy to Moderate',
@@ -153,6 +158,7 @@ const ActivitiesPage = () => {
     },
     {
       id: 2,
+      slug: 'multi-pitch-climbing',
       title: 'Multi-Pitch Climbing',
       category: 'climbing',
       difficulty: 'Advanced',
@@ -167,6 +173,7 @@ const ActivitiesPage = () => {
     },
     {
       id: 3,
+      slug: 'mountain-trekking',
       title: 'Mountain Trekking',
       category: 'trekking',
       difficulty: 'Moderate',
@@ -181,6 +188,7 @@ const ActivitiesPage = () => {
     },
     {
       id: 6,
+      slug: 'desert-camping',
       title: 'Desert Camping',
       category: 'camping',
       difficulty: 'Easy',
@@ -195,6 +203,7 @@ const ActivitiesPage = () => {
     },
     {
       id: 7,
+      slug: 'cultural-village-tours',
       title: 'Cultural Village Tours',
       category: 'cultural',
       difficulty: 'Easy',
@@ -360,7 +369,7 @@ const ActivitiesPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredActivities.map((activity, index) => (
-              <Link key={activity.id} href={`/activities/${activity.id}`}>
+              <Link key={activity.id} href={`/activities/${activity.slug}`}>
                 <Card
                   className="group overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 cursor-pointer h-full"
                   onMouseEnter={() => setHoveredActivity(activity.id)}

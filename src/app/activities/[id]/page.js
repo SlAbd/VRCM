@@ -2,21 +2,21 @@ import ActivityDetailPage from '@/components/pages/ActivityDetailPage';
 
 // Activity data for generateStaticParams
 const activities = [
-  { id: 1 },
-  { id: 2 },
-  { id: 3 },
-  { id: 4 },
-  { id: 6 },
-  { id: 7 },
-  { id: 8 },
-  { id: 9 },
-  { id: 10 },
-  { id: 11 },
+  { slug: 'rock-climbing' },
+  { slug: 'multi-pitch-climbing' },
+  { slug: 'mountain-trekking' },
+  { slug: 'mountain-biking' },
+  { slug: 'desert-camping' },
+  { slug: 'cultural-village-tours' },
+  { slug: 'via-ferrata' },
+  { slug: 'day-hikes' },
+  { slug: '3-day-nomadic-hiking-adventure' },
+  { slug: '7-day-hiking-holiday' },
 ];
 
 export async function generateStaticParams() {
   return activities.map((activity) => ({
-    id: activity.id.toString(),
+    id: activity.slug,
   }));
 }
 

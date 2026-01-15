@@ -20,8 +20,8 @@ const ActivityDetailPage = () => {
   const { t } = useLanguage();
   const params = useParams();
   
-  // Get id from params
-  const id = params?.id;
+  // Get slug from params (supports either [slug] or legacy [id])
+  const slug = params?.slug || params?.id;
 
   // Function to generate mailto links
   const generateMailtoLink = (email, subject = '', body = '') => {
@@ -34,6 +34,7 @@ const ActivityDetailPage = () => {
   const activities = [
     {
       id: 1,
+      slug: 'rock-climbing',
       title: 'Rock Climbing',
       category: 'climbing',
       difficulty: 'All Levels',
@@ -63,6 +64,7 @@ const ActivityDetailPage = () => {
     },
     {
       id: 2,
+      slug: 'multi-pitch-climbing',
       title: 'Multi-Pitch Climbing',
       category: 'climbing',
       difficulty: 'Advanced',
@@ -83,6 +85,7 @@ const ActivityDetailPage = () => {
       requirements: ['Advanced climbing experience', 'Age 16+', 'Excellent physical fitness'],      email: 'aitabdellah.abdelhadi@gmail.com'    },
     {
       id: 3,
+      slug: 'mountain-trekking',
       title: 'Mountain Trekking',
       category: 'trekking',
       difficulty: 'Moderate',
@@ -105,6 +108,7 @@ const ActivityDetailPage = () => {
     },
     {
       id: 4,
+      slug: 'mountain-biking',
       title: 'Mountain Biking',
       category: 'biking',
       difficulty: 'Moderate to Hard',
@@ -127,6 +131,7 @@ const ActivityDetailPage = () => {
     },
     {
       id: 6,
+      slug: 'desert-camping',
       title: 'Desert Camping',
       category: 'camping',
       difficulty: 'Easy',
@@ -149,6 +154,7 @@ const ActivityDetailPage = () => {
     },
     {
       id: 7,
+      slug: 'cultural-village-tours',
       title: 'Cultural Village Tours',
       category: 'cultural',
       difficulty: 'Easy',
@@ -171,6 +177,7 @@ const ActivityDetailPage = () => {
     },
     {
       id: 8,
+      slug: 'via-ferrata',
       title: 'Via Ferrata',
       category: 'climbing',
       difficulty: 'Moderate',
@@ -208,6 +215,7 @@ const ActivityDetailPage = () => {
     },
     {
       id: 9,
+      slug: 'day-hikes',
       title: 'Day Hikes',
       category: 'trekking',
       difficulty: 'Easy to Moderate',
@@ -236,6 +244,7 @@ const ActivityDetailPage = () => {
     },
     {
       id: 10,
+      slug: '3-day-nomadic-hiking-adventure',
       title: '3-Day Nomadic Hiking Adventure',
       category: 'trekking',
       difficulty: 'Moderate',
@@ -274,6 +283,7 @@ const ActivityDetailPage = () => {
     },
     {
       id: 11,
+      slug: '7-day-hiking-holiday',
       title: '7-Day Hiking Holiday',
       category: 'trekking',
       difficulty: 'Easy to Moderate',
@@ -313,17 +323,16 @@ const ActivityDetailPage = () => {
     },
   ];
 
-  // Convert id to number safely
-  const numericId = id ? Number(id) : null;
-  const activity = numericId ? activities.find(a => a.id === numericId) : null;
+  // Find activity by slug
+  const activity = slug ? activities.find(a => a.slug === slug) : null;
 
-  if (!activity || numericId === null) {
+  if (!activity) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white">
         <div className="text-center">
           <h1 className="text-3xl font-bold mb-4 text-[#1A1A1A]">Activity Not Found</h1>
           <p className="text-gray-600 mb-6">The activity you're looking for doesn't exist.</p>
-          <p className="text-sm text-gray-500 mb-6">ID received: {id}</p>
+          <p className="text-sm text-gray-500 mb-6">Slug received: {slug}</p>
           <Link href="/activities">
             <Button className="bg-[#E86C36] hover:bg-[#d45a2a] text-white">
               <ArrowLeft className="mr-2 h-4 w-4" />
@@ -665,7 +674,7 @@ const ActivityDetailPage = () => {
               .filter(a => a.category === activity.category && a.id !== activity.id)
               .slice(0, 3)
               .map(relatedActivity => (
-                <Link key={relatedActivity.id} href={`/activities/${relatedActivity.id}`}>
+                <Link key={relatedActivity.id} href={`/activities/${relatedActivity.slug}`}>
                   <Card className="h-full group overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:-translate-y-2">
                     <div className="relative h-48 overflow-hidden">
                       <img
