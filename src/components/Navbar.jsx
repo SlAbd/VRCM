@@ -122,7 +122,7 @@ const Navbar = () => {
                 <div className="flex flex-col space-y-4 mt-8">
                   {/* Language Flags in Mobile */}
                   <div className="px-4 py-3 border-b">
-                    <p className="text-sm text-gray-500 mb-3">Language / Langue / Idioma</p>
+                    {/* <p className="text-sm text-gray-500 mb-3">Language / Langue / Idioma</p> */}
                     <div className="flex gap-3 justify-start">
                       {languages.map((lang) => (
                         <button
