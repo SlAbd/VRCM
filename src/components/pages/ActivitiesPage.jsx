@@ -48,11 +48,11 @@ const ActivitiesPage = () => {
       price: 'From €45',
       image: 'https://images.unsplash.com/photo-1522163182402-834f871fd851?q=80&w=800',
       images: [
-        '/assets/rock 1 .jpg',
-        '/assets/rock 2.jpg',
-        '/assets/rock 3.jpg',
-        '/assets/rock 4.jpg',
-        '/assets/rock 6.jpg',
+        '/assets/rock1.jpg',
+        '/assets/rock2.jpg',
+        '/assets/rock3.jpg',
+        '/assets/rock4.jpg',
+        '/assets/rock6.jpg',
       ],
       icon: Mountain,
       description: 'Experience the thrill of climbing on world-class limestone cliffs in Todra Gorge.',
@@ -70,14 +70,14 @@ const ActivitiesPage = () => {
       price: 'From €55',
       image: 'https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?q=80&w=800',
       images: [
-        '/assets/via ferrata 1.jpg',
-        '/assets/via ferrata 2.jpg',
-        '/assets/via ferrata 3.jpg',
-        '/assets/via ferrata 4.jpg',
-        '/assets/via ferrata 5.jpg',
-        '/assets/via ferrata 6.jpg',
-        '/assets/via ferrata 7.jpg',
-        '/assets/via ferrata 8.jpg',
+        '/assets/via-ferrata-1.jpg',
+        '/assets/via-ferrata-2.jpg',
+        '/assets/via-ferrata-3.jpg',
+        '/assets/via-ferrata-4.jpg',
+        '/assets/via-ferrata-5.jpg',
+        '/assets/via-ferrata-6.jpg',
+        '/assets/via-ferrata-7.jpg',
+        '/assets/via-ferrata-8.jpg',
       ],
       icon: Compass,
       description: 'Protected climbing routes combining hiking and climbing with spectacular views.',
@@ -95,10 +95,10 @@ const ActivitiesPage = () => {
       price: 'From €25',
       image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=800',
       images: [
-        '/assets/1day hike 1.jpg',
-        '/assets/1day hike 2.jpg',
-        '/assets/1day hike 3.jpg',
-        '/assets/1day hike 4.jpg',
+        '/assets/day-hike-1.jpg',
+        '/assets/day-hike-2.jpg',
+        '/assets/day-hike-3.jpg',
+        '/assets/day-hike-4.jpg',
       ],
       icon: Footprints,
       description: 'Explore Todra gorge and the surrounding high Atlas mountains on foot.',
@@ -572,7 +572,7 @@ const ActivitiesPage = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Mountain className="h-16 w-16 mx-auto mb-6 text-[#E86C36]" />
           <h2 className="text-4xl font-bold mb-6">
-            Can't Decide? Let Us Help!
+            Can&apos;t Decide? Let Us Help!
           </h2>
           <p className="text-xl text-white/80 mb-8">
             Contact our expert team to design a custom adventure tailored to your interests and skill level
