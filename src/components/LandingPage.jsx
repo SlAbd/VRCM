@@ -14,6 +14,7 @@ import {
 } from './ui/carousel';
 import { useLanguage } from '@/lib/i18n/LanguageContext';
 import Link from 'next/link';
+import rock4 from '../../public/assets/rock4.jpg'
 
 
 // Hero Section
@@ -26,7 +27,7 @@ const HeroSection = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center transform transition-transform duration-[10000ms] hover:scale-110"
         style={{
-          backgroundImage: 'url(https://images.unsplash.com/photo-1522163182402-834f871fd851?q=80&w=2000)',
+          backgroundImage: rock4 ? `url(${rock4.src})` : 'none',
           animation: 'slowZoom 20s ease-in-out infinite alternate',
         }}
       >

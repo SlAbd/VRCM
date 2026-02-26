@@ -1,6 +1,7 @@
 ﻿'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { 
   BookOpen, Calendar, User, Clock, ArrowRight, Search, Tag,
   Heart, Share2, MessageCircle, TrendingUp, Mountain, Camera,
@@ -16,6 +17,7 @@ const BlogPage = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const { t } = useLanguage();
+  const router = useRouter();
 
   const categories = [
     { id: 'all', name: t.blog.allPosts, icon: BookOpen },
@@ -88,21 +90,21 @@ const BlogPage = () => {
       comments: 55,
       slug: 'from-atlas-to-sahara-unraveling-moroccos-diverse-terrain',
     },
-    {
-      id: 13,
-      title: 'Hiking in Morocco: Complete Guide to Trails and Adventures',
-      excerpt: 'Discover the complete guide to hiking in Morocco. Learn about different trails, best seasons, essential tips, and immerse yourself in the natural beauty of this stunning country.',
-      author: 'VRockclimbing',
-      authorImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150',
-      date: 'October 3, 2025',
-      readTime: '12 min read',
-      image: 'https://images.unsplash.com/photo-1439066615861-d1af74d74000?q=80&w=600',
-      category: 'guides',
-      views: '3.0K',
-      likes: 402,
-      comments: 71,
-      slug: 'hiking-in-morocco',
-    },
+    // {
+    //   id: 13,
+    //   title: 'Hiking in Morocco: Complete Guide to Trails and Adventures',
+    //   excerpt: 'Discover the complete guide to hiking in Morocco. Learn about different trails, best seasons, essential tips, and immerse yourself in the natural beauty of this stunning country.',
+    //   author: 'VRockclimbing',
+    //   authorImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150',
+    //   date: 'October 3, 2025',
+    //   readTime: '12 min read',
+    //   image: 'https://images.unsplash.com/photo-1439066615861-d1af74d74000?q=80&w=600',
+    //   category: 'guides',
+    //   views: '3.0K',
+    //   likes: 402,
+    //   comments: 71,
+    //   slug: 'hiking-in-morocco',
+    // },
   ];
 
   const popularTags = [
@@ -210,7 +212,10 @@ const BlogPage = () => {
 
                 {/* Content */}
                 <CardContent className="p-8 md:p-12 flex flex-col justify-center">
-                  <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-4 hover:text-[#E86C36] transition-colors cursor-pointer">
+                  <h2
+                    className="text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-4 hover:text-[#E86C36] transition-colors cursor-pointer"
+                    onClick={() => router.push(`/blog/${featuredPost.slug}`)}
+                  >
                     {featuredPost.title}
                   </h2>
                   
@@ -248,7 +253,10 @@ const BlogPage = () => {
                       </div>
                     </div>
                     
-                    <Button className="bg-[#E86C36] hover:bg-[#d45a2a]">
+                    <Button
+                      className="bg-[#E86C36] hover:bg-[#d45a2a]"
+                      onClick={() => router.push(`/blog/${featuredPost.slug}`)}
+                    >
                       Read More <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
                   </div>
@@ -290,7 +298,10 @@ const BlogPage = () => {
 
                       {/* Content */}
                       <CardContent className="md:col-span-2 p-6">
-                        <h3 className="text-xl font-bold text-[#1A1A1A] mb-3 group-hover:text-[#E86C36] transition-colors cursor-pointer">
+                        <h3
+                          className="text-xl font-bold text-[#1A1A1A] mb-3 group-hover:text-[#E86C36] transition-colors cursor-pointer"
+                          onClick={() => router.push(`/blog/${post.slug}`)}
+                        >
                           {post.title}
                         </h3>
                         
@@ -336,6 +347,7 @@ const BlogPage = () => {
                             variant="ghost" 
                             size="sm"
                             className="text-[#E86C36] hover:text-[#d45a2a] hover:bg-[#E86C36]/10"
+                            onClick={() => router.push(`/blog/${post.slug}`)}
                           >
                             Read More <ChevronRight className="ml-1 h-4 w-4" />
                           </Button>
@@ -394,6 +406,7 @@ const BlogPage = () => {
                       <div
                         key={post.id}
                         className="flex items-start space-x-3 pb-4 border-b last:border-b-0 cursor-pointer group"
+                        onClick={() => router.push(`/blog/${post.slug}`)}
                       >
                         <span className="text-2xl font-bold text-[#E86C36]/20 group-hover:text-[#E86C36] transition-colors">
                           {index + 1}
