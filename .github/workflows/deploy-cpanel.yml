@@ -8,14 +8,20 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: cpanel-deploy
+  cancel-in-progress: true
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout source code
+      - name: Checkout source branch
         uses: actions/checkout@v4
         with:
+          ref: master
+          path: source
           lfs: true
 
       - name: Setup Node.js
@@ -23,39 +29,55 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
+          cache-dependency-path: source/package-lock.json
 
       - name: Install dependencies
+        working-directory: source
         run: npm ci
 
       - name: Run linter
+        working-directory: source
         run: npm run lint
         continue-on-error: true
 
       - name: Build static Next.js project
+        working-directory: source
         run: npm run build
         env:
           NODE_ENV: production
 
-      - name: Prepare cPanel deployment files
+      - name: Checkout cpanel-deploy branch
+        uses: actions/checkout@v4
+        with:
+          ref: cpanel-deploy
+          path: deploy
+          fetch-depth: 0
+
+      - name: Prepare deployment branch
         run: |
-          rm -rf cpanel-dist
-          mkdir cpanel-dist
+          cd deploy
 
-          cp -R out cpanel-dist/out
-          cp .cpanel.yml cpanel-dist/.cpanel.yml
+          find . -mindepth 1 \
+            ! -path './.git' \
+            ! -path './.git/*' \
+            -exec rm -rf {} +
 
-      - name: Push static build to cpanel-deploy branch
+          mkdir -p out
+          cp -R ../source/out/* out/
+          cp ../source/.cpanel.yml .cpanel.yml
+
+      - name: Commit and push deployment
         run: |
-          cd cpanel-dist
+          cd deploy
 
-          git init
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          git checkout -b cpanel-deploy
-
           git add -A
-          git commit -m "Deploy static cPanel build from $GITHUB_SHA"
 
-          git remote add origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
-          git push --force origin cpanel-deploy
+          if git diff --cached --quiet; then
+            echo "No changes to deploy"
+          else
+            git commit -m "Deploy static build from $GITHUB_SHA"
+            git push origin cpanel-deploy
+          fi

@@ -2,4 +2,5 @@
 deployment:
   tasks:
     - /bin/rm -rf /home/inteligencia/public_html/*
+    - /bin/rm -f /home/inteligencia/public_html/.htaccess
     - /bin/cp -R out/* /home/inteligencia/public_html/
