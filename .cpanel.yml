@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - /bin/mkdir -p tmp
-    - /bin/touch tmp/restart.txt
+    - /bin/rm -rf /home/inteligencia/public_html/*
+    - /bin/cp -R out/* /home/inteligencia/public_html/

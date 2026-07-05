@@ -1,19 +1,12 @@
-name: Build and Deploy to cPanel
+name: Build and Deploy Static Next.js to cPanel
 
 on:
   push:
     branches:
       - master
-  pull_request:
-    branches:
-      - master
 
 permissions:
   contents: write
-
-concurrency:
-  group: cpanel-deploy-${{ github.ref }}
-  cancel-in-progress: true
 
 jobs:
   build-and-deploy:
@@ -38,34 +31,20 @@ jobs:
         run: npm run lint
         continue-on-error: true
 
-      - name: Build Next.js project
+      - name: Build static Next.js project
         run: npm run build
         env:
           NODE_ENV: production
-          NEXT_PUBLIC_IGNORE_ESLINT: true
-
-      - name: Update Passenger restart file
-        run: node scripts/touch-restart.js
 
       - name: Prepare cPanel deployment files
-        if: github.event_name == 'push'
         run: |
           rm -rf cpanel-dist
           mkdir cpanel-dist
 
-          rsync -av ./ cpanel-dist/ \
-            --exclude='.git' \
-            --exclude='.github' \
-            --exclude='node_modules' \
-            --exclude='cpanel-dist' \
-            --exclude='.env' \
-            --exclude='.env.*' \
-            --exclude='.next/cache'
+          cp -R out cpanel-dist/out
+          cp .cpanel.yml cpanel-dist/.cpanel.yml
 
-          test -f cpanel-dist/.next/BUILD_ID
-
-      - name: Push compiled app to cpanel-deploy branch
-        if: github.event_name == 'push'
+      - name: Push static build to cpanel-deploy branch
         run: |
           cd cpanel-dist
 
@@ -76,10 +55,7 @@ jobs:
           git checkout -b cpanel-deploy
 
           git add -A
-          git add -f .next
-          git add -f tmp/restart.txt
-
-          git commit -m "Deploy cPanel build from $GITHUB_SHA"
+          git commit -m "Deploy static cPanel build from $GITHUB_SHA"
 
           git remote add origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
           git push --force origin cpanel-deploy
