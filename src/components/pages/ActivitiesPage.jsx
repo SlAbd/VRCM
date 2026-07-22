@@ -115,17 +115,16 @@ const ActivitiesPage = () => {
       duration: '3 Days / 2 Nights',
       groupSize: '2-12 people',
       price: 'From €300',
-      image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=800',
-      // images: [
-      //   '/assets/vrcm/20251217_121317.jpg',
-      //   '/assets/vrcm/20251217_121351.jpg',
-      //   '/assets/vrcm/20251217_121437.jpg',
-      //   '/assets/vrcm/20251217_121441.jpg',
-      //   '/assets/vrcm/20251217_121443.jpg',
-      //   '/assets/vrcm/20251217_121455.jpg',
-      //   '/assets/vrcm/20251217_121511.jpg',
-      //   '/assets/vrcm/20251217_121521.jpg',
-      // ],
+      image: '/assets/vrcm/3dayhike3.jpeg',
+      images: [
+        '/assets/vrcm/3dayhike3.jpeg',
+        '/assets/vrcm/3dayhike2.jpeg',
+        '/assets/vrcm/3dayhike.jpeg',
+        '/assets/vrcm/3dayhike4-1.jpeg',
+        '/assets/vrcm/3dayhike6.jpeg',
+        '/assets/vrcm/3dayhike7-1.jpeg',
+
+      ],
       icon: Tent,
       description: 'A truly nomadic experience across the high plateau.',
       highlights: ['Nomadic Camps', 'Stargazing', 'Mule Support', 'Shepherd Culture', 'Remote Plateaus', 'Dades Valley'],
@@ -140,18 +139,13 @@ const ActivitiesPage = () => {
       duration: '7 Days / 5 Nights',
       groupSize: '2-12 people',
       price: 'From €500',
-      image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=800',
-      // images: [
-      //   '/assets/vrcm/IMG-20251215-WA0004.jpg',
-      //   '/assets/vrcm/IMG-20251215-WA0005.jpg',
-      //   '/assets/vrcm/IMG-20251215-WA0006.jpg',
-      //   '/assets/vrcm/IMG-20251215-WA0010.jpg',
-      //   '/assets/vrcm/IMG-20251215-WA0012.jpg',
-      //   '/assets/vrcm/IMG-20251215-WA0016.jpg',
-      //   '/assets/vrcm/IMG-20251215-WA0017.jpg',
-      //   '/assets/vrcm/IMG-20251215-WA0018.jpg',
-      //   '/assets/vrcm/IMG-20251215-WA0019.jpg',
-      // ],
+      image: '/assets/vrcm/7dayhike1.jpeg',
+       images: [
+        '/assets/vrcm/7dayhike2.jpeg',
+        '/assets/vrcm/7dayhike1.jpeg',
+        '/assets/vrcm/7dayhike3.jpeg',
+        '/assets/vrcm/7dayhike4.jpeg',
+      ],
       icon: Footprints,
       description: 'A complete week-long all-inclusive hiking holiday.',
       highlights: ['5-Day Guided Hiking', 'Gorges Exploration', 'Market Visits', 'Plateau Trails', 'Marrakech Included', 'Mixed Activities'],
@@ -360,26 +354,26 @@ const ActivitiesPage = () => {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
+      <section className="hero-shell h-[64vh] justify-center">
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage: 'url(https://images.unsplash.com/photo-1522163182402-834f871fd851?q=80&w=2000)',
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/70"></div>
+          <div className="hero-overlay"></div>
         </div>
         
-        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-          <div className="inline-block mb-4 px-6 py-2 bg-[#E86C36] text-white rounded-full font-semibold animate-pulse">
+        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
+          <div className="hero-badge">
             Adventure Awaits
           </div>
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-2xl">
+          <h1 className="hero-title">
             {t.activities.title}
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
+          <p className="hero-description mx-auto">
             From rock climbing to cultural tours, discover adventures for every passion
           </p>
           
@@ -392,15 +386,15 @@ const ActivitiesPage = () => {
       </section>
 
       {/* Features Bar */}
-      <section className="bg-white py-12 shadow-lg -mt-8 relative z-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <section className="relative z-20 -mt-10">
+        <div className="site-container">
+          <div className="grid grid-cols-1 gap-4 rounded-lg border border-[#e8dece] bg-white p-4 shadow-[0_18px_45px_rgb(54_41_22/0.12)] md:grid-cols-4">
             {features.map((feature, index) => (
               <div 
                 key={index}
-                className="text-center group cursor-pointer"
+                className="text-center group cursor-pointer rounded-lg bg-[#fbf8f2] p-5"
               >
-                <div className="inline-block p-4 bg-[#E86C36]/10 rounded-full mb-3 group-hover:bg-[#E86C36] transition-all duration-300">
+                <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-lg bg-[#E86C36]/10 transition-all duration-300 group-hover:bg-[#E86C36]">
                   <feature.icon className="h-8 w-8 text-[#E86C36] group-hover:text-white transition-colors duration-300" />
                 </div>
                 <h3 className="font-bold text-[#1A1A1A] mb-2">{feature.title}</h3>
@@ -412,9 +406,9 @@ const ActivitiesPage = () => {
       </section>
 
       {/* Category Filter */}
-      <section className="py-8 bg-[#F8F9FA]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap justify-center gap-4">
+      <section className="py-8 site-section-soft">
+        <div className="site-container">
+          <div className="site-filter-bar">
             {categories.map((cat) => (
               <Button
                 key={cat.id}
@@ -435,13 +429,13 @@ const ActivitiesPage = () => {
       </section>
 
       {/* Activities Grid */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="site-section bg-white">
+        <div className="site-container">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredActivities.map((activity, index) => (
               <Link key={activity.id} href={`/activities/${activity.slug}`}>
                 <Card
-                  className="group overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 cursor-pointer h-full"
+                  className="group overflow-hidden site-card cursor-pointer h-full p-0"
                   onMouseEnter={() => setHoveredActivity(activity.id)}
                   onMouseLeave={() => setHoveredActivity(null)}
                 >
@@ -596,13 +590,14 @@ const ActivitiesPage = () => {
       </section>
 
       {/* Best Season Section */}
-      <section className="py-16 md:py-24 bg-[#F8F9FA]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="site-section site-section-soft">
+        <div className="site-container">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-[#1A1A1A] mb-4">
+            <span className="site-eyebrow">Planning</span>
+            <h2 className="site-heading mb-4">
               {t.activitiesPage.bestSeasons}
             </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <p className="site-copy max-w-2xl mx-auto">
               Discover the perfect season for your adventure in Todra Gorge
             </p>
           </div>

@@ -1,24 +1,19 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { 
-  Mountain, Tent, Bike, Camera, Compass, Map, Users, Clock,
-  Star, Heart, Share2, Calendar, MapPin, CheckCircle, Award,
-  Footprints, Sun, Moon, Wind, Droplets, AlertCircle, ChevronLeft, 
-  ChevronRight, ArrowLeft, Phone, Mail, MapPin as MapPinIcon
+  Mountain, Tent, Compass, Users, Clock,
+  Star, Heart, Calendar, CheckCircle,
+  Footprints, AlertCircle, ArrowLeft, Phone, Mail, MapPin as MapPinIcon
 } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { useLanguage } from '@/lib/i18n/LanguageContext';
-import { notDeepEqual } from 'node:assert';
 
 const ActivityDetailPage = () => {
-  const [imageIndex, setImageIndex] = useState(0);
   const [isFavorite, setIsFavorite] = useState(false);
-  const { t } = useLanguage();
   const params = useParams();
   
   // Get slug from params (supports either [slug] or legacy [id])
@@ -261,20 +256,18 @@ const ActivityDetailPage = () => {
         twopeople: '€300 per person',
         groups: 'Contact us for larger groups'
       },
-      image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=800',
-      // images: [
-      //   '/assets/vrcm/20251217_121317.jpg',
-      //   '/assets/vrcm/20251217_121351.jpg',
-      //   '/assets/vrcm/20251217_121437.jpg',
-      //   '/assets/vrcm/20251217_121441.jpg',
-      //   '/assets/vrcm/20251217_121443.jpg',
-      //   '/assets/vrcm/20251217_121455.jpg',
-      //   '/assets/vrcm/20251217_121511.jpg',
-      //   '/assets/vrcm/20251217_121521.jpg',
-      // ],
+      image: '/assets/vrcm/3dayhike.jpeg',
+      images: [
+        '/assets/vrcm/3dayhike3.jpeg',
+        '/assets/vrcm/3dayhike2.jpeg',
+        '/assets/vrcm/3dayhike4.jpeg',
+        '/assets/vrcm/3dayhike6.jpeg',
+        '/assets/vrcm/3dayhike7.jpeg',
+
+      ],
       icon: Tent,
       description: 'A truly nomadic experience across the high plateau.',
-      fullDescription: 'For a truly nomadic experience, don your rucksack and strike off on this 3-days hiking adventure. You\'ll start in Tizgui village at the entrance of Todra Gorge. With a mule to carry supplies and a local guide at your side, you\'ll spend 3 days hiking across the high plateau, stopping for two nights in nomad camps to sleep beneath vast stars and discovering how nomadic shepherds have lived for centuries. Your destination is Msemrir, in the Dades Valley, where we\'ll pick you up in a Land Rover for our cross-country return to Todra Gorge.',
+      fullDescription: 'For a truly nomadic experience, don your rucksack and strike off on this 3-days hiking adventure. You\'ll start in Tizgui village at the entrance of Todra Gorge. With a mule to carry supplies and a local guide at your side, you\'ll spend 3 days hiking across the high plateau, stopping for two nights in nomad camps to sleep beneath vast stars and discovering how nomadic shepherds have lived for centuries. Your destination is Msemrir, in the Dades Valley, where we\'ll pick you up in a car for our cross-country return to Todra Gorge.',
       highlights: ['Nomadic Camps', 'Stargazing', 'Mule Support', 'Shepherd Culture', 'Remote Plateaus', 'Dades Valley Visit'],
       color: 'from-yellow-500 to-orange-500',
       location: 'Todra Gorge to Msemrir',
@@ -300,18 +293,14 @@ const ActivityDetailPage = () => {
         twopeople: '€600 per person',
         groups: 'Contact us for larger groups'
       },
-      image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=800',
-      // images: [
-      //   '/assets/vrcm/IMG-20251215-WA0004.jpg',
-      //   '/assets/vrcm/IMG-20251215-WA0005.jpg',
-      //   '/assets/vrcm/IMG-20251215-WA0006.jpg',
-      //   '/assets/vrcm/IMG-20251215-WA0010.jpg',
-      //   '/assets/vrcm/IMG-20251215-WA0012.jpg',
-      //   '/assets/vrcm/IMG-20251215-WA0016.jpg',
-      //   '/assets/vrcm/IMG-20251215-WA0017.jpg',
-      //   '/assets/vrcm/IMG-20251215-WA0018.jpg',
-      //   '/assets/vrcm/IMG-20251215-WA0019.jpg',
-      // ],
+      image: '/assets/vrcm/7dayhike1.jpeg',
+      images: [
+        '/assets/vrcm/7dayhike1.jpeg',
+        '/assets/vrcm/7dayhike2.jpeg',
+        '/assets/vrcm/7dayhike3.jpeg',
+        '/assets/vrcm/7dayhike4.jpeg',
+        '/assets/vrcm/7dayhike8.jpeg',
+      ],
       icon: Footprints,
       description: 'A complete week-long all-inclusive hiking holiday.',
       fullDescription: 'Let us organise your hiking holiday for you. Spend 5-days exploring the beautiful Todra Gorges and surrounding areas on this week-long all-inclusive trip. Each day we\'ll strike out in a new direction, hiking along the shaded river for a vibrant morning spent at the busy souk in Tinghir, or climbing high onto the plateau on nomad trails for panoramic vistas. Possible to mix hiking with other activities (climbing, via ferrata, etc.).',
@@ -535,48 +524,23 @@ const ActivityDetailPage = () => {
       </div>
 
       {/* Image Gallery */}
-      <section className="bg-black relative h-96 md:h-[500px]">
-        <img
-          src={images[imageIndex]}
-          alt={`${activity.title} ${imageIndex + 1}`}
-          className="w-full h-full object-cover"
-        />
-        
-        {/* Navigation */}
-        {images.length > 1 && (
-          <>
-            <button
-              onClick={() => setImageIndex((prev) => (prev - 1 + images.length) % images.length)}
-              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-3 rounded-full shadow-lg z-10 transition-all"
-            >
-              <ChevronLeft className="h-6 w-6 text-[#E86C36]" />
-            </button>
-            <button
-              onClick={() => setImageIndex((prev) => (prev + 1) % images.length)}
-              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-3 rounded-full shadow-lg z-10 transition-all"
-            >
-              <ChevronRight className="h-6 w-6 text-[#E86C36]" />
-            </button>
-
-            {/* Image Counter */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/60 text-white px-4 py-2 rounded-full text-sm font-medium">
-              {imageIndex + 1} / {images.length}
-            </div>
-
-            {/* Image Dots */}
-            <div className="absolute bottom-4 right-4 flex gap-2">
-              {images.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setImageIndex(idx)}
-                  className={`transition-all rounded-full ${
-                    idx === imageIndex ? 'bg-[#E86C36] w-3 h-3' : 'bg-white/60 w-2 h-2 hover:bg-white/80'
-                  }`}
+      <section className="bg-white py-6 md:py-8">
+        <div className="max-w-none overflow-x-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex snap-x snap-mandatory gap-4">
+            {images.map((image, idx) => (
+              <figure
+                key={`${image}-${idx}`}
+                className="shrink-0 snap-center overflow-hidden rounded-lg border border-[#e8dece] bg-white shadow-[0_14px_40px_rgb(54_41_22/0.12)]"
+              >
+                <img
+                  src={image}
+                  alt={`${activity.title} ${idx + 1}`}
+                  className="h-auto max-h-[520px] w-auto max-w-[86vw] object-contain"
                 />
-              ))}
-            </div>
-          </>
-        )}
+              </figure>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* Content */}

@@ -546,24 +546,27 @@ const ShopPage = () => {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative h-[50vh] flex items-center justify-center overflow-hidden">
+      <section className="hero-shell min-h-[520px] justify-center py-20">
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage: 'url(https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=2000)',
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-[#E86C36]/80 via-[#E86C36]/60 to-[#E86C36]/80"></div>
+          <div className="hero-overlay"></div>
         </div>
         
-        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-          <ShoppingBag className="h-16 w-16 mx-auto mb-4 text-white" />
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">
+        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
+          <div className="hero-badge">
+            <ShoppingBag className="h-4 w-4" />
+            VRCM Gear
+          </div>
+          <h1 className="hero-title">
             {t.shop.title}
           </h1>
-          <p className="text-xl md:text-2xl text-white/90">
+          <p className="hero-description mx-auto">
             Quality gear for climbing and hiking adventures
           </p>
 
@@ -625,15 +628,15 @@ const ShopPage = () => {
       </section>
 
       {/* Features Bar */}
-      <section className="bg-white py-8 shadow-md">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <section className="relative z-20 -mt-10">
+        <div className="site-container">
+          <div className="grid grid-cols-2 gap-4 rounded-lg border border-[#e8dece] bg-white p-4 shadow-[0_18px_45px_rgb(54_41_22/0.12)] md:grid-cols-4">
             {features.map((feature, index) => (
               <div 
                 key={index}
-                className="flex items-center space-x-3 group cursor-pointer"
+                className="flex items-center gap-3 group cursor-pointer rounded-lg bg-[#fbf8f2] p-4"
               >
-                <div className="flex-shrink-0 p-3 bg-[#E86C36]/10 rounded-full group-hover:bg-[#E86C36] transition-all duration-300">
+                <div className="flex-shrink-0 p-3 bg-[#E86C36]/10 rounded-lg group-hover:bg-[#E86C36] transition-all duration-300">
                   <feature.icon className="h-6 w-6 text-[#E86C36] group-hover:text-white transition-colors duration-300" />
                 </div>
                 <div>
@@ -647,8 +650,8 @@ const ShopPage = () => {
       </section>
 
       {/* Search and Filter Section */}
-      <section className="py-8 bg-[#F8F9FA]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-8 site-section-soft">
+        <div className="site-container">
           {/* Search Bar */}
           <div className="mb-6">
             <div className="relative max-w-xl mx-auto">
@@ -664,7 +667,7 @@ const ShopPage = () => {
           </div>
 
           {/* Category Filters */}
-          <div className="flex flex-wrap justify-center gap-3">
+          <div className="site-filter-bar">
             {categories.map((cat) => (
               <Button
                 key={cat.id}
@@ -685,8 +688,8 @@ const ShopPage = () => {
       </section>
 
       {/* Products Grid */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="site-section bg-white">
+        <div className="site-container">
           {/* Featured Products */}
           {selectedCategory === 'all' && (
             <div className="mb-12">
@@ -700,7 +703,7 @@ const ShopPage = () => {
                   .map((product) => (
                   <Card
                     key={product.id}
-                    className="group relative overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2"
+                    className="site-card group relative overflow-hidden p-0"
                   >
                     <Badge className="absolute top-4 left-4 z-10 bg-[#E86C36] text-white">
                       Featured
@@ -790,7 +793,7 @@ const ShopPage = () => {
             {filteredProducts.map((product) => (
               <Card
                 key={product.id}
-                className="group overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+                className="site-card group overflow-hidden p-0"
               >
                 <div className="relative h-56 overflow-hidden">
                   <img

@@ -46,24 +46,24 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --background: oklch(0.985 0.012 82);
+  --foreground: oklch(0.18 0.025 55);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
+  --card-foreground: oklch(0.18 0.025 55);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.18 0.025 55);
+  --primary: oklch(0.65 0.17 45);
+  --primary-foreground: oklch(0.99 0.01 82);
+  --secondary: oklch(0.94 0.035 88);
+  --secondary-foreground: oklch(0.24 0.035 55);
+  --muted: oklch(0.94 0.025 82);
+  --muted-foreground: oklch(0.48 0.025 55);
+  --accent: oklch(0.88 0.075 142);
+  --accent-foreground: oklch(0.24 0.04 142);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --border: oklch(0.875 0.025 75);
+  --input: oklch(0.875 0.025 75);
+  --ring: oklch(0.65 0.17 45);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -117,7 +117,97 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: rgb(232 108 54 / 0.22);
+  }
+  img {
+    @apply max-w-full;
+  }
+}
+
+@layer components {
+  .site-container {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .site-section {
+    @apply py-16 md:py-24;
+  }
+
+  .site-section-soft {
+    @apply bg-[#f6f2ea];
+  }
+
+  .site-eyebrow {
+    @apply mb-3 inline-flex items-center gap-2 rounded-full border border-[#E86C36]/20 bg-[#E86C36]/10 px-4 py-2 text-xs font-bold uppercase tracking-wider text-[#B84E22];
+  }
+
+  .site-heading {
+    @apply text-3xl font-black leading-tight text-[#1f211b] md:text-4xl;
+  }
+
+  .site-copy {
+    @apply text-base leading-7 text-[#626357] md:text-lg;
+  }
+
+  .hero-shell {
+    @apply relative flex min-h-[520px] items-center overflow-hidden;
+  }
+
+  .hero-overlay {
+    @apply absolute inset-0 bg-gradient-to-r from-black/75 via-black/45 to-black/25;
+  }
+
+  .hero-content {
+    @apply relative z-10 max-w-3xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .hero-badge {
+    @apply mb-5 inline-flex items-center rounded-full border border-white/25 bg-white/15 px-5 py-2 text-sm font-semibold text-white shadow-lg backdrop-blur-md;
+  }
+
+  .hero-title {
+    @apply text-4xl font-black leading-tight text-white drop-shadow-2xl md:text-6xl lg:text-7xl;
+    text-wrap: balance;
+  }
+
+  .hero-description {
+    @apply mt-5 max-w-3xl text-lg leading-8 text-white/90 md:text-xl;
+  }
+
+  .site-card {
+    @apply border-[#e8dece] bg-white/95 shadow-[0_14px_40px_rgb(54_41_22/0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-[#E86C36]/35 hover:shadow-[0_22px_54px_rgb(54_41_22/0.14)];
+  }
+
+  .site-icon-tile {
+    @apply inline-flex size-12 items-center justify-center rounded-lg bg-[#E86C36]/10 text-[#E86C36];
+  }
+
+  .site-filter-bar {
+    @apply flex flex-wrap justify-center gap-3 rounded-lg border border-[#e8dece] bg-white/80 p-3 shadow-sm backdrop-blur;
+  }
+
+  [data-slot="card"] {
+    @apply border-[#e8dece] shadow-[0_12px_34px_rgb(54_41_22/0.07)];
+  }
+
+  [data-slot="button"][data-variant="default"] {
+    @apply bg-[#E86C36] text-white shadow-sm shadow-[#E86C36]/25 hover:bg-[#d85d27];
+  }
+
+  [data-slot="button"][data-variant="outline"] {
+    @apply border-[#d8cdbb] bg-white/85 text-[#2c2a24] hover:border-[#E86C36]/60 hover:bg-[#E86C36]/10 hover:text-[#B84E22];
+  }
+
+  [data-slot="input"],
+  [data-slot="textarea"] {
+    @apply bg-white/80;
   }
 }

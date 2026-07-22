@@ -121,24 +121,27 @@ const BlogPage = () => {
   });
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+      <section className="hero-shell h-[58vh] justify-center">
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage: 'url(https://images.unsplash.com/photo-1455849318743-b2233052fcff?q=80&w=2000)',
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70"></div>
+          <div className="hero-overlay"></div>
         </div>
         
-        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-          <BookOpen className="h-16 w-16 mx-auto mb-4 text-[#E86C36]" />
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">
+        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
+          <div className="hero-badge">
+            <BookOpen className="h-4 w-4" />
+            Field notes
+          </div>
+          <h1 className="hero-title">
             VRCM Blog
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto">
+          <p className="hero-description mx-auto">
             Stories, guides, and tips from the climbing community
           </p>
         </div>
@@ -161,9 +164,9 @@ const BlogPage = () => {
       </section>
 
       {/* Category Filter */}
-      <section className="py-6 bg-[#F8F9FA]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap justify-center gap-3">
+      <section className="py-8 site-section-soft">
+        <div className="site-container">
+          <div className="site-filter-bar">
             {categories.map((cat) => (
               <Button
                 key={cat.id}
@@ -186,14 +189,14 @@ const BlogPage = () => {
       {/* Featured Post */}
       {selectedCategory === 'all' && (
         <section className="py-16 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="site-container">
             <div className="mb-6">
               <Badge className="bg-[#E86C36] text-white px-4 py-2 text-sm">
                 {t.blog.featured}
               </Badge>
             </div>
             
-            <Card className="overflow-hidden hover:shadow-2xl transition-shadow duration-500">
+            <Card className="site-card overflow-hidden p-0">
               <div className="grid md:grid-cols-2 gap-0">
                 {/* Image */}
                 <div className="relative h-96 md:h-auto overflow-hidden group">
@@ -268,8 +271,8 @@ const BlogPage = () => {
       )}
 
       {/* Blog Posts Grid */}
-      <section className="py-16 bg-[#F8F9FA]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="site-section site-section-soft">
+        <div className="site-container">
           <div className="grid md:grid-cols-3 gap-8">
             {/* Posts */}
             <div className="md:col-span-2">
@@ -281,7 +284,7 @@ const BlogPage = () => {
                 {filteredPosts.map((post) => (
                   <Card
                     key={post.id}
-                    className="overflow-hidden hover:shadow-xl transition-all duration-300 group"
+                    className="site-card overflow-hidden transition-all duration-300 group"
                   >
                     <div className="grid md:grid-cols-3 gap-0">
                       {/* Image */}

@@ -90,47 +90,50 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative h-[50vh] flex items-center justify-center overflow-hidden">
+      <section className="hero-shell h-[54vh] justify-center">
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: 'url(https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2000)',
+            backgroundImage: 'url(/assets/rock4.jpg)',
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-[#E86C36]/90 via-[#E86C36]/70 to-[#E86C36]/90"></div>
+          <div className="hero-overlay"></div>
         </div>
         
-        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-          <MessageSquare className="h-16 w-16 mx-auto mb-4 text-white" />
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">
+        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
+          <div className="hero-badge">
+            <MessageSquare className="h-4 w-4" />
+            Contact
+          </div>
+          <h1 className="hero-title">
             Get in Touch
           </h1>
-          <p className="text-xl md:text-2xl text-white/90">
-            We're here to help plan your perfect climbing adventure
+          <p className="hero-description mx-auto">
+            We&apos;re here to help plan your perfect climbing adventure
           </p>
         </div>
       </section>
 
       {/* Contact Info Cards */}
-      <section className="py-16 bg-white -mt-16 relative z-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <section className="relative z-20 -mt-10">
+        <div className="site-container">
+          <div className="grid grid-cols-1 gap-4 rounded-lg border border-[#e8dece] bg-white p-4 shadow-[0_18px_45px_rgb(54_41_22/0.12)] md:grid-cols-2 lg:grid-cols-4">
             {contactInfo.map((info, index) => (
               <Card
                 key={index}
-                className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer group"
+                className="site-card cursor-pointer group"
               >
                 <CardContent className="p-6 text-center">
-                  <div className={`${info.color} w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                  <div className={`${info.color} w-14 h-14 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:scale-105 transition-transform duration-300`}>
                     <info.icon className="h-8 w-8" />
                   </div>
-                  <h3 className="font-bold text-[#1A1A1A] mb-3 text-lg">
+                  <h3 className="font-black text-[#1f211b] mb-3 text-lg">
                     {info.title}
                   </h3>
                   {info.details.map((detail, idx) => (
-                    <p key={idx} className="text-gray-600 text-sm">
+                    <p key={idx} className="text-[#626357] text-sm">
                       {detail}
                     </p>
                   ))}
@@ -142,19 +145,20 @@ const ContactPage = () => {
       </section>
 
       {/* Contact Form & Map */}
-      <section className="py-16 md:py-24 bg-[#F8F9FA]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="site-section site-section-soft">
+        <div className="site-container">
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Form */}
             <div>
-              <h2 className="text-4xl font-bold text-[#1A1A1A] mb-4">
+              <span className="site-eyebrow">Booking support</span>
+              <h2 className="site-heading mb-4">
                 Send us a Message
               </h2>
-              <p className="text-gray-600 mb-8">
-                Fill out the form below and we'll get back to you within 24 hours
+              <p className="site-copy mb-8">
+                Fill out the form below and we&apos;ll get back to you within 24 hours
               </p>
 
-              <Card>
+              <Card className="site-card">
                 <CardContent className="p-8">
                   <form onSubmit={handleSubmit} className="space-y-6">
                     {/* Name */}
@@ -245,7 +249,7 @@ const ContactPage = () => {
                       <div className="flex items-center p-4 bg-green-50 border border-green-200 rounded-lg">
                         <CheckCircle className="h-5 w-5 text-green-600 mr-3" />
                         <p className="text-green-800 font-medium">
-                          Message sent successfully! We'll get back to you soon.
+                          Message sent successfully! We&apos;ll get back to you soon.
                         </p>
                       </div>
                     )}

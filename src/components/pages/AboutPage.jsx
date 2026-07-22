@@ -137,23 +137,24 @@ const AboutPage = () => {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+      <section className="hero-shell h-[58vh] justify-center">
         <div 
           className="absolute inset-0 bg-cover bg-center transform transition-transform duration-700 hover:scale-105"
           style={{
             backgroundImage: 'url(https://images.unsplash.com/photo-1486311355911-65e04c1ae42e?q=80&w=2000)',
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60"></div>
+          <div className="hero-overlay"></div>
         </div>
         
-        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto animate-fade-in">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">
+        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center animate-fade-in">
+          <div className="hero-badge">VRCM</div>
+          <h1 className="hero-title">
             {t.about.title}
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto">
+          <p className="hero-description mx-auto">
             {t.about.subtitle}
           </p>
           <p className="text-lg text-white/80 mt-4 italic">
@@ -163,13 +164,13 @@ const AboutPage = () => {
       </section>
 
       {/* Statistics Bar */}
-      <section className="bg-white py-8 shadow-md">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <section className="relative z-20 -mt-10">
+        <div className="site-container">
+          <div className="grid grid-cols-2 gap-4 rounded-lg border border-[#e8dece] bg-white p-4 shadow-[0_18px_45px_rgb(54_41_22/0.12)] md:grid-cols-4">
             {stats.map((stat, index) => (
               <div 
                 key={index} 
-                className="text-center transform transition-all duration-300 hover:scale-110 cursor-pointer"
+                className="text-center rounded-lg bg-[#fbf8f2] p-5 transition-all duration-300 hover:-translate-y-1"
               >
                 <stat.icon className={`h-10 w-10 mx-auto mb-2 ${stat.color}`} />
                 <h3 className="text-3xl font-bold text-[#1A1A1A] mb-1">{stat.value}</h3>
@@ -181,8 +182,8 @@ const AboutPage = () => {
       </section>
 
       {/* Our Story Section */}
-      <section className="py-16 md:py-24 bg-[#F8F9FA]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="site-section site-section-soft">
+        <div className="site-container">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <h2 className="text-4xl font-bold text-[#1A1A1A] mb-6">
@@ -230,8 +231,8 @@ const AboutPage = () => {
       </section>
 
       {/* Values Section */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="site-section bg-white">
+        <div className="site-container">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-[#1A1A1A] mb-4">
               {t.aboutPage.ourValues}
@@ -265,8 +266,8 @@ const AboutPage = () => {
       </section>
 
       {/* Team Section */}
-      <section className="py-16 md:py-24 bg-[#F8F9FA]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="site-section site-section-soft">
+        <div className="site-container">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-[#1A1A1A] mb-4">
               {t.about.team}
@@ -321,8 +322,8 @@ const AboutPage = () => {
       </section>
 
       {/* Certifications Section */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="site-section bg-white">
+        <div className="site-container">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-[#1A1A1A] mb-4">
               {t.about.certifications}
@@ -359,8 +360,8 @@ const AboutPage = () => {
       </section>
 
       {/* Accommodations Section */}
-      <section className="py-16 md:py-24 bg-[#F8F9FA]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="site-section site-section-soft">
+        <div className="site-container">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-[#1A1A1A] mb-4">
               {t.about.accommodations}
