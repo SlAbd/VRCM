@@ -1,6 +1,6 @@
 1:"$Sreact.fragment"
-2:I[25305,["/_next/static/chunks/fdaa12127a8f317a.js","/_next/static/chunks/4a236ea680f5533d.js","/_next/static/chunks/4c8b698240c167b3.js","/_next/static/chunks/e9de50a769c8690a.js"],"default"]
+2:I[25305,["/_next/static/chunks/bc47b2631eaa9d09.js","/_next/static/chunks/fafd1db140d41103.js","/_next/static/chunks/4c8b698240c167b3.js","/_next/static/chunks/e9de50a769c8690a.js"],"default"]
 3:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/7340adf74ff47ec0.js"],"OutletBoundary"]
 4:"$Sreact.suspense"
-0:{"buildId":"TkFu1XLMRdwVVSN1tYwyA","rsc":["$","$1","c",{"children":[["$","$L2",null,{"slug":"hiking-in-morocco"}],[["$","script","script-0",{"src":"/_next/static/chunks/e9de50a769c8690a.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"loading":null,"isPartial":false}
+0:{"buildId":"w5eAo8VPUWoPn99jFDe3Y","rsc":["$","$1","c",{"children":[["$","$L2",null,{"slug":"hiking-in-morocco"}],[["$","script","script-0",{"src":"/_next/static/chunks/e9de50a769c8690a.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"loading":null,"isPartial":false}
 5:null
