@@ -23,10 +23,10 @@ const Footer = () => {
       { name: 'Contact', path: '/contact' },
     ],
     social: [
-      { name: 'Facebook', icon: Facebook, url: '#' },
+      // { name: 'Facebook', icon: Facebook, url: '#' },
       { name: 'Instagram', icon: Instagram, url: 'https://www.instagram.com/verticalrockclimbingmorocco/' },
-      { name: 'Twitter', icon: Twitter, url: '#' },
-      { name: 'YouTube', icon: Youtube, url: '#' },
+      // { name: 'Twitter', icon: Twitter, url: '#' },
+      // { name: 'YouTube', icon: Youtube, url: '#' },
     ],
   };
 
@@ -129,14 +129,14 @@ const Footer = () => {
           <p>
             Copyright {new Date().getFullYear()} Vertical Rock Climbing Morocco. {t.footer.rights}
           </p>
-          <div className="flex gap-6">
+          {/* <div className="flex gap-6">
             <Link href="/privacy" className="transition-colors hover:text-[#E86C36]">
               Privacy Policy
             </Link>
             <Link href="/terms" className="transition-colors hover:text-[#E86C36]">
               Terms of Service
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>

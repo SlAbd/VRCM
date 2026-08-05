@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { 
-  ShoppingBag, Search, Filter, Star, Heart,
+  ShoppingBag, Search, Filter, Heart,
   Truck, Shield, RotateCcw, CreditCard, Package, Shirt,
   Mountain, Backpack, Camera, Compass, Check, X, Plus, Minus, Clock
 } from 'lucide-react';
@@ -29,47 +29,31 @@ const ShopPage = () => {
     // Souvenirs removed to focus on climbing & hiking related products
   ];
 
+  const shopImages = {
+    airForce3: '/assets/shop/ChatGPT Image 5 août 2026, 12_07_09 (1).png',
+    petzlReverso: '/assets/shop/ChatGPT Image 5 août 2026, 12_07_09 (2).png',
+    dualConnectAdjust: '/assets/shop/ChatGPT Image 5 août 2026, 12_07_11 (3).png',
+    connectAdjust: '/assets/shop/ChatGPT Image 5 août 2026, 12_07_11 (4).png',
+    quickdraws: '/assets/shop/ChatGPT Image 5 août 2026, 12_07_12 (5).png',
+    chalkBag: '/assets/shop/ChatGPT Image 5 août 2026, 12_07_13 (6).png',
+    maillonRapide: '/assets/shop/ChatGPT Image 5 août 2026, 12_07_13 (7).png',
+    climbingCarabiners: '/assets/shop/ChatGPT Image 5 août 2026, 12_07_14 (8).png',
+    climbingHarness: '/assets/shop/ChatGPT Image 5 août 2026, 12_07_15 (9).png',
+    climbingGlasses: '/assets/shop/ChatGPT Image 5 août 2026, 12_07_15 (10).png',
+    climbingSlings: '/assets/shop/ChatGPT Image 5 août 2026, 12_10_53 (1).png',
+    energyCr3: '/assets/shop/ChatGPT Image 5 août 2026, 12_10_54 (2).png',
+    grigri: '/assets/shop/ChatGPT Image 5 août 2026, 12_10_55 (3).png',
+    climbingTape: '/assets/shop/ChatGPT Image 5 août 2026, 12_10_55 (4).png',
+    viaFerrataSet: '/assets/shop/ChatGPT Image 5 août 2026, 12_10_56 (5).png',
+    ohmIi: '/assets/shop/ChatGPT Image 5 août 2026, 12_10_56 (6).png',
+  };
+
   const products = [
-    // Climbing gear
     {
       id: 1,
-      name: 'Climbing Helmet / Casque d\'escalade',
-      category: 'equipment',
-      price: 69.99,
-      rentPrice: 8.99,
-      image: 'https://contents.mediadecathlon.com/p2879877/k$1d88cad5e3392e06a655bfeec84b3eed/climbing-mountaineering-helmet-simond-rock-grey-simond-8389290.jpg',
-      rating: 4.9,
-      reviews: 188,
-      inStock: true,
-      featured: true,
-      rentable: true,
-      description: 'Lightweight helmet for sport routes and multi-pitch safety.',
-      activityTags: ['climbing'],
-    },
-    {
-      id: 2,
-      name: 'Climbing Harness / Baudrier',
-      category: 'equipment',
-      price: 59.99,
-      rentPrice: 7.99,
-      image: 'https://mistymountain.com/cdn/shop/files/Titan_iso_eecf5dc5-991f-46f9-9ab3-3dc127443200.png?v=1741016645&width=1946',
-      rating: 4.8,
-      reviews: 162,
-      inStock: true,
-      featured: false,
-      rentable: true,
-      description: 'Comfortable harness with adjustable leg loops.',
-      activityTags: ['climbing'],
-    },
-    {
-      id: 3,
       name: 'Dynamic Rope 60m / Corde dynamique',
       category: 'equipment',
-      price: 149.99,
-      rentPrice: 15.99,
       image: 'https://is-pro.co.uk/wp-content/uploads/2025/07/image470596990.jpg',
-      rating: 4.8,
-      reviews: 117,
       inStock: true,
       featured: true,
       rentable: true,
@@ -77,74 +61,21 @@ const ShopPage = () => {
       activityTags: ['climbing'],
     },
     {
-      id: 4,
-      name: 'Quickdraws Set (12) / Dégaines',
+      id: 2,
+      name: 'Climbing Helmet / Casque d\'escalade',
       category: 'equipment',
-      price: 129.99,
-      rentPrice: 12.99,
-      image: 'https://www.google.com/search?tbm=isch&q=climbing+quickdraws+set',
-      rating: 4.7,
-      reviews: 98,
+      image: 'https://contents.mediadecathlon.com/p2879877/k$1d88cad5e3392e06a655bfeec84b3eed/climbing-mountaineering-helmet-simond-rock-grey-simond-8389290.jpg',
       inStock: true,
-      featured: false,
+      featured: true,
       rentable: true,
-      description: 'Full rack of 12 sport quickdraws with keylock carabiners.',
+      description: 'Lightweight helmet for sport routes and multi-pitch safety.',
       activityTags: ['climbing'],
     },
     {
-      id: 5,
-      name: 'Belay Device (Grigri/ATC)',
+      id: 3,
+      name: 'Climbing Shoes / Chausson',
       category: 'equipment',
-      price: 39.99,
-      rentPrice: 5.99,
-      image: 'https://www.google.com/search?tbm=isch&q=belay+device+grigri+atc',
-      rating: 4.9,
-      reviews: 141,
-      inStock: true,
-      featured: false,
-      rentable: true,
-      description: 'Assisted or tube-style belay device for lead and top-rope.',
-      activityTags: ['climbing'],
-    },
-    {
-      id: 6,
-      name: 'Locking Carabiner / Mousqueton à vis',
-      category: 'equipment',
-      price: 11.99,
-      rentPrice: null,
-      image: 'https://www.google.com/search?tbm=isch&q=locking+carabiner',
-      rating: 4.8,
-      reviews: 220,
-      inStock: true,
-      featured: false,
-      rentable: false,
-      description: 'HMS locking carabiner for belay and anchors.',
-      activityTags: ['climbing'],
-    },
-    // {
-    //   id: 7,
-    //   name: 'Crash Pad (Bouldering)',
-    //   category: 'equipment',
-    //   price: 219.99,
-    //   rentPrice: 25.99,
-    //   image: 'https://www.google.com/search?tbm=isch&q=bouldering+crash+pad',
-    //   rating: 4.6,
-    //   reviews: 74,
-    //   inStock: true,
-    //   featured: false,
-    //   rentable: true,
-    //   description: 'Thick foam pad for bouldering landings.',
-    //   activityTags: ['climbing'],
-    // },
-    {
-      id: 8,
-      name: 'Climbing Shoes / Chaussons',
-      category: 'equipment',
-      price: 99.99,
-      rentPrice: 12.99,
       image: '/assets/boreal.jpg',
-      rating: 4.7,
-      reviews: 203,
       inStock: true,
       featured: true,
       rentable: true,
@@ -152,306 +83,180 @@ const ShopPage = () => {
       activityTags: ['climbing'],
     },
     {
-      id: 9,
-      name: 'Approach Shoes / Chaussures d\'approche',
-      category: 'apparel',
-      price: 129.99,
-      rentPrice: null,
-      image: 'https://www.google.com/search?tbm=isch&q=approach+shoes+climbing',
-      rating: 4.6,
-      reviews: 111,
+      id: 4,
+      name: 'Air Force 3',
+      category: 'equipment',
+      image: shopImages.airForce3,
       inStock: true,
       featured: false,
-      rentable: false,
-      description: 'Sticky rubber shoes for approaches and easy scrambles.',
-      activityTags: ['climbing', 'hiking'],
+      rentable: true,
+      description: 'Belay and braking device for controlled rope handling.',
+      activityTags: ['climbing'],
+    },
+    {
+      id: 5,
+      name: 'Petzl Reverso',
+      category: 'equipment',
+      image: shopImages.petzlReverso,
+      inStock: true,
+      featured: false,
+      rentable: true,
+      description: 'Versatile belay device for climbing and abseiling.',
+      activityTags: ['climbing'],
+    },
+    {
+      id: 6,
+      name: 'Dual Connect Adjust',
+      category: 'accessories',
+      image: shopImages.dualConnectAdjust,
+      inStock: true,
+      featured: false,
+      rentable: true,
+      description: 'Adjustable double lanyard for via ferrata progression.',
+      activityTags: ['climbing'],
+    },
+    {
+      id: 7,
+      name: 'Connect Adjust',
+      category: 'accessories',
+      image: shopImages.connectAdjust,
+      inStock: true,
+      featured: false,
+      rentable: true,
+      description: 'Single adjustable lanyard for anchor and positioning work.',
+      activityTags: ['climbing'],
+    },
+    {
+      id: 8,
+      name: 'Quickdraws',
+      category: 'equipment',
+      image: shopImages.quickdraws,
+      inStock: true,
+      featured: false,
+      rentable: true,
+      description: 'Sport quickdraw set for clipping bolts on limestone routes.',
+      activityTags: ['climbing'],
+    },
+    {
+      id: 9,
+      name: 'Chalk Bag',
+      category: 'accessories',
+      image: shopImages.chalkBag,
+      inStock: true,
+      featured: false,
+      rentable: true,
+      description: 'Compact chalk bag with drawcord closure.',
+      activityTags: ['climbing'],
     },
     {
       id: 10,
-      name: 'Chalk (Loose) / Magnésie en poudre',
-      category: 'accessories',
-      price: 8.99,
-      rentPrice: null,
-      image: 'https://www.google.com/search?tbm=isch&q=climbing+chalk+loose',
-      rating: 4.8,
-      reviews: 250,
+      name: 'Maillon Rapide',
+      category: 'equipment',
+      image: shopImages.maillonRapide,
       inStock: true,
       featured: false,
       rentable: false,
-      description: 'Loose chalk for dry hands on limestone.',
+      description: 'Screw-link connector for anchors and rigging.',
       activityTags: ['climbing'],
     },
     {
       id: 11,
-      name: 'Chalk Ball / Boule de magnésie',
-      category: 'accessories',
-      price: 6.49,
-      rentPrice: null,
-      image: 'https://www.google.com/search?tbm=isch&q=chalk+ball+climbing',
-      rating: 4.7,
-      reviews: 142,
+      name: 'Climbing Carabiners',
+      category: 'equipment',
+      image: shopImages.climbingCarabiners,
       inStock: true,
       featured: false,
-      rentable: false,
-      description: 'Refillable chalk ball to reduce dust.',
+      rentable: true,
+      description: 'Assorted locking carabiners for multipurpose climbing use.',
       activityTags: ['climbing'],
     },
     {
       id: 12,
-      name: 'Finger Tape / Strap adhésif',
-      category: 'accessories',
-      price: 4.99,
-      rentPrice: null,
-      image: 'https://www.google.com/search?tbm=isch&q=climbing+finger+tape',
-      rating: 4.5,
-      reviews: 190,
+      name: 'Climbing Harness',
+      category: 'equipment',
+      image: shopImages.climbingHarness,
       inStock: true,
       featured: false,
-      rentable: false,
-      description: 'Support tape for fingers and skin protection.',
+      rentable: true,
+      description: 'Comfortable harness with padded waist and leg loops.',
       activityTags: ['climbing'],
     },
     {
       id: 13,
-      name: 'Chalk Bag / Sac à magnésie',
-      category: 'accessories',
-      price: 24.99,
-      rentPrice: 3.99,
-      image: 'https://www.google.com/search?tbm=isch&q=chalk+bag+climbing',
-      rating: 4.8,
-      reviews: 210,
+      name: 'Climbing Glasses',
+      category: 'apparel',
+      image: shopImages.climbingGlasses,
       inStock: true,
       featured: false,
-      rentable: true,
-      description: 'Bag with belt and brush holder.',
+      rentable: false,
+      description: 'Protective glasses for belay and outdoor sun exposure.',
       activityTags: ['climbing'],
     },
     {
       id: 14,
-      name: 'Rope Bag / Sac à corde',
-      category: 'equipment',
-      price: 54.99,
-      rentPrice: 7.99,
-      image: 'https://www.google.com/search?tbm=isch&q=climbing+rope+bag',
-      rating: 4.6,
-      reviews: 132,
+      name: 'Climbing Slings',
+      category: 'accessories',
+      image: shopImages.climbingSlings,
       inStock: true,
       featured: false,
-      rentable: true,
-      description: 'Tarp-style rope bag for quick packing.',
+      rentable: false,
+      description: 'Assorted slings for anchors, extensions, and rigging.',
       activityTags: ['climbing'],
     },
-
-    // Hiking & trekking
     {
-      id: 20,
-      name: 'Trekking Poles (Pair) / Bâtons de marche',
+      id: 15,
+      name: 'Energy CR 3',
       category: 'equipment',
-      price: 49.99,
-      rentPrice: 6.99,
-      image: 'https://www.google.com/search?tbm=isch&q=trekking+poles+hiking',
-      rating: 4.8,
-      reviews: 165,
+      image: shopImages.energyCr3,
       inStock: true,
       featured: false,
       rentable: true,
-      description: 'Adjustable aluminum poles for long approaches.',
-      activityTags: ['hiking'],
+      description: 'Comfort harness built for sustained climbing sessions.',
+      activityTags: ['climbing'],
     },
     {
-      id: 21,
-      name: 'Hiking Backpack 50L / Sac à dos rando',
+      id: 16,
+      name: 'Grigri',
       category: 'equipment',
-      price: 119.99,
-      rentPrice: 14.99,
-      image: 'https://www.google.com/search?tbm=isch&q=hiking+backpack+30l+50l',
-      rating: 4.7,
-      reviews: 143,
+      image: shopImages.grigri,
       inStock: true,
-      featured: true,
+      featured: false,
       rentable: true,
-      description: 'Comfortable pack with frame and hip belt.',
-      activityTags: ['hiking'],
+      description: 'Assisted braking device for belaying with confidence.',
+      activityTags: ['climbing'],
     },
     {
-      id: 22,
-      name: 'Headlamp / Lampe frontale',
+      id: 17,
+      name: 'Climbing Tape',
       category: 'accessories',
-      price: 29.99,
-      rentPrice: null,
-      image: 'https://www.google.com/search?tbm=isch&q=hiking+headlamp',
-      rating: 4.8,
-      reviews: 175,
+      image: shopImages.climbingTape,
       inStock: true,
       featured: false,
       rentable: false,
-      description: 'Rechargeable headlamp for early starts.',
-      activityTags: ['hiking', 'climbing'],
+      description: 'Finger tape for support, skin protection, and recovery.',
+      activityTags: ['climbing'],
     },
     {
-      id: 23,
-      name: 'Sleeping Bag (0°C to 10°C)',
+      id: 18,
+      name: 'Via Ferrata Set',
       category: 'equipment',
-      price: 139.99,
-      rentPrice: 18.99,
-      image: 'https://www.google.com/search?tbm=isch&q=sleeping+bag+0+to+10+celsius',
-      rating: 4.7,
-      reviews: 120,
+      image: shopImages.viaFerrataSet,
       inStock: true,
       featured: false,
       rentable: true,
-      description: 'Three-season mummy bag for Atlas nights.',
-      activityTags: ['hiking'],
+      description: 'Full via ferrata lanyard set with energy absorber.',
+      activityTags: ['climbing'],
     },
     {
-      id: 24,
-      name: '2-Person Tent / Tente 2P',
+      id: 19,
+      name: 'OHM II',
       category: 'equipment',
-      price: 249.99,
-      rentPrice: 24.99,
-      image: 'https://www.google.com/search?tbm=isch&q=2+person+camping+tent',
-      rating: 4.8,
-      reviews: 132,
-      inStock: true,
-      featured: true,
-      rentable: true,
-      description: 'Lightweight double-wall tent for treks.',
-      activityTags: ['hiking'],
-    },
-    {
-      id: 25,
-      name: 'Camping Stove / Réchaud',
-      category: 'equipment',
-      price: 59.99,
-      rentPrice: 8.99,
-      image: 'https://www.google.com/search?tbm=isch&q=camping+stove+portable',
-      rating: 4.6,
-      reviews: 101,
-      inStock: true,
-      featured: false,
-      rentable: true,
-      description: 'Compact gas stove for trekking meals.',
-      activityTags: ['hiking'],
-    },
-    {
-      id: 26,
-      name: 'Hiking Boots / Chaussures de rando',
-      category: 'apparel',
-      price: 149.99,
-      rentPrice: null,
-      image: 'https://www.google.com/search?tbm=isch&q=waterproof+hiking+boots',
-      rating: 4.7,
-      reviews: 210,
+      image: shopImages.ohmIi,
       inStock: true,
       featured: false,
       rentable: false,
-      description: 'Waterproof boots for rough terrain.',
-      activityTags: ['hiking'],
-    },
-    {
-      id: 27,
-      name: 'Hiking Socks (Merino)',
-      category: 'apparel',
-      price: 17.99,
-      rentPrice: null,
-      image: 'https://www.google.com/search?tbm=isch&q=merino+hiking+socks',
-      rating: 4.8,
-      reviews: 184,
-      inStock: true,
-      featured: false,
-      rentable: false,
-      description: 'Merino blend socks for blister prevention.',
-      activityTags: ['hiking'],
-    },
-    {
-      id: 28,
-      name: 'Rain Jacket / Veste imperméable',
-      category: 'apparel',
-      price: 129.99,
-      rentPrice: null,
-      image: 'https://www.google.com/search?tbm=isch&q=rain+jacket+hardshell+hiking',
-      rating: 4.7,
-      reviews: 140,
-      inStock: true,
-      featured: false,
-      rentable: false,
-      description: 'Light hardshell for sudden Atlas showers.',
-      activityTags: ['hiking'],
-    },
-    {
-      id: 29,
-      name: 'Fleece Mid-layer / Polaire',
-      category: 'apparel',
-      price: 79.99,
-      rentPrice: null,
-      image: 'https://www.google.com/search?tbm=isch&q=hiking+fleece+jacket',
-      rating: 4.8,
-      reviews: 133,
-      inStock: true,
-      featured: false,
-      rentable: false,
-      description: 'Warm, breathable mid-layer for cool evenings.',
-      activityTags: ['hiking'],
-    },
-    {
-      id: 30,
-      name: 'Water Bottle / Gourde 750ml',
-      category: 'accessories',
-      price: 14.99,
-      rentPrice: null,
-      image: 'https://www.google.com/search?tbm=isch&q=camelbak+hydration+pack',
-      rating: 4.6,
-      reviews: 92,
-      inStock: true,
-      featured: false,
-      rentable: false,
-      description: 'Insulated bottle for day missions.',
-      activityTags: ['hiking', 'climbing'],
-    },
-    {
-      id: 31,
-      name: 'Map & Compass / Carte et Boussole',
-      category: 'accessories',
-      price: 34.99,
-      rentPrice: 4.99,
-      image: 'https://www.google.com/search?tbm=isch&q=hiking+map+and+compass',
-      rating: 4.5,
-      reviews: 88,
-      inStock: true,
-      featured: false,
-      rentable: true,
-      description: 'Navigation kit for self-guided routes.',
-      activityTags: ['hiking'],
-    },
-    {
-      id: 32,
-      name: 'Gas Canister / Cartouche de gaz',
-      category: 'accessories',
-      price: 7.99,
-      rentPrice: null,
-      image: 'https://www.google.com/search?tbm=isch&q=camping+gas+canister',
-      rating: 4.6,
-      reviews: 160,
-      inStock: true,
-      featured: false,
-      rentable: false,
-      description: 'Standard threaded gas canister for stoves.',
-      activityTags: ['hiking'],
-    },
-    {
-      id: 33,
-      name: 'Dried Food / Snacks',
-      category: 'accessories',
-      price: 9.99,
-      rentPrice: null,
-      image: 'https://www.google.com/search?tbm=isch&q=freeze+dried+camping+food',
-      rating: 4.4,
-      reviews: 95,
-      inStock: true,
-      featured: false,
-      rentable: false,
-      description: 'Lightweight dehydrated meals and energy snacks.',
-      activityTags: ['hiking'],
+      description: 'Assistance device for weight difference management.',
+      activityTags: ['climbing'],
     },
   ];
 
@@ -500,7 +305,15 @@ const ShopPage = () => {
       : userLocation === 'moroccan'
         ? 'Please ship within Morocco (free shipping).'
         : 'Purchase with in-store pickup.';
-    
+
+    const bodyLines = [
+      `Product: ${product.name}`,
+      `Action: ${actionLabel}`,
+      `Location: ${locationInfo}`,
+      `Request: ${fulfillment}`,
+      `Description: ${product.description}`,
+    ];
+
     return `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join('\n'))}`;
   };
 
@@ -520,7 +333,6 @@ const ShopPage = () => {
         </div>
       );
     }
-
     return (
       <div className="space-y-2">
         <Button
@@ -548,11 +360,11 @@ const ShopPage = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="hero-shell min-h-[520px] justify-center py-20">
+      <section className="hero-shell min-h-130 justify-center py-20">
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: 'url(https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=2000)',
+            backgroundImage: 'url(/assets/shop/all16.png)',
           }}
         >
           <div className="hero-overlay"></div>
@@ -567,7 +379,10 @@ const ShopPage = () => {
             {t.shop.title}
           </h1>
           <p className="hero-description mx-auto">
-            Quality gear for climbing and hiking adventures
+            Products for climbing and hiking adventures
+          </p>
+          <p className="mt-4 text-sm md:text-base text-white/90 font-medium">
+            For more products, please visit us at the shop.
           </p>
 
           {/* Location Selector */}
@@ -627,7 +442,7 @@ const ShopPage = () => {
         </div>
       </section>
 
-      {/* Features Bar */}
+
       <section className="relative z-20 -mt-10">
         <div className="site-container">
           <div className="grid grid-cols-2 gap-4 rounded-lg border border-[#e8dece] bg-white p-4 shadow-[0_18px_45px_rgb(54_41_22/0.12)] md:grid-cols-4">
@@ -636,7 +451,7 @@ const ShopPage = () => {
                 key={index}
                 className="flex items-center gap-3 group cursor-pointer rounded-lg bg-[#fbf8f2] p-4"
               >
-                <div className="flex-shrink-0 p-3 bg-[#E86C36]/10 rounded-lg group-hover:bg-[#E86C36] transition-all duration-300">
+                <div className="shrink-0 p-3 bg-[#E86C36]/10 rounded-lg group-hover:bg-[#E86C36] transition-all duration-300">
                   <feature.icon className="h-6 w-6 text-[#E86C36] group-hover:text-white transition-colors duration-300" />
                 </div>
                 <div>
@@ -737,24 +552,6 @@ const ShopPage = () => {
                     </div>
 
                     <CardContent className="p-6">
-                      <div className="flex items-center mb-2">
-                        <div className="flex items-center">
-                          {[...Array(5)].map((_, i) => (
-                            <Star
-                              key={i}
-                              className={`h-4 w-4 ${
-                                i < Math.floor(product.rating)
-                                  ? 'fill-yellow-400 text-yellow-400'
-                                  : 'text-gray-300'
-                              }`}
-                            />
-                          ))}
-                        </div>
-                        <span className="text-sm text-gray-600 ml-2">
-                          ({product.reviews})
-                        </span>
-                      </div>
-
                       <h3 className="text-xl font-bold text-[#1A1A1A] mb-2">
                         {product.name}
                       </h3>
@@ -763,18 +560,6 @@ const ShopPage = () => {
                         {product.description}
                       </p>
 
-                      <div className="flex items-center justify-between">
-                        <div>
-                          {product.originalPrice && (
-                            <span className="text-gray-400 line-through text-sm mr-2">
-                              ${product.originalPrice}
-                            </span>
-                          )}
-                          <span className="text-2xl font-bold text-[#E86C36]">
-                            ${product.price}
-                          </span>
-                        </div>
-                      </div>
                       <div className="mt-4">
                         {renderPurchaseOptions(product)}
                       </div>
@@ -819,29 +604,9 @@ const ShopPage = () => {
                 </div>
 
                 <CardContent className="p-4">
-                  <div className="flex items-center mb-1">
-                    <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
-                    <span className="text-sm text-gray-600 ml-1">
-                      {product.rating} ({product.reviews})
-                    </span>
-                  </div>
-
                   <h3 className="font-bold text-[#1A1A1A] mb-2 line-clamp-1">
                     {product.name}
                   </h3>
-
-                  <div className="flex items-center justify-between mb-3">
-                    <div>
-                      {product.originalPrice && (
-                        <span className="text-gray-400 line-through text-xs mr-1">
-                          ${product.originalPrice}
-                        </span>
-                      )}
-                      <span className="text-xl font-bold text-[#E86C36]">
-                        ${product.price}
-                      </span>
-                    </div>
-                  </div>
 
                   {renderPurchaseOptions(product)}
                 </CardContent>
