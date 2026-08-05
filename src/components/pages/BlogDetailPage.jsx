@@ -15,104 +15,55 @@ import { Badge } from '@/components/ui/badge';
 ───────────────────────────────────────────── */
 const blogPosts = {
   /* ── 1. hiking-in-morocco ── */
-//   'hiking-in-morocco': {
-//     id: 13,
-//     title: 'Top 10 Trails for Hiking in Morocco – Discover the Country\'s Natural Wonders',
-//     excerpt:
-//       'Morocco, with its diverse landscapes ranging from rugged mountains to sweeping deserts, offers a paradise for outdoor enthusiasts and adventurers.',
-//     author: 'VRockclimbing',
-//     authorImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150',
-//     date: 'October 3, 2025',
-//     readTime: '15 min read',
-//     image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=1400',
-//     category: 'guides',
-//     views: '3.0K',
-//     likes: 402,
-//     comments: 71,
-//     tags: ['Hiking', 'Morocco', 'Adventure', 'Travel Guide', 'Atlas Mountains'],
-//     relatedSlugs: ['morocco-trekking-adventures', 'from-atlas-to-sahara-unraveling-moroccos-diverse-terrain'],
-//     sections: [
-//       {
-//         type: 'intro',
-//         text: 'Morocco, with its diverse landscapes ranging from rugged mountains to sweeping deserts, offers a paradise for outdoor enthusiasts and adventurers. Among its myriad of attractions, the country boasts an extensive network of hiking trails that wind through breathtaking scenery, ancient villages, and cultural wonders. Whether you\'re a seasoned trekker or a novice explorer, Morocco\'s trails promise unforgettable experiences and hidden gems waiting to be discovered.',
-//       },
-//       {
-//         type: 'trail',
-//         number: 1,
-//         heading: 'Atlas Mountains – Toubkal Circuit',
-//         image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=800',
-//         text: 'Towering over Morocco, the Atlas Mountains provide a stunning backdrop for hiking adventures. The Toubkal Circuit, encompassing North Africa\'s highest peak, Mount Toubkal, offers a challenging yet rewarding trek through Berber villages, lush valleys, and snow-capped peaks.',
-//       },
-//       {
-//         type: 'trail',
-//         number: 2,
-//         heading: 'Jebel Saghro – The Saharan Wilderness',
-//         image: 'https://images.unsplash.com/photo-1509316785289-025f5b846b35?q=80&w=800',
-//         text: 'Venture into the heart of the Sahara Desert with a hike through Jebel Saghro. This remote mountain range entices adventurers with its surreal landscapes, towering cliffs, and ancient rock formations, providing a glimpse into Morocco\'s untamed wilderness.',
-//       },
-//       {
-//         type: 'trail',
-//         number: 3,
-//         heading: 'Todgha Gorge – Canyon of Legends',
-//         image: 'https://images.unsplash.com/photo-1528360983277-13d401cdc186?q=80&w=800',
-//         text: "Carved by the Todgha River, Todra Gorge is a natural wonderland renowned for its towering limestone cliffs and crystal-clear streams. Hikers can explore the canyon's narrow passageways, discover hidden oases, and witness the awe-inspiring beauty of this geological marvel.",
-//       },
-//       {
-//         type: 'trail',
-//         number: 4,
-//         heading: 'Ourika Valley – Berber Trails',
-//         image: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=800',
-//         text: 'Escape the hustle and bustle of Marrakech with a trek through the scenic Ourika Valley. Surrounded by verdant hills and traditional Berber villages, this tranquil oasis offers a glimpse into Morocco\'s rural life and rich cultural heritage.',
-//       },
-//       {
-//         type: 'trail',
-//         number: 5,
-//         heading: 'Dades Valley – Valley of a Thousand Kasbahs',
-//         image: 'https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?q=80&w=800',
-//         text: "Immerse yourself in Morocco's history and heritage with a hike through the Dades Valley. Lined with ancient kasbahs, lush palm groves, and dramatic rock formations, this picturesque valley showcases the country's architectural wonders and natural beauty.",
-//       },
-//       {
-//         type: 'trail',
-//         number: 6,
-//         heading: 'Akchour Waterfalls – Paradise Found',
-//         image: 'https://images.unsplash.com/photo-1432139555190-58524dae6a55?q=80&w=800',
-//         text: "Hidden in the Rif Mountains, the Akchour Waterfalls offer a refreshing escape from Morocco's summer heat. Trek through lush forests, cross scenic rivers, and discover the mesmerizing beauty of these cascading waterfalls tucked away in the heart of nature.",
-//       },
-//       {
-//         type: 'trail',
-//         number: 7,
-//         heading: 'Mgoun Massif – Valley of Roses',
-//         image: 'https://images.unsplash.com/photo-1490750967868-88df5691cc0c?q=80&w=800',
-//         text: 'Embark on a journey through the Valley of Roses, nestled in the shadow of Mgoun Massif. Known for its fragrant rose gardens, terraced fields, and traditional Berber villages, this idyllic valley invites hikers to immerse themselves in Morocco\'s rural charm and natural splendor.',
-//       },
-//       {
-//         type: 'trail',
-//         number: 8,
-//         heading: 'Chefchaouen – The Blue Pearl',
-//         image: 'https://images.unsplash.com/photo-1533130061792-64b345e4a833?q=80&w=800',
-//         text: 'Explore the enchanting blue-washed streets of Chefchaouen with a leisurely hike through its surrounding hillsides. Admire panoramic views of the cityscape, encounter friendly locals, and experience the laid-back ambiance of this charming mountain town.',
-//       },
-//       {
-//         type: 'trail',
-//         number: 9,
-//         heading: 'Tafraoute – Granite Wonderland',
-//         image: 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?q=80&w=800',
-//         text: 'Discover the otherworldly landscapes of Tafraoute, famous for its unique granite rock formations and surreal landscapes. Hikers can wander through the Valley of the Ameln, marvel at the Painted Rocks, and soak in the tranquility of this remote mountain paradise.',
-//       },
-//       {
-//         type: 'trail',
-//         number: 10,
-//         heading: 'Rif Mountains – The Gateway to Adventure',
-//         image: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=800',
-//         text: "Escape to the Rif Mountains, where lush forests, rolling hills, and traditional villages beckon outdoor enthusiasts. Whether you're trekking to hidden waterfalls, exploring ancient ruins, or simply enjoying the breathtaking scenery, the Rif Mountains offer endless opportunities for adventure and exploration.",
-//       },
-//       {
-//         type: 'conclusion',
-//         heading: 'Conclusion',
-//         text: "Morocco's diverse trails offer a captivating blend of natural beauty, cultural heritage, and outdoor adventure. Whether you're seeking epic mountain vistas, serene desert landscapes, or vibrant village life, the country's hiking trails promise unforgettable experiences and endless discoveries. So lace up your hiking boots, pack your sense of adventure, and embark on a journey to uncover the hidden gems of Morocco's wilderness.",
-//       },
-//     ],
-//   },
+  'hiking-in-morocco': {
+    id: 13,
+    title: 'Top 10 Trails for Hiking in Morocco – Discover the Country\'s Natural Wonders',
+    excerpt:
+      'Morocco offers a spectacular mix of mountain routes, desert landscapes, and cultural villages for unforgettable hikes.',
+    author: 'VRockclimbing',
+    authorImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150',
+    date: 'October 3, 2025',
+    readTime: '15 min read',
+    image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=1400',
+    category: 'guides',
+    views: '3.0K',
+    likes: 402,
+    comments: 71,
+    tags: ['Hiking', 'Morocco', 'Adventure', 'Travel Guide', 'Atlas Mountains'],
+    relatedSlugs: ['morocco-trekking-adventures', 'from-atlas-to-sahara-unraveling-moroccos-diverse-terrain'],
+    sections: [
+      {
+        type: 'intro',
+        text: 'Morocco is a dream destination for hikers, with trails that reveal snow-capped peaks, deep canyons, lush valleys, and vast desert horizons. Whether you are planning your first trek or seeking a new challenge, these routes offer a perfect mix of scenery, culture, and adventure.',
+      },
+      {
+        type: 'trail',
+        number: 1,
+        heading: 'Atlas Mountains – Toubkal Circuit',
+        image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=800',
+        text: 'The Toubkal Circuit is one of the most iconic hikes in Morocco, taking you through Berber villages, alpine valleys, and dramatic ridgelines before reaching North Africa’s highest peak.',
+      },
+      {
+        type: 'trail',
+        number: 2,
+        heading: 'Todgha Gorge – Canyon of Legends',
+        image: 'https://images.unsplash.com/photo-1528360983277-13d401cdc186?q=80&w=800',
+        text: 'Todra Gorge offers impressive limestone walls, narrow passages, and a memorable trekking experience through one of Morocco’s most striking landscapes.',
+      },
+      {
+        type: 'trail',
+        number: 3,
+        heading: 'Jebel Saghro – Desert Wilderness',
+        image: 'https://images.unsplash.com/photo-1509316785289-025f5b846b35?q=80&w=800',
+        text: 'For those craving a more remote adventure, Jebel Saghro combines rugged scenery, dry valleys, and dramatic rock formations that feel far from the crowds.',
+      },
+      {
+        type: 'conclusion',
+        heading: 'Conclusion',
+        text: 'From the Atlas to the Sahara, Morocco offers hiking experiences that are both diverse and unforgettable. The country’s trails invite you to discover its natural beauty, heritage, and sense of adventure at every turn.',
+      },
+    ],
+  },
 
   /* ── 2. morocco-trekking-adventures ── */
   'morocco-trekking-adventures': {

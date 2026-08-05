@@ -430,7 +430,7 @@ const BlogPage = () => {
               </Card>
 
               {/* Newsletter */}
-              <Card className="bg-gradient-to-br from-[#E86C36] to-[#ff8c5a] text-white">
+              {/* <Card className="bg-gradient-to-br from-[#E86C36] to-[#ff8c5a] text-white">
                 <CardContent className="p-6">
                   <h3 className="text-xl font-bold mb-3">
                     Subscribe to Our Newsletter
@@ -447,7 +447,7 @@ const BlogPage = () => {
                     Subscribe
                   </Button>
                 </CardContent>
-              </Card>
+              </Card> */}
             </div>
           </div>
         </div>
