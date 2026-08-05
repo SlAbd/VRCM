@@ -1,500 +1,715 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Link from 'next/link';
-import { useParams } from 'next/navigation';
-import { 
-  Mountain, Tent, Compass, Users, Clock,
-  Star, Heart, Calendar, CheckCircle,
-  Footprints, AlertCircle, ArrowLeft, Phone, Mail, MapPin as MapPinIcon
-} from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
+import { useState } from "react";
+import Link from "next/link";
+import { useParams } from "next/navigation";
+import {
+  Mountain,
+  Tent,
+  Compass,
+  Users,
+  Clock,
+  Star,
+  Heart,
+  Calendar,
+  CheckCircle,
+  Bike,
+  Footprints,
+  AlertCircle,
+  ArrowLeft,
+  Phone,
+  Mail,
+  MapPin as MapPinIcon,
+} from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
 const ActivityDetailPage = () => {
   const [isFavorite, setIsFavorite] = useState(false);
   const params = useParams();
-  
+
   // Get slug from params (supports either [slug] or legacy [id])
   const slug = params?.slug || params?.id;
 
   // Function to generate mailto links
-  const generateMailtoLink = (email, subject = '', body = '') => {
+  const generateMailtoLink = (email, subject = "", body = "") => {
     const encodedSubject = encodeURIComponent(subject);
     const encodedBody = encodeURIComponent(body);
-    return `mailto:${email}${subject ? `?subject=${encodedSubject}` : ''}${subject && body ? `&body=${encodedBody}` : body && !subject ? `?body=${encodedBody}` : ''}`;
+    return `mailto:${email}${subject ? `?subject=${encodedSubject}` : ""}${subject && body ? `&body=${encodedBody}` : body && !subject ? `?body=${encodedBody}` : ""}`;
   };
 
   // Activity data - same as in ActivitiesPage
   const activities = [
     {
       id: 1,
-      slug: 'rock-climbing',
-      title: 'Rock Climbing',
-      category: 'climbing',
-      difficulty: 'All Levels',
-      duration: 'Half Day / Full Day / Multi-Days',
-      groupSize: '2-8 people',
-      price: 'From €45',
-      image: '/assets/rock1.jpg',
+      slug: "rock-climbing",
+      title: "Rock Climbing",
+      category: "climbing",
+      difficulty: "All Levels",
+      duration: "Half Day / Full Day / Multi-Days",
+      groupSize: "2-8 people",
+      price: "From €45",
+      image: "/assets/rock1.jpg",
       images: [
-        '/assets/rock1.jpg',
-        '/assets/rock2.jpg',
-        '/assets/rock3.jpg',
-        '/assets/rock4.jpg',
-        '/assets/rock6.jpg',
+        "assets/vrcm/climbing.jpeg",
+        "/assets/rock1.jpg",
+        "/assets/rock2.jpg",
+        "/assets/rock3.jpg",
+        "/assets/rock4.jpg",
+        "/assets/rock6.jpg",
       ],
       icon: Mountain,
-      description: 'Experience the thrill of climbing on world-class limestone cliffs in Todra Gorge.',
-      fullDescription: 'Our rock climbing experiences offer you the chance to tackle world-class limestone cliffs with stunning views. Whether you\'re a beginner looking for an introduction to climbing or an experienced climber seeking new challenges, our certified guides will help you reach new heights.',
-      highlights: ['Expert guides', 'All equipment provided', 'Routes for all levels', 'Safety certified'],
-      color: 'from-orange-500 to-red-500',
-      location: 'Todra Gorge',
+      description:
+        "Experience the thrill of climbing on world-class limestone cliffs in Todra Gorge.",
+      fullDescription:
+        "Our rock climbing experiences offer you the chance to tackle world-class limestone cliffs with stunning views. Whether you're a beginner looking for an introduction to climbing or an experienced climber seeking new challenges, our certified guides will help you reach new heights.",
+      highlights: [
+        "Expert guides",
+        "All equipment provided",
+        "Routes for all levels",
+        "Safety certified",
+      ],
+      color: "from-orange-500 to-red-500",
+      location: "Todra Gorge",
       rating: 4.8,
       reviews: 156,
-      included: ['Professional guide', 'All climbing gear', 'Safety equipment', 'Water', 'Photos of your climb'],
-      notIncluded: ['Meals', 'Transportation to site', 'Additional insurance'],
-      requirements: [ 'Age 6+'],
-      email: 'aitabdellah.abdelhadi@gmail.com'
+      included: [
+        "Professional guide",
+        "All climbing gear",
+        "Safety equipment",
+        "Water",
+        "Photos of your climb",
+      ],
+      notIncluded: ["Meals", "Transportation to site", "Additional insurance"],
+      requirements: ["Age 6+"],
+      email: "aitabdellah.abdelhadi@gmail.com",
     },
-    // {
-    //   id: 2,
-    //   slug: 'multi-pitch-climbing',
-    //   title: 'Multi-Pitch Climbing',
-    //   category: 'climbing',
-    //   difficulty: 'Advanced',
-    //   duration: 'Full Day',
-    //   groupSize: '2-4 people',
-    //   price: 'From €80',
-    //   image: 'https://images.unsplash.com/photo-1486311355911-65e04c1ae42e?q=80&w=800',
-    //   icon: Mountain,
-    //   description: 'Challenge yourself on spectacular multi-pitch routes with breathtaking views.',
-    //   fullDescription: 'Take your climbing to the next level with our multi-pitch climbing expeditions. Scale multiple pitches with professional belaying and safety management. Perfect for experienced climbers looking for an adrenaline-pumping adventure.',
-    //   highlights: ['Advanced techniques', 'Spectacular views', 'Professional belaying', 'Photo opportunities'],
-    //   color: 'from-red-500 to-pink-500',
-    //   location: 'Todra Gorge',
-    //   rating: 4.9,
-    //   reviews: 89,
-    //   included: ['Professional guide', 'All climbing gear', 'Safety equipment', 'Lunch', 'Water & snacks'],
-    //   notIncluded: ['Transportation to site', 'Additional insurance'],
-    //   requirements: ['Advanced climbing experience', 'Age 16+', 'Excellent physical fitness'],      email: 'aitabdellah.abdelhadi@gmail.com'    },
-    // {
-    //   id: 3,
-    //   slug: 'mountain-trekking',
-    //   title: 'Mountain Trekking',
-    //   category: 'trekking',
-    //   difficulty: 'Moderate',
-    //   duration: '2-7 Days',
-    //   groupSize: '4-12 people',
-    //   price: 'From €120',
-    //   image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=800',
-    //   icon: Footprints,
-    //   description: 'Explore the Atlas Mountains on guided treks through stunning landscapes.',
-    //   fullDescription: 'Embark on an unforgettable journey through the Atlas Mountains. Trek through diverse landscapes, visit traditional Berber villages, and experience authentic mountain hospitality. Our guides will share their knowledge of the region\'s flora, fauna, and culture.',
-    //   highlights: ['Mountain camping', 'Local villages', 'Berber hospitality', 'Varied terrain'],
-    //   color: 'from-green-500 to-teal-500',
-    //   location: 'Atlas Mountains',
-    //   rating: 4.7,
-    //   reviews: 203,
-    //   included: ['Professional guide', 'All camping gear', 'Meals', 'Water', 'Accommodation in villages'],
-    //   notIncluded: ['Transportation to starting point', 'Personal gear', 'Additional insurance'],
-    //   requirements: ['Moderate fitness level', 'Age 10+', 'Willingness to camp'],
-    //   email: 'aitabdellah.abdelhadi@gmail.com'
-    // },
-    // {
-    //   id: 4,
-    //   slug: 'mountain-biking',
-    //   title: 'Mountain Biking',
-    //   category: 'biking',
-    //   difficulty: 'Moderate to Hard',
-    //   duration: 'Half Day / Full Day',
-    //   groupSize: '2-10 people',
-    //   price: 'From €50',
-    //   image: 'https://images.unsplash.com/photo-1541625602330-2277a4c46182?q=80&w=800',
-    //   icon: Bike,
-    //   description: 'Ride through mountain trails and discover hidden valleys on two wheels.',
-    //   fullDescription: 'Experience the thrill of mountain biking through breathtaking terrain. Our carefully selected trails offer a mix of technical sections and scenic views. Perfect for both beginners and experienced mountain bikers.',
-    //   highlights: ['Quality bikes', 'Varied trails', 'Support vehicle', 'Refreshments included'],
-    //   color: 'from-blue-500 to-indigo-500',
-    //   location: 'Todra Gorge & Valley',
-    //   rating: 4.6,
-    //   reviews: 124,
-    //   included: ['Mountain bike rental', 'Helmet & safety gear', 'Guide', 'Water & snacks', 'Repair kit'],
-    //   notIncluded: ['Meals', 'Transportation to site', 'Personal gear'],
-    //   requirements: ['Basic cycling skills', 'Age 14+', 'Good fitness level'],
-    //   email: 'aitabdellah.abdelhadi@gmail.com'
-    // },
-    // {
-    //   id: 6,
-    //   slug: 'desert-camping',
-    //   title: 'Desert Camping',
-    //   category: 'camping',
-    //   difficulty: 'Easy',
-    //   duration: '1-3 Nights',
-    //   groupSize: '2-15 people',
-    //   price: 'From €90',
-    //   image: 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?q=80&w=800',
-    //   icon: Tent,
-    //   description: 'Sleep under the stars in traditional Berber camps with authentic local experience.',
-    //   fullDescription: 'Experience the magic of desert camping under a blanket of stars. Sleep in traditional Berber tents, enjoy authentic meals, and experience the rich culture of the desert. A truly unforgettable experience.',
-    //   highlights: ['Traditional meals', 'Campfire stories', 'Stargazing', 'Local music'],
-    //   color: 'from-yellow-500 to-orange-500',
-    //   location: 'Sahara Desert',
-    //   rating: 4.8,
-    //   reviews: 178,
-    //   included: ['Traditional tent accommodation', 'All meals', 'Bedding', 'Tea & coffee', 'Local guide'],
-    //   notIncluded: ['Transportation to desert', 'Personal toiletries', 'Additional insurance'],
-    //   requirements: ['Age 5+', 'No extreme claustrophobia', 'Flexibility with basic amenities'],
-    //   email: 'aitabdellah.abdelhadi@gmail.com'
-    // },
-    // {
-    //   id: 7,
-    //   slug: 'cultural-village-tours',
-    //   title: 'Cultural Village Tours',
-    //   category: 'cultural',
-    //   difficulty: 'Easy',
-    //   duration: 'Half Day',
-    //   groupSize: '2-12 people',
-    //   price: 'From €35',
-    //   image: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=800',
-    //   icon: Map,
-    //   description: 'Visit traditional Berber villages and experience authentic Moroccan hospitality.',
-    //   fullDescription: 'Immerse yourself in authentic Moroccan culture by visiting traditional Berber villages. Meet locals, learn about their way of life, and taste traditional Moroccan tea and pastries in a family home.',
-    //   highlights: ['Village visits', 'Traditional tea', 'Local crafts', 'Cultural exchange'],
-    //   color: 'from-teal-500 to-green-500',
-    //   location: 'Todra Valley Villages',
-    //   rating: 4.9,
-    //   reviews: 267,
-    //   included: ['Local guide', 'Village visits', 'Traditional tea & pastries', 'Cultural insights'],
-    //   notIncluded: ['Meals', 'Transportation', 'Shopping expenses'],
-    //   requirements: ['Age 5+', 'Respectful attitude', 'Comfortable walking shoes'],
-    //   email: 'aitabdellah.abdelhadi@gmail.com'
-    // },
+    {
+      id: 4,
+      slug: "biking",
+      title: "Biking",
+      category: "biking",
+      difficulty: "Moderate",
+      duration: "Half Day / Full Day",
+      groupSize: "1-5 people",
+      price: "From €10",
+      image:
+        '/assets/vrcm/biking.webp',
+      images: [
+        '/assets/vrcm/biking.webp',
+      ],
+      icon: Bike,
+      description:
+        "Explore the region on guided bike trails through stunning landscapes and authentic villages.",
+      fullDescription:
+        "Experience the thrill of biking through breathtaking terrain. Our carefully selected trails offer a mix of scenic views, authentic local villages, and cultural immersion. Perfect for both beginners and experienced cyclists wanting to explore the region.",
+      highlights: [
+        "Quality bikes",
+        "Local villages",
+        "Berber hospitality",
+        "Varied terrain",
+      ],
+      color: "from-green-500 to-teal-500",
+      location: "Todra Gorge & Valley",
+      rating: 4.6,
+      reviews: 124,
+      included: [
+        "Bike rental",
+        "Helmet & safety gear",
+        "Guide",
+      ],
+      notIncluded: ["Meals", "Transportation to site", "Personal gear" ,  "Water & snacks",
+        "Repair kit"],
+      requirements: ["Basic cycling skills", "Age 14+", "Good fitness level"],
+      email: "aitabdellah.abdelhadi@gmail.com",
+    },
+    {
+      id: 6,
+      slug: "desert-camping",
+      title: "Desert Camping",
+      category: "camping",
+      difficulty: "Easy",
+      duration: "1 Night / 2 Days",
+      groupSize: "individual or small groups",
+      price: "From €90",
+      image:
+        '/assets/vrcm/camping.jpeg',
+      images: [
+        '/assets/vrcm/camping.jpeg',
+        '/assets/vrcm/camping1.jpeg',
+        '/assets/vrcm/camping3.jpeg',
+      ],
+      icon: Tent,
+      description:
+        "Sleep under the stars in traditional Berber camps with authentic local experience.",
+      fullDescription:
+        "Experience the magic of desert camping under a blanket of stars. Sleep in traditional Berber tents, enjoy authentic meals, and experience the rich culture of the desert. A truly unforgettable experience.",
+      highlights: [
+        "Traditional meals",
+        "Campfire stories",
+        "Stargazing",
+        "Local music",
+      ],
+      color: "from-yellow-500 to-orange-500",
+      location: "Sahara Desert",
+      rating: 4.8,
+      reviews: 178,
+      included: [
+        "Traditional tent accommodation",
+        "Dinner & breakfast",
+        "Camel ride",
+        "Tea",
+        "Camel herder guide",
+        "Transportation to desert"
+
+      ],
+      notIncluded: [
+        "Lunch",
+        "Personal toiletries",
+        "Additional insurance",
+        "Quad biking or other optional activities",
+      ],
+      requirements: [
+        "Age 5+",
+        "No extreme claustrophobia",
+        "Flexibility with basic amenities",
+      ],
+      email: "aitabdellah.abdelhadi@gmail.com",
+    },
+    {
+      id: 7,
+      slug: "cultural-village-tours",
+      title: "Cultural Village Tours",
+      category: "cultural",
+      difficulty: "Easy",
+      duration: "Half Day",
+      groupSize: "2-12 people",
+      price: "From €5 per person",
+      image:
+        "/assets/vrcm/culturaltours.jpeg",
+      images: [
+        "/assets/vrcm/culturaltours.jpeg",
+        "/assets/vrcm/culturaltours2.jpeg",
+        "/assets/vrcm/culturaltours3.jpeg",
+      ],
+      icon: Map,
+      description:
+        "Visit traditional Berber villages and experience authentic Moroccan hospitality.",
+      fullDescription:
+        "Immerse yourself in authentic Moroccan culture by visiting traditional Berber villages. Meet locals, learn about their way of life, and taste traditional Moroccan tea and pastries in a family home.",
+      highlights: [
+        "Village visits",
+        "Traditional tea",
+        "Local crafts",
+        "Cultural exchange",
+      ],
+      color: "from-teal-500 to-green-500",
+      location: "Todra Valley Villages",
+      rating: 4.9,
+      reviews: 267,
+      included: [
+        "Local guide",
+        "Village visits",
+        "Traditional tea",
+        "Cultural insights",
+      ],
+      notIncluded: ["Meals", "Transportation", "Shopping expenses"],
+      requirements: [
+        "Age 5+",
+        "Respectful attitude",
+        "Comfortable walking shoes",
+      ],
+      email: "aitabdellah.abdelhadi@gmail.com",
+    },
     {
       id: 8,
-      slug: 'via-ferrata',
-      title: 'Via Ferrata',
-      category: 'climbing',
-      difficulty: 'Moderate',
-      duration: '1 Hour',
-      groupSize: 'Children 6+ & Adults',
-      price: '€20 per person',
+      slug: "via-ferrata",
+      title: "Via Ferrata",
+      category: "climbing",
+      difficulty: "Moderate",
+      duration: "1 Hour",
+      groupSize: "Children 6+ & Adults",
+      price: "€20 per person",
       priceDetails: {
-        individual: '€20',
-        twopeople: '€15 per person',
-        groups: 'Contact us for larger groups'
+        individual: "€20",
+        twopeople: "€15 per person",
+        groups: "Contact us for larger groups",
       },
-      image: '/assets/via-ferrata-1.jpg',
+      image: "/assets/vrcm/viaferrate1.jpeg",
       images: [
-        '/assets/via-ferrata-1.jpg',
-        '/assets/via-ferrata-2.jpg',
-        '/assets/via-ferrata-3.jpg',
-        '/assets/via-ferrata-4.jpg',
-        '/assets/via-ferrata-5.jpg',
-        '/assets/via-ferrata-6.jpg',
-        '/assets/via-ferrata-7.jpg',
-        '/assets/via-ferrata-8.jpg',
+        "/assets/vrcm/viaferrate1.jpeg",
+        "/assets/via-ferrata-1.jpg",
+        "/assets/via-ferrata-2.jpg",
+        "/assets/via-ferrata-3.jpg",
+        "/assets/via-ferrata-4.jpg",
+        "/assets/via-ferrata-5.jpg",
+        "/assets/via-ferrata-6.jpg",
+        "/assets/via-ferrata-7.jpg",
+        "/assets/via-ferrata-8.jpg",
       ],
       icon: Compass,
-      description: 'Experience the first via ferrata in Africa with impressive Todra gorge views.',
-      fullDescription: 'Experience the first via ferrata in Africa built by AVM. Gain impressive views of the Todra gorges as you climb up metal rungs and steel cables bolted into the cliff. You\'ll be accompanied by an experienced guide and fully secured by ropes. No climbing experience necessary - suitable for (brave) children 8 years and older. All equipment provided.',
-      highlights: ['First Via Ferrata in Africa', 'Todra Gorge Views', 'Metal Rungs & Steel Cables', 'No Experience Needed', 'Professional Guide', 'Safety Ropes Included'],
-      color: 'from-indigo-500 to-blue-500',
-      location: 'Todra Gorge',
+      description:
+        "Experience the first via ferrata in Africa with impressive Todra gorge views.",
+      fullDescription:
+        "Experience the first via ferrata in Africa built by AVM. Gain impressive views of the Todra gorges as you climb up metal rungs and steel cables bolted into the cliff. You'll be accompanied by an experienced guide and fully secured by ropes. No climbing experience necessary - suitable for (brave) children 8 years and older. All equipment provided.",
+      highlights: [
+        "First Via Ferrata in Africa",
+        "Todra Gorge Views",
+        "Metal Rungs & Steel Cables",
+        "No Experience Needed",
+        "Professional Guide",
+        "Safety Ropes Included",
+      ],
+      color: "from-indigo-500 to-blue-500",
+      location: "Todra Gorge",
       rating: 4.7,
       reviews: 142,
-      included: [
-         'Guide',
-         'Helmet and harness',
-         'Via Ferrata set', 
-         ],
+      included: ["Guide", "Helmet and harness", "Via Ferrata set"],
       notIncluded: [],
-      requirements: ['Age 6+','Comfortable hiking boots'],
-      email: 'aitabdellah.abdelhadi@gmail.com'
+      requirements: ["Age 6+", "Comfortable hiking boots"],
+      email: "aitabdellah.abdelhadi@gmail.com",
     },
     {
       id: 9,
-      slug: 'day-hikes',
-      title: 'Day Hikes',
-      category: 'trekking',
-      difficulty: 'Easy to Moderate',
-      duration: 'Half Day',
-      groupSize: '2-12 people',
-      price: 'From €20',
-      image: '/assets/day-hike-1.jpg',
+      slug: "day-hikes",
+      title: "Day Hikes",
+      category: "trekking",
+      difficulty: "Easy to Moderate",
+      duration: "Half Day",
+      groupSize: "2-12 people",
+      price: "From €20",
+      image: "/assets/day-hike-1.jpg",
       images: [
-        '/assets/day-hike-1.jpg',
-        '/assets/day-hike-2.jpg',
-        '/assets/day-hike-3.jpg',
-        '/assets/day-hike-4.jpg',
+        "/assets/day-hike-1.jpg",
+        "/assets/day-hike-2.jpg",
+        "/assets/day-hike-3.jpg",
+        "/assets/day-hike-4.jpg",
       ],
       icon: Footprints,
-      description: 'Explore Todra gorge and the surrounding high Atlas mountains on foot.',
-      fullDescription: 'Explore Todra gorge and the surrounding high Atlas mountains on foot. Catch a glimpse of how nomadic Berber people live, high on the rocky plateaus towering over the impressive Todra Gorge. Day-hikes can range from easy shaded strolls to more strenuous climbs – we\'ll find a route perfect for your group.',
-      highlights: ['Stunning Gorge Views', 'Berber Culture', 'Flexible Routes', 'All Levels Welcome', 'Professional Guide', 'Panoramic Plateaus'],
-      color: 'from-green-500 to-teal-500',
-      location: 'Todra Gorge & High Atlas',
+      description:
+        "Explore Todra gorge and the surrounding high Atlas mountains on foot.",
+      fullDescription:
+        "Explore Todra gorge and the surrounding high Atlas mountains on foot. Catch a glimpse of how nomadic Berber people live, high on the rocky plateaus towering over the impressive Todra Gorge. Day-hikes can range from easy shaded strolls to more strenuous climbs – we'll find a route perfect for your group.",
+      highlights: [
+        "Stunning Gorge Views",
+        "Berber Culture",
+        "Flexible Routes",
+        "All Levels Welcome",
+        "Professional Guide",
+        "Panoramic Plateaus",
+      ],
+      color: "from-green-500 to-teal-500",
+      location: "Todra Gorge & High Atlas",
       rating: 4.8,
       reviews: 189,
-      included: ['Professional guide', 'Water', 'Cultural insights', 'Flexible pace options'],
-      notIncluded: ['Meals', 'Tea with nomads', 'Additional insurance', ],
-      requirements: ['Age 6+', 'Comfortable hiking boots', 'Reasonable weather conditions'],
-      email: 'aitabdellah.abdelhadi@gmail.com'
+      included: [
+        "Professional guide",
+        "Water",
+        "Cultural insights",
+        "Flexible pace options",
+      ],
+      notIncluded: ["Meals", "Tea with nomads", "Additional insurance"],
+      requirements: [
+        "Age 6+",
+        "Comfortable hiking boots",
+        "Reasonable weather conditions",
+      ],
+      email: "aitabdellah.abdelhadi@gmail.com",
     },
     {
       id: 10,
-      slug: '3-day-nomadic-hiking-adventure',
-      title: '3-Day Nomadic Hiking Adventure',
-      category: 'trekking',
-      difficulty: 'Moderate',
-      duration: '3 Days / 2 Nights',
-      groupSize: '2-12 people',
-      price: '€300 (1 person)',
+      slug: "3-day-nomadic-hiking-adventure",
+      title: "3-Day Nomadic Hiking Adventure",
+      category: "trekking",
+      difficulty: "Moderate",
+      duration: "3 Days / 2 Nights",
+      groupSize: "2-12 people",
+      price: "€300 (1 person)",
       priceDetails: {
-        individual: '€300',
-        twopeople: '€300 per person',
-        groups: 'Contact us for larger groups'
+        individual: "€300",
+        twopeople: "€300 per person",
+        groups: "Contact us for larger groups",
       },
-      image: '/assets/vrcm/3dayhike.jpeg',
+      image: "/assets/vrcm/3dayhike.jpeg",
       images: [
-        '/assets/vrcm/3dayhike3.jpeg',
-        '/assets/vrcm/3dayhike2.jpeg',
-        '/assets/vrcm/3dayhike4.jpeg',
-        '/assets/vrcm/3dayhike6.jpeg',
-        '/assets/vrcm/3dayhike7.jpeg',
-
+        "/assets/vrcm/3dayhike3.jpeg",
+        "/assets/vrcm/3dayhike2.jpeg",
+        "/assets/vrcm/3dayhike4.jpeg",
+        "/assets/vrcm/3dayhike6.jpeg",
+        "/assets/vrcm/3dayhike7.jpeg",
       ],
       icon: Tent,
-      description: 'A truly nomadic experience across the high plateau.',
-      fullDescription: 'For a truly nomadic experience, don your rucksack and strike off on this 3-days hiking adventure. You\'ll start in Tizgui village at the entrance of Todra Gorge. With a mule to carry supplies and a local guide at your side, you\'ll spend 3 days hiking across the high plateau, stopping for two nights in nomad camps to sleep beneath vast stars and discovering how nomadic shepherds have lived for centuries. Your destination is Msemrir, in the Dades Valley, where we\'ll pick you up in a car for our cross-country return to Todra Gorge.',
-      highlights: ['Nomadic Camps', 'Stargazing', 'Mule Support', 'Shepherd Culture', 'Remote Plateaus', 'Dades Valley Visit'],
-      color: 'from-yellow-500 to-orange-500',
-      location: 'Todra Gorge to Msemrir',
+      description: "A truly nomadic experience across the high plateau.",
+      fullDescription:
+        "For a truly nomadic experience, don your rucksack and strike off on this 3-days hiking adventure. You'll start in Tizgui village at the entrance of Todra Gorge. With a mule to carry supplies and a local guide at your side, you'll spend 3 days hiking across the high plateau, stopping for two nights in nomad camps to sleep beneath vast stars and discovering how nomadic shepherds have lived for centuries. Your destination is Msemrir, in the Dades Valley, where we'll pick you up in a car for our cross-country return to Todra Gorge.",
+      highlights: [
+        "Nomadic Camps",
+        "Stargazing",
+        "Mule Support",
+        "Shepherd Culture",
+        "Remote Plateaus",
+        "Dades Valley Visit",
+      ],
+      color: "from-yellow-500 to-orange-500",
+      location: "Todra Gorge to Msemrir",
       rating: 4.9,
       reviews: 127,
-      included: ['3-day guided hike', '2 nights nomad camp accommodation inside caves or tents', 'Breakfast picnic & dinner', 'Mule for luggage', 'Return transport'],
-      notIncluded: ['Personal gear', 'Travel insurance'],
-      requirements: [ 'Age 6+', 'Ability to camp in rustic conditions', 'Hiking boots required'],
-      email: 'aitabdellah.abdelhadi@gmail.com',
-      notes: 'Accommodation in nomad camps is very rustic and simple'
+      included: [
+        "3-day guided hike",
+        "2 nights nomad camp accommodation inside caves or tents",
+        "Breakfast picnic & dinner",
+        "Mule for luggage",
+        "Return transport",
+      ],
+      notIncluded: ["Personal gear", "Travel insurance"],
+      requirements: [
+        "Age 6+",
+        "Ability to camp in rustic conditions",
+        "Hiking boots required",
+      ],
+      email: "aitabdellah.abdelhadi@gmail.com",
+      notes: "Accommodation in nomad camps is very rustic and simple",
     },
     {
       id: 11,
-      slug: '7-day-hiking-holiday',
-      title: '7-Day Hiking Holiday',
-      category: 'trekking',
-      difficulty: 'Easy to Moderate',
-      duration: '7 Days / 5 Nights',
-      groupSize: '2-12 people',
-      price: '€850 (1 person)',
+      slug: "7-day-hiking-holiday",
+      title: "7-Day Hiking Holiday",
+      category: "trekking",
+      difficulty: "Easy to Moderate",
+      duration: "7 Days / 5 Nights",
+      groupSize: "2-12 people",
+      price: "€850 (1 person)",
       priceDetails: {
-        individual: '€850',
-        twopeople: '€600 per person',
-        groups: 'Contact us for larger groups'
+        individual: "€850",
+        twopeople: "€600 per person",
+        groups: "Contact us for larger groups",
       },
-      image: '/assets/vrcm/7dayhike1.jpeg',
+      image: "/assets/vrcm/7dayhike1.jpeg",
       images: [
-        '/assets/vrcm/7dayhike1.jpeg',
-        '/assets/vrcm/7dayhike2.jpeg',
-        '/assets/vrcm/7dayhike3.jpeg',
-        '/assets/vrcm/7dayhike4.jpeg',
-        '/assets/vrcm/7dayhike8.jpeg',
+        "/assets/vrcm/7dayhike1.jpeg",
+        "/assets/vrcm/7dayhike2.jpeg",
+        "/assets/vrcm/7dayhike3.jpeg",
+        "/assets/vrcm/7dayhike4.jpeg",
+        "/assets/vrcm/7dayhike8.jpeg",
       ],
       icon: Footprints,
-      description: 'A complete week-long all-inclusive hiking holiday.',
-      fullDescription: 'Let us organise your hiking holiday for you. Spend 5-days exploring the beautiful Todra Gorges and surrounding areas on this week-long all-inclusive trip. Each day we\'ll strike out in a new direction, hiking along the shaded river for a vibrant morning spent at the busy souk in Tinghir, or climbing high onto the plateau on nomad trails for panoramic vistas. Possible to mix hiking with other activities (climbing, via ferrata, etc.).',
-      highlights: ['5-Day Guided Hiking', 'Todra Gorges Exploration', 'Market Visits', 'Plateau Trails', 'Marrakech Accommodation', 'Mixed Activities Available'],
-      color: 'from-purple-500 to-blue-500',
-      location: 'Todra Gorge & Surroundings',
+      description: "A complete week-long all-inclusive hiking holiday.",
+      fullDescription:
+        "Let us organise your hiking holiday for you. Spend 5-days exploring the beautiful Todra Gorges and surrounding areas on this week-long all-inclusive trip. Each day we'll strike out in a new direction, hiking along the shaded river for a vibrant morning spent at the busy souk in Tinghir, or climbing high onto the plateau on nomad trails for panoramic vistas. Possible to mix hiking with other activities (climbing, via ferrata, etc.).",
+      highlights: [
+        "5-Day Guided Hiking",
+        "Todra Gorges Exploration",
+        "Market Visits",
+        "Plateau Trails",
+        "Marrakech Accommodation",
+        "Mixed Activities Available",
+      ],
+      color: "from-purple-500 to-blue-500",
+      location: "Todra Gorge & Surroundings",
       rating: 4.7,
       reviews: 156,
-      included: ['5-days guided hiking', 'Private transportation from Marrakech', '1 night Marrakech accommodation', 'Daily meals', 'Professional guide'],
-      notIncluded: ['Personal gear', 'Travel insurance'],
-      requirements: [ 'Age 6+', 'Hiking boots recommended', 'Flexible schedule'],
-      email: 'aitabdellah.abdelhadi@gmail.com',
-      notes: 'Mix hiking with other activities like climbing and via ferrata or one night in desert camp'
+      included: [
+        "5-days guided hiking",
+        "Private transportation from Marrakech",
+        "1 night Marrakech accommodation",
+        "Daily meals",
+        "Professional guide",
+      ],
+      notIncluded: ["Personal gear", "Travel insurance"],
+      requirements: ["Age 6+", "Hiking boots recommended", "Flexible schedule"],
+      email: "aitabdellah.abdelhadi@gmail.com",
+      notes:
+        "Mix hiking with other activities like climbing and via ferrata or one night in desert camp",
     },
     {
       id: 12,
-      slug: 'todra-gorges-climbing',
-      title: 'Climbing in Todra Gorges',
-      category: 'climbing',
-      difficulty: 'All Levels (4a to 8b+)',
-      duration: 'Half Day / Full Day / Multi-Days',
-      groupSize: '1-12+ people',
-      price: '€70 - €1000+',
-      image: '/assets/rock1.jpg',
+      slug: "todra-gorges-climbing",
+      title: "Climbing in Todra Gorges",
+      category: "climbing",
+      difficulty: "All Levels (4a to 8b+)",
+      duration: "Half Day / Full Day / Multi-Days",
+      groupSize: "1-12+ people",
+      price: "€70 - €1000+",
+      image: "/assets/rock1.jpg",
       images: [
-        '/assets/rock1.jpg',
-        '/assets/rock2.jpg',
-        '/assets/rock3.jpg',
-        '/assets/rock4.jpg',
-        '/assets/rock6.jpg',
-        '/assets/rock7.jpg',
+        "/assets/rock1.jpg",
+        "/assets/rock2.jpg",
+        "/assets/rock3.jpg",
+        "/assets/rock4.jpg",
+        "/assets/rock6.jpg",
+        "/assets/rock7.jpg",
       ],
       icon: Mountain,
-      description: 'Explore world-class climbing on over 600 bolted routes on sharp, sticky limestone cliffs in Todra Gorge.',
-      fullDescription: 'Discover climbing in the spectacular Todra Gorges with over 600 routes ranging from 4a to 8b+, including many spectacular multi-pitch routes reaching over 400 meters. The rock is sharp limestone and very sticky. All routes have been bolted by volunteers and maintained by CAF, AVM, and VRCM (Valorisation de la Région Climbing Morocco) since 2013-2019. We work constantly to maintain the routes and ensure equipment is in good condition.\n\nWe offer guided climbing for all levels - from beginners who want to learn to climb, to advanced climbers who want to tackle multi-pitch challenges. Our goal is not only to guide you on the best routes, but also to share our climbing knowledge and techniques with you. We\'re here to help you reach where you want to go.',
-      highlights: ['600+ bolted routes', 'Multi-pitch up to 400m', '4a to 8b+ difficulty', 'Sharp, sticky limestone', 'Expert VRCM guides', 'All equipment provided', 'Routes for all levels', 'Constantly maintained', 'Spectacular views', 'Guided instruction'],
-      color: 'from-red-500 to-orange-500',
-      location: 'Todra Gorge, High Atlas, Morocco',
+      description:
+        "Explore world-class climbing on over 600 bolted routes on sharp, sticky limestone cliffs in Todra Gorge.",
+      fullDescription:
+        "Discover climbing in the spectacular Todra Gorges with over 600 routes ranging from 4a to 8b+, including many spectacular multi-pitch routes reaching over 400 meters. The rock is sharp limestone and very sticky. All routes have been bolted by volunteers and maintained by CAF, AVM, and VRCM (Valorisation de la Région Climbing Morocco) since 2013-2019. We work constantly to maintain the routes and ensure equipment is in good condition.\n\nWe offer guided climbing for all levels - from beginners who want to learn to climb, to advanced climbers who want to tackle multi-pitch challenges. Our goal is not only to guide you on the best routes, but also to share our climbing knowledge and techniques with you. We're here to help you reach where you want to go.",
+      highlights: [
+        "600+ bolted routes",
+        "Multi-pitch up to 400m",
+        "4a to 8b+ difficulty",
+        "Sharp, sticky limestone",
+        "Expert VRCM guides",
+        "All equipment provided",
+        "Routes for all levels",
+        "Constantly maintained",
+        "Spectacular views",
+        "Guided instruction",
+      ],
+      color: "from-red-500 to-orange-500",
+      location: "Todra Gorge, High Atlas, Morocco",
       rating: 4.9,
       reviews: 256,
       pricingPackages: [
         {
-          title: 'Half Day Climbing',
-          duration: '4 hours',
+          title: "Half Day Climbing",
+          duration: "4 hours",
           prices: [
-            { people: '1 person', price: '€70' },
-            { people: '2 people', price: '€100 total' },
-            { people: '4 people', price: '€120 total' }
-          ],
-          included: ['Equipment provided', 'Professional guide', 'Climbing instruction', 'Belay support'],
-        },
-        {
-          title: 'Full Day Climbing',
-          duration: '7 hours',
-          prices: [
-            { people: '1 person', price: '€100' },
-            { people: '2 people', price: '€150 total' },
-            { people: '4 people', price: '€190 total' }
-          ],
-          included: ['Equipment provided', 'Professional guide', 'Climbing instruction', 'Belay support', 'Water & snacks'],
-          note: 'For larger groups, please contact us',
-        },
-        {
-          title: '5 Day Climbing Package',
-          duration: '7 hours climbing per day',
-          prices: [
-            { people: '1 person', price: '€400' },
-            { people: '2 people', price: '€250 per person' }
-          ],
-          included: ['All climbing equipment', 'Professional guides', 'Maximize time on rock', 'Learn techniques', 'Better value than daily rates'],
-          note: 'Can be mixed with other activities (hiking, bivouac in sand dunes, etc.). For larger groups, please contact us.',
-        },
-        {
-          title: '7 Day All-Inclusive Package',
-          duration: '4 days climbing + 3 days mixed activities',
-          prices: [
-            { people: '1 person', price: '€1000' },
-            { people: '2 people', price: '€600 per person' }
+            { people: "1 person", price: "€70" },
+            { people: "2 people", price: "€100 total" },
+            { people: "4 people", price: "€120 total" },
           ],
           included: [
-            '1 night accommodation in Marrakech upon arrival in Morocco',
-            'Private transportation from Marrakech to Todra Gorge',
-            '4 days climbing instruction (7 hours per day)',
-            'Nights accommodation with breakfast & dinner',
-            'All climbing equipment',
-            '1 night bivouac in the sand dunes',
-            'Expert guide throughout',
-            'Return transportation to Marrakech',
+            "Equipment provided",
+            "Professional guide",
+            "Climbing instruction",
+            "Belay support",
           ],
-          note: 'Can be mixed with other activities (hiking, bivouac, etc.). For larger groups, please contact us.',
-        }
+        },
+        {
+          title: "Full Day Climbing",
+          duration: "7 hours",
+          prices: [
+            { people: "1 person", price: "€100" },
+            { people: "2 people", price: "€150 total" },
+            { people: "4 people", price: "€190 total" },
+          ],
+          included: [
+            "Equipment provided",
+            "Professional guide",
+            "Climbing instruction",
+            "Belay support",
+            "Water & snacks",
+          ],
+          note: "For larger groups, please contact us",
+        },
+        {
+          title: "5 Day Climbing Package",
+          duration: "7 hours climbing per day",
+          prices: [
+            { people: "1 person", price: "€400" },
+            { people: "2 people", price: "€250 per person" },
+          ],
+          included: [
+            "All climbing equipment",
+            "Professional guides",
+            "Maximize time on rock",
+            "Learn techniques",
+            "Better value than daily rates",
+          ],
+          note: "Can be mixed with other activities (hiking, bivouac in sand dunes, etc.). For larger groups, please contact us.",
+        },
+        {
+          title: "7 Day All-Inclusive Package",
+          duration: "4 days climbing + 3 days mixed activities",
+          prices: [
+            { people: "1 person", price: "€1000" },
+            { people: "2 people", price: "€600 per person" },
+          ],
+          included: [
+            "1 night accommodation in Marrakech upon arrival in Morocco",
+            "Private transportation from Marrakech to Todra Gorge",
+            "4 days climbing instruction (7 hours per day)",
+            "Nights accommodation with breakfast & dinner",
+            "All climbing equipment",
+            "1 night bivouac in the sand dunes",
+            "Expert guide throughout",
+            "Return transportation to Marrakech",
+          ],
+          note: "Can be mixed with other activities (hiking, bivouac, etc.). For larger groups, please contact us.",
+        },
       ],
-      included: ['Professional VRCM guides', 'All climbing gear & safety equipment', 'Climbing instruction & techniques', 'Belay support', 'Water & refreshments'],
-      notIncluded: ['Meals (except all-inclusive packages)', 'Personal climbing gear', 'Travel insurance', 'Accommodation (except all-inclusive package)'],
-      requirements: ['Age 6+', 'Basic fitness for half/full day', 'Reasonable fitness for multi-day climbs', 'Adventurous spirit', 'Comfortable in heights'],
-      email: 'aitabdellah.abdelhadi@gmail.com',
-      notes: 'Over 600 bolted routes available. Routes maintained constantly by VRCM. Equipment bolted 2013-2019 by volunteers, CAF and AVM.'
+      included: [
+        "Professional VRCM guides",
+        "All climbing gear & safety equipment",
+        "Climbing instruction & techniques",
+        "Belay support",
+        "Water & refreshments",
+      ],
+      notIncluded: [
+        "Meals (except all-inclusive packages)",
+        "Personal climbing gear",
+        "Travel insurance",
+        "Accommodation (except all-inclusive package)",
+      ],
+      requirements: [
+        "Age 6+",
+        "Basic fitness for half/full day",
+        "Reasonable fitness for multi-day climbs",
+        "Adventurous spirit",
+        "Comfortable in heights",
+      ],
+      email: "aitabdellah.abdelhadi@gmail.com",
+      notes:
+        "Over 600 bolted routes available. Routes maintained constantly by VRCM. Equipment bolted 2013-2019 by volunteers, CAF and AVM.",
     },
     {
       id: 13,
-      slug: '5-day-climbing-package',
-      title: '5-Day Climbing Package',
-      category: 'climbing',
-      difficulty: 'All Levels (4a to 8b+)',
-      duration: '5 Days',
-      groupSize: '1-12 people',
-      price: '€400 (1 person) / €250 per person (2+)',
-      image: '/assets/rock1.jpg',
+      slug: "5-day-climbing-package",
+      title: "5-Day Climbing Package",
+      category: "climbing",
+      difficulty: "All Levels (4a to 8b+)",
+      duration: "5 Days",
+      groupSize: "1-12 people",
+      price: "€400 (1 person) / €250 per person (2+)",
+      image: "/assets/rock1.jpg",
       images: [
-        '/assets/rock1.jpg',
-        '/assets/rock2.jpg',
-        '/assets/rock3.jpg',
-        '/assets/rock4.jpg',
-        '/assets/rock6.jpg',
-        '/assets/rock7.jpg',
+        "/assets/rock1.jpg",
+        "/assets/rock2.jpg",
+        "/assets/rock3.jpg",
+        "/assets/rock4.jpg",
+        "/assets/rock6.jpg",
+        "/assets/rock7.jpg",
       ],
       icon: Mountain,
-      description: 'Spend more time on the rock with our 5-day climbing package. Perfect for climbers wanting to progress and learn multi-pitch techniques.',
-      fullDescription: 'Todra Gorge offers excellent single and multi-pitch climbing. With our 5-day climbing packages, you\'ll spend more time on the rock and save money compared to daily rates. Each day features 7 hours of climbing instruction with our expert VRCM guides. You can also mix climbing with other activities like hiking, bivouac in the sand dunes, and more. This is the ideal package for climbers looking to improve their skills and tackle more challenging routes.',
-      highlights: ['7 hours climbing per day', 'Multi-pitch focus', 'Mixed activities available', 'Expert VRCM guides', 'All equipment provided', 'Better value pricing', 'Routes for all levels', 'Spectacular gorge views'],
-      color: 'from-orange-500 to-red-500',
-      location: 'Todra Gorge, High Atlas, Morocco',
+      description:
+        "Spend more time on the rock with our 5-day climbing package. Perfect for climbers wanting to progress and learn multi-pitch techniques.",
+      fullDescription:
+        "Todra Gorge offers excellent single and multi-pitch climbing. With our 5-day climbing packages, you'll spend more time on the rock and save money compared to daily rates. Each day features 7 hours of climbing instruction with our expert VRCM guides. You can also mix climbing with other activities like hiking, bivouac in the sand dunes, and more. This is the ideal package for climbers looking to improve their skills and tackle more challenging routes.",
+      highlights: [
+        "7 hours climbing per day",
+        "Multi-pitch focus",
+        "Mixed activities available",
+        "Expert VRCM guides",
+        "All equipment provided",
+        "Better value pricing",
+        "Routes for all levels",
+        "Spectacular gorge views",
+      ],
+      color: "from-orange-500 to-red-500",
+      location: "Todra Gorge, High Atlas, Morocco",
       rating: 4.9,
       reviews: 187,
       priceDetails: {
-        individual: '€400',
-        twopeople: '€250 per person',
-        groups: 'Contact us for larger groups'
+        individual: "€400",
+        twopeople: "€250 per person",
+        groups: "Contact us for larger groups",
       },
-      included: ['7 hours climbing per day', 'Professional VRCM guides', 'All climbing gear & safety equipment', 'Climbing instruction & techniques', 'Belay support', 'Water & refreshments'],
-      notIncluded: ['Accommodation', 'Meals (unless arranged)', 'Personal climbing gear', 'Travel insurance'],
-      requirements: ['Age 6+', 'Basic climbing experience recommended', 'Good fitness level', 'Comfortable in heights'],
-      email: 'aitabdellah.abdelhadi@gmail.com',
-      notes: 'Can be mixed with hiking, bivouac, and other activities. Accommodation and meals can be arranged separately.'
+      included: [
+        "7 hours climbing per day",
+        "Professional VRCM guides",
+        "All climbing gear & safety equipment",
+        "Climbing instruction & techniques",
+        "Belay support",
+        "Water & refreshments",
+      ],
+      notIncluded: [
+        "Accommodation",
+        "Meals (unless arranged)",
+        "Personal climbing gear",
+        "Travel insurance",
+      ],
+      requirements: [
+        "Age 6+",
+        "Basic climbing experience recommended",
+        "Good fitness level",
+        "Comfortable in heights",
+      ],
+      email: "aitabdellah.abdelhadi@gmail.com",
+      notes:
+        "Can be mixed with hiking, bivouac, and other activities. Accommodation and meals can be arranged separately.",
     },
     {
       id: 14,
-      slug: '7-day-climbing-holiday',
-      title: '7-Day Climbing Holiday',
-      category: 'climbing',
-      difficulty: 'All Levels (4a to 8b+)',
-      duration: '7 Days / All-Inclusive',
-      groupSize: '1-12 people',
-      price: '€1000 (1 person) / €600 per person (2+)',
-      image: '/assets/rock1.jpg',
+      slug: "7-day-climbing-holiday",
+      title: "7-Day Climbing Holiday",
+      category: "climbing",
+      difficulty: "All Levels (4a to 8b+)",
+      duration: "7 Days / All-Inclusive",
+      groupSize: "1-12 people",
+      price: "€1000 (1 person) / €600 per person (2+)",
+      image: "/assets/rock1.jpg",
       images: [
-        '/assets/rock1.jpg',
-        '/assets/rock2.jpg',
-        '/assets/rock3.jpg',
-        '/assets/rock4.jpg',
-        '/assets/rock6.jpg',
-        '/assets/rock7.jpg',
+        "/assets/rock1.jpg",
+        "/assets/rock2.jpg",
+        "/assets/rock3.jpg",
+        "/assets/rock4.jpg",
+        "/assets/rock6.jpg",
+        "/assets/rock7.jpg",
       ],
       icon: Mountain,
-      description: 'Complete all-inclusive climbing holiday with accommodation, meals, and transport. 4 days of climbing plus mixed activities and bivouac in the sand dunes.',
-      fullDescription: 'Experience a complete climbing holiday in Morocco! This 7-day all-inclusive package includes everything you need. We pick you up from Marrakech with private transportation to Todra Gorge. You\'ll enjoy 4 days of climbing instruction (7 hours per day) with expert VRCM guides on over 600 bolted routes ranging from 4a to 8b+. The rock is sharp limestone and very sticky, perfect for developing climbing techniques. Our goal is not only to guide you on the best routes but also to share our knowledge and techniques with you.\n\nAll accommodation and meals are included - sleep in comfortable lodges with breakfast and dinner provided. Spend one magical night in bivouac in the sand dunes. You can also mix climbing with other activities like hiking to explore the beautiful Todra Gorge and surrounding high plateaus. We\'re here to help you reach where you want to go!',
-      highlights: ['4 days climbing (7 hrs/day)', '600+ bolted routes', '4a to 8b+ difficulty', 'Marrakech accommodation included', 'Private transportation', 'All meals included', 'Sand dunes bivouac', 'Expert VRCM guides', 'All equipment provided', 'Mixed activities available', 'Sharp limestone rock', 'Multi-pitch routes up to 400m'],
-      color: 'from-yellow-500 to-orange-500',
-      location: 'Todra Gorge & Marrakech',
+      description:
+        "Complete all-inclusive climbing holiday with accommodation, meals, and transport. 4 days of climbing plus mixed activities and bivouac in the sand dunes.",
+      fullDescription:
+        "Experience a complete climbing holiday in Morocco! This 7-day all-inclusive package includes everything you need. We pick you up from Marrakech with private transportation to Todra Gorge. You'll enjoy 4 days of climbing instruction (7 hours per day) with expert VRCM guides on over 600 bolted routes ranging from 4a to 8b+. The rock is sharp limestone and very sticky, perfect for developing climbing techniques. Our goal is not only to guide you on the best routes but also to share our knowledge and techniques with you.\n\nAll accommodation and meals are included - sleep in comfortable lodges with breakfast and dinner provided. Spend one magical night in bivouac in the sand dunes. You can also mix climbing with other activities like hiking to explore the beautiful Todra Gorge and surrounding high plateaus. We're here to help you reach where you want to go!",
+      highlights: [
+        "4 days climbing (7 hrs/day)",
+        "600+ bolted routes",
+        "4a to 8b+ difficulty",
+        "Marrakech accommodation included",
+        "Private transportation",
+        "All meals included",
+        "Sand dunes bivouac",
+        "Expert VRCM guides",
+        "All equipment provided",
+        "Mixed activities available",
+        "Sharp limestone rock",
+        "Multi-pitch routes up to 400m",
+      ],
+      color: "from-yellow-500 to-orange-500",
+      location: "Todra Gorge & Marrakech",
       rating: 4.9,
       reviews: 243,
       priceDetails: {
-        individual: '€1000',
-        twopeople: '€600 per person',
-        groups: 'Contact us for larger groups'
+        individual: "€1000",
+        twopeople: "€600 per person",
+        groups: "Contact us for larger groups",
       },
       included: [
-        '1 night accommodation in Marrakech upon arrival in Morocco',
-        'Private transportation from Marrakech to Todra Gorge',
-        '4 days climbing instruction (7 hours per day)',
-        'Nights accommodation with breakfast & dinner',
-        'All climbing equipment & safety gear',
-        '1 night bivouac in the sand dunes',
-        'Expert VRCM guide throughout',
-        'Return transportation to Marrakech',
-        'Professional belay support',
-        'Water & refreshments',
+        "1 night accommodation in Marrakech upon arrival in Morocco",
+        "Private transportation from Marrakech to Todra Gorge",
+        "4 days climbing instruction (7 hours per day)",
+        "Nights accommodation with breakfast & dinner",
+        "All climbing equipment & safety gear",
+        "1 night bivouac in the sand dunes",
+        "Expert VRCM guide throughout",
+        "Return transportation to Marrakech",
+        "Professional belay support",
+        "Water & refreshments",
       ],
-      notIncluded: ['Flights to Morocco', 'Personal climbing gear', 'Travel insurance', 'Activities beyond included'],
-      requirements: ['Age 6+', 'Basic climbing experience recommended', 'Reasonable fitness', 'Comfortable in heights', 'Flexible with rustic bivouac conditions'],
-      email: 'aitabdellah.abdelhadi@gmail.com',
-      notes: 'Can be mixed with hiking, additional activities, and experiences. Routes maintained constantly by VRCM. Equipment bolted 2013-2019 by volunteers, CAF and AVM.'
+      notIncluded: [
+        "Flights to Morocco",
+        "Personal climbing gear",
+        "Travel insurance",
+        "Activities beyond included",
+      ],
+      requirements: [
+        "Age 6+",
+        "Basic climbing experience recommended",
+        "Reasonable fitness",
+        "Comfortable in heights",
+        "Flexible with rustic bivouac conditions",
+      ],
+      email: "aitabdellah.abdelhadi@gmail.com",
+      notes:
+        "Can be mixed with hiking, additional activities, and experiences. Routes maintained constantly by VRCM. Equipment bolted 2013-2019 by volunteers, CAF and AVM.",
     },
   ];
 
   // Find activity by slug
-  const activity = slug ? activities.find(a => a.slug === slug) : null;
+  const activity = slug ? activities.find((a) => a.slug === slug) : null;
 
   if (!activity) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white">
         <div className="text-center">
-          <h1 className="text-3xl font-bold mb-4 text-[#1A1A1A]">Activity Not Found</h1>
-          <p className="text-gray-600 mb-6">The activity you're looking for doesn't exist.</p>
+          <h1 className="text-3xl font-bold mb-4 text-[#1A1A1A]">
+            Activity Not Found
+          </h1>
+          <p className="text-gray-600 mb-6">
+            The activity you're looking for doesn't exist.
+          </p>
           <p className="text-sm text-gray-500 mb-6">Slug received: {slug}</p>
           <Link href="/activities">
             <Button className="bg-[#E86C36] hover:bg-[#d45a2a] text-white">
@@ -515,7 +730,10 @@ const ActivityDetailPage = () => {
       <div className="sticky top-0 z-40 bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <Link href="/activities">
-            <Button variant="outline" className="hover:bg-[#E86C36]/10 hover:text-[#E86C36] hover:border-[#E86C36]">
+            <Button
+              variant="outline"
+              className="hover:bg-[#E86C36]/10 hover:text-[#E86C36] hover:border-[#E86C36]"
+            >
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to Activities
             </Button>
@@ -562,10 +780,14 @@ const ActivityDetailPage = () => {
                 <button
                   onClick={() => setIsFavorite(!isFavorite)}
                   className={`p-3 rounded-full transition-all ${
-                    isFavorite ? 'bg-[#E86C36] text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                    isFavorite
+                      ? "bg-[#E86C36] text-white"
+                      : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                   }`}
                 >
-                  <Heart className={`h-6 w-6 ${isFavorite ? 'fill-current' : ''}`} />
+                  <Heart
+                    className={`h-6 w-6 ${isFavorite ? "fill-current" : ""}`}
+                  />
                 </button>
               </div>
 
@@ -575,12 +797,16 @@ const ActivityDetailPage = () => {
                   {[...Array(5)].map((_, i) => (
                     <Star
                       key={i}
-                      className={`h-5 w-5 ${i < Math.floor(activity.rating) ? 'fill-[#E86C36] text-[#E86C36]' : 'text-gray-300'}`}
+                      className={`h-5 w-5 ${i < Math.floor(activity.rating) ? "fill-[#E86C36] text-[#E86C36]" : "text-gray-300"}`}
                     />
                   ))}
                 </div>
-                <span className="font-semibold text-[#1A1A1A]">{activity.rating}</span>
-                <span className="text-gray-600">({activity.reviews} reviews)</span>
+                <span className="font-semibold text-[#1A1A1A]">
+                  {activity.rating}
+                </span>
+                <span className="text-gray-600">
+                  ({activity.reviews} reviews)
+                </span>
               </div>
             </div>
 
@@ -592,7 +818,9 @@ const ActivityDetailPage = () => {
                     <Clock className="h-5 w-5 text-[#E86C36]" />
                     <div>
                       <p className="text-xs text-gray-600">Duration</p>
-                      <p className="text-sm font-semibold">{activity.duration}</p>
+                      <p className="text-sm font-semibold">
+                        {activity.duration}
+                      </p>
                     </div>
                   </div>
                 </CardContent>
@@ -603,7 +831,9 @@ const ActivityDetailPage = () => {
                     <Users className="h-5 w-5 text-[#E86C36]" />
                     <div>
                       <p className="text-xs text-gray-600">Group Size</p>
-                      <p className="text-sm font-semibold">{activity.groupSize}</p>
+                      <p className="text-sm font-semibold">
+                        {activity.groupSize}
+                      </p>
                     </div>
                   </div>
                 </CardContent>
@@ -614,7 +844,9 @@ const ActivityDetailPage = () => {
                     <MapPinIcon className="h-5 w-5 text-[#E86C36]" />
                     <div>
                       <p className="text-xs text-gray-600">Location</p>
-                      <p className="text-sm font-semibold">{activity.location}</p>
+                      <p className="text-sm font-semibold">
+                        {activity.location}
+                      </p>
                     </div>
                   </div>
                 </CardContent>
@@ -623,7 +855,9 @@ const ActivityDetailPage = () => {
                 <CardContent className="p-4">
                   <div>
                     <p className="text-xs text-gray-600">Price</p>
-                    <p className="text-sm font-semibold text-[#E86C36]">{activity.price}</p>
+                    <p className="text-sm font-semibold text-[#E86C36]">
+                      {activity.price}
+                    </p>
                   </div>
                 </CardContent>
               </Card>
@@ -631,7 +865,9 @@ const ActivityDetailPage = () => {
 
             {/* Description */}
             <div className="mb-8">
-              <h2 className="text-2xl font-bold text-[#1A1A1A] mb-4">About This Activity</h2>
+              <h2 className="text-2xl font-bold text-[#1A1A1A] mb-4">
+                About This Activity
+              </h2>
               <p className="text-gray-700 text-lg leading-relaxed mb-4">
                 {activity.fullDescription}
               </p>
@@ -643,18 +879,26 @@ const ActivityDetailPage = () => {
             {/* Pricing Details - Show for Via Ferrata */}
             {activity.priceDetails && (
               <div className="mb-8 p-6 bg-[#E86C36]/5 rounded-lg border border-[#E86C36]/10">
-                <h2 className="text-2xl font-bold text-[#1A1A1A] mb-4">Pricing</h2>
+                <h2 className="text-2xl font-bold text-[#1A1A1A] mb-4">
+                  Pricing
+                </h2>
                 <div className="space-y-3">
                   <div className="flex justify-between items-center">
                     <span className="text-gray-700 font-medium">1 Person:</span>
-                    <span className="text-xl font-bold text-[#E86C36]">{activity.priceDetails.individual}</span>
+                    <span className="text-xl font-bold text-[#E86C36]">
+                      {activity.priceDetails.individual}
+                    </span>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-gray-700 font-medium">2 People:</span>
-                    <span className="text-xl font-bold text-[#E86C36]">{activity.priceDetails.twopeople}</span>
+                    <span className="text-xl font-bold text-[#E86C36]">
+                      {activity.priceDetails.twopeople}
+                    </span>
                   </div>
                   <div className="pt-3 border-t border-[#E86C36]/20">
-                    <p className="text-gray-600 text-sm">{activity.priceDetails.groups}</p>
+                    <p className="text-gray-600 text-sm">
+                      {activity.priceDetails.groups}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -662,13 +906,20 @@ const ActivityDetailPage = () => {
 
             {/* What's Included */}
             <div className="mb-8">
-              <h2 className="text-2xl font-bold text-[#1A1A1A] mb-4">What's Included</h2>
+              <h2 className="text-2xl font-bold text-[#1A1A1A] mb-4">
+                What's Included
+              </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <h3 className="font-semibold text-[#E86C36] mb-3">Included</h3>
+                  <h3 className="font-semibold text-[#E86C36] mb-3">
+                    Included
+                  </h3>
                   <ul className="space-y-2">
                     {activity.included.map((item, idx) => (
-                      <li key={idx} className="flex items-start gap-2 text-gray-700">
+                      <li
+                        key={idx}
+                        className="flex items-start gap-2 text-gray-700"
+                      >
                         <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
                         <span>{item}</span>
                       </li>
@@ -677,27 +928,36 @@ const ActivityDetailPage = () => {
                 </div>
                 {activity.notIncluded.length > 0 && (
                   <div>
-                  <h3 className="font-semibold text-gray-600 mb-3">Not Included</h3>
-                  <ul className="space-y-2">
-                    {activity.notIncluded.map((item, idx) => (
-                      <li key={idx} className="flex items-start gap-2 text-gray-600">
-                        <AlertCircle className="h-5 w-5 text-gray-400 flex-shrink-0 mt-0.5" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                    <h3 className="font-semibold text-gray-600 mb-3">
+                      Not Included
+                    </h3>
+                    <ul className="space-y-2">
+                      {activity.notIncluded.map((item, idx) => (
+                        <li
+                          key={idx}
+                          className="flex items-start gap-2 text-gray-600"
+                        >
+                          <AlertCircle className="h-5 w-5 text-gray-400 flex-shrink-0 mt-0.5" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 )}
-                
               </div>
             </div>
 
             {/* Requirements */}
             <div className="mb-8">
-              <h2 className="text-2xl font-bold text-[#1A1A1A] mb-4">Requirements</h2>
+              <h2 className="text-2xl font-bold text-[#1A1A1A] mb-4">
+                Requirements
+              </h2>
               <ul className="space-y-2">
                 {activity.requirements.map((req, idx) => (
-                  <li key={idx} className="flex items-start gap-3 text-gray-700">
+                  <li
+                    key={idx}
+                    className="flex items-start gap-3 text-gray-700"
+                  >
                     <span className="inline-flex items-center justify-center h-6 w-6 rounded-full bg-[#E86C36]/10 text-[#E86C36] text-sm font-semibold flex-shrink-0">
                       ✓
                     </span>
@@ -709,10 +969,15 @@ const ActivityDetailPage = () => {
 
             {/* Highlights */}
             <div>
-              <h2 className="text-2xl font-bold text-[#1A1A1A] mb-4">Highlights</h2>
+              <h2 className="text-2xl font-bold text-[#1A1A1A] mb-4">
+                Highlights
+              </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {activity.highlights.map((highlight, idx) => (
-                  <div key={idx} className="flex items-center gap-3 p-4 bg-[#E86C36]/5 rounded-lg border border-[#E86C36]/10">
+                  <div
+                    key={idx}
+                    className="flex items-center gap-3 p-4 bg-[#E86C36]/5 rounded-lg border border-[#E86C36]/10"
+                  >
                     <Star className="h-5 w-5 text-[#E86C36] flex-shrink-0" />
                     <span className="text-gray-700">{highlight}</span>
                   </div>
@@ -728,7 +993,9 @@ const ActivityDetailPage = () => {
               <CardContent className="p-6">
                 <div className="mb-6">
                   <p className="text-gray-600 text-sm mb-1">Price per person</p>
-                  <p className="text-4xl font-bold text-[#E86C36]">{activity.price}</p>
+                  <p className="text-4xl font-bold text-[#E86C36]">
+                    {activity.price}
+                  </p>
                 </div>
 
                 <div className="space-y-3 mb-6">
@@ -746,9 +1013,10 @@ const ActivityDetailPage = () => {
                   </div>
                 </div>
 
-                <Button 
+                <Button
                   onClick={() => {
-                    const email = activity.email || 'aitabdellah.abdelhadi@gmail.com';
+                    const email =
+                      activity.email || "aitabdellah.abdelhadi@gmail.com";
                     const subject = `Booking Request for ${activity.title}`;
                     const mailtoLink = generateMailtoLink(email, subject);
                     window.location.href = mailtoLink;
@@ -759,13 +1027,14 @@ const ActivityDetailPage = () => {
                   Book Now
                 </Button>
 
-                <Button 
+                <Button
                   onClick={() => {
-                    const email = activity.email || 'aitabdellah.abdelhadi@gmail.com';
+                    const email =
+                      activity.email || "aitabdellah.abdelhadi@gmail.com";
                     const mailtoLink = generateMailtoLink(email);
                     window.location.href = mailtoLink;
                   }}
-                  variant="outline" 
+                  variant="outline"
                   className="w-full border-[#E86C36] text-[#E86C36] hover:bg-[#E86C36]/10 py-6 text-lg font-semibold cursor-pointer"
                 >
                   <Mail className="mr-2 h-5 w-5" />
@@ -773,15 +1042,27 @@ const ActivityDetailPage = () => {
                 </Button>
 
                 <div className="mt-6 pt-6 border-t">
-                  <p className="text-sm text-gray-600 mb-3 font-semibold">Questions?</p>
+                  <p className="text-sm text-gray-600 mb-3 font-semibold">
+                    Questions?
+                  </p>
                   <div className="space-y-2 text-sm">
                     <div className="flex items-center gap-2 text-gray-700">
                       <Phone className="h-4 w-4 text-[#E86C36]" />
-                      <a href="tel:+212700701834" className="hover:text-[#E86C36] transition-colors">+212 700-701834</a>
+                      <a
+                        href="tel:+212700701834"
+                        className="hover:text-[#E86C36] transition-colors"
+                      >
+                        +212 700-701834
+                      </a>
                     </div>
                     <div className="flex items-start gap-2 text-gray-700">
                       <Mail className="h-4 w-4 text-[#E86C36] mt-0.5" />
-                      <a href="mailto:aitabdellah.abdelhadi@gmail.com" className="hover:text-[#E86C36] transition-colors">aitabdellah.abdelhadi@gmail.com</a>
+                      <a
+                        href="mailto:aitabdellah.abdelhadi@gmail.com"
+                        className="hover:text-[#E86C36] transition-colors"
+                      >
+                        aitabdellah.abdelhadi@gmail.com
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -809,13 +1090,20 @@ const ActivityDetailPage = () => {
       {/* Related Activities */}
       <section className="bg-gray-50 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-[#1A1A1A] mb-8">Similar Activities</h2>
+          <h2 className="text-3xl font-bold text-[#1A1A1A] mb-8">
+            Similar Activities
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {activities
-              .filter(a => a.category === activity.category && a.id !== activity.id)
+              .filter(
+                (a) => a.category === activity.category && a.id !== activity.id,
+              )
               .slice(0, 3)
-              .map(relatedActivity => (
-                <Link key={relatedActivity.id} href={`/activities/${relatedActivity.slug}`}>
+              .map((relatedActivity) => (
+                <Link
+                  key={relatedActivity.id}
+                  href={`/activities/${relatedActivity.slug}`}
+                >
                   <Card className="h-full group overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:-translate-y-2">
                     <div className="relative h-48 overflow-hidden">
                       <img
@@ -828,7 +1116,9 @@ const ActivityDetailPage = () => {
                       <h3 className="text-lg font-bold text-[#1A1A1A] mb-2 group-hover:text-[#E86C36]">
                         {relatedActivity.title}
                       </h3>
-                      <p className="text-sm text-gray-600">{relatedActivity.price}</p>
+                      <p className="text-sm text-gray-600">
+                        {relatedActivity.price}
+                      </p>
                     </CardContent>
                   </Card>
                 </Link>

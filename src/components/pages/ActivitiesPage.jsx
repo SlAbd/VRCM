@@ -1,20 +1,40 @@
-﻿'use client';
+﻿"use client";
 
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { 
-  Mountain, Tent, Bike, Camera, Compass, Map, Users, Clock,
-  Star, Heart, Share2, Calendar, MapPin, CheckCircle, Award,
-  Footprints, Sun, Moon, Wind, Droplets, AlertCircle, ChevronLeft, ChevronRight
-} from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { useLanguage } from '@/lib/i18n/LanguageContext';
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import {
+  Mountain,
+  Tent,
+  Bike,
+  Camera,
+  Compass,
+  Map,
+  Users,
+  Clock,
+  Star,
+  Heart,
+  Share2,
+  Calendar,
+  MapPin,
+  CheckCircle,
+  Award,
+  Footprints,
+  Sun,
+  Moon,
+  Wind,
+  Droplets,
+  AlertCircle,
+  ChevronLeft,
+  ChevronRight
+} from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 const ActivitiesPage = () => {
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedCategory, setSelectedCategory] = useState("all");
   const [hoveredActivity, setHoveredActivity] = useState(null);
   const [imageIndexes, setImageIndexes] = useState({});
   const { t } = useLanguage();
@@ -22,11 +42,13 @@ const ActivitiesPage = () => {
   // Auto-rotate images every 3 seconds
   useEffect(() => {
     const timer = setInterval(() => {
-      setImageIndexes(prev => {
+      setImageIndexes((prev) => {
         const newIndexes = { ...prev };
-        for (let id of [1, 8, 9]) { // Activities with carousel images
-          if (activities.find(a => a.id === id)?.images) {
-            const imagesLength = activities.find(a => a.id === id).images.length;
+        for (let id of [1, 8, 9]) {
+          // Activities with carousel images
+          if (activities.find((a) => a.id === id)?.images) {
+            const imagesLength = activities.find((a) => a.id === id).images
+              .length;
             newIndexes[id] = ((newIndexes[id] || 0) + 1) % imagesLength;
           }
         }
@@ -39,261 +61,333 @@ const ActivitiesPage = () => {
   const activities = [
     {
       id: 1,
-      slug: 'rock-climbing',
-      title: 'Rock Climbing',
-      category: 'climbing',
-      difficulty: 'All Levels',
-      duration: 'Half Day / Full Day',
-      groupSize: '2-8 people',
-      price: 'From €45',
-      image: '/assets/rock1.jpg',
+      slug: "rock-climbing",
+      title: "Rock Climbing",
+      category: "climbing",
+      difficulty: "All Levels",
+      duration: "Half Day / Full Day",
+      groupSize: "1-8 people per guide",
+      price: "From €45",
+      image: "/assets/rock1.jpg",
       images: [
-        '/assets/rock1.jpg',
-        '/assets/rock2.jpg',
-        '/assets/rock3.jpg',
-        '/assets/rock4.jpg',
-        '/assets/rock6.jpg',
-        '/assets/rock7.jpg',
+        "assets/vrcm/climbing.jpeg",
+        "/assets/rock1.jpg",
+        "/assets/rock2.jpg",
+        "/assets/rock3.jpg",
+        "/assets/rock4.jpg",
+        "/assets/rock6.jpg",
+        "/assets/rock7.jpg",
       ],
       icon: Mountain,
-      description: 'Experience the thrill of climbing on world-class limestone cliffs in Todra Gorge.',
-      highlights: ['Expert guides', 'All equipment provided', 'Routes for all levels', 'Safety certified'],
-      color: 'from-orange-500 to-red-500',
+      description:
+        "Experience the thrill of climbing on world-class limestone cliffs in Todra Gorge.",
+      highlights: [
+        "Expert guides",
+        "All equipment provided",
+        "Routes for all levels",
+        "Safety certified",
+      ],
+      color: "from-orange-500 to-red-500",
     },
     {
       id: 8,
-      slug: 'via-ferrata',
-      title: 'Via Ferrata',
-      category: 'climbing',
-      difficulty: 'Moderate',
-      duration: 'Half Day',
-      groupSize: '2-10 people',
-      price: 'From €20',
-      image: '/assets/via-ferrata-1.jpg',
+      slug: "via-ferrata",
+      title: "Via Ferrata",
+      category: "climbing",
+      difficulty: "Moderate",
+      duration: "Half Day",
+      groupSize: "1-20 people ",
+      price: "From €20",
+      image: "/assets/vrcm/viaferrate1.jpeg",
       images: [
-        '/assets/via-ferrata-1.jpg',
-        '/assets/via-ferrata-2.jpg',
-        '/assets/via-ferrata-3.jpg',
-        '/assets/via-ferrata-4.jpg',
-        '/assets/via-ferrata-5.jpg',
-        '/assets/via-ferrata-6.jpg',
-        '/assets/via-ferrata-7.jpg',
-        '/assets/via-ferrata-8.jpg',
+        "/assets/vrcm/viaferrate1.jpeg",
+        "/assets/via-ferrata-1.jpg",
+        "/assets/via-ferrata-2.jpg",
+        "/assets/via-ferrata-3.jpg",
+        "/assets/via-ferrata-4.jpg",
+        "/assets/via-ferrata-5.jpg",
+        "/assets/via-ferrata-6.jpg",
+        "/assets/via-ferrata-7.jpg",
+        "/assets/via-ferrata-8.jpg",
       ],
       icon: Compass,
-      description: 'Protected climbing routes combining hiking and climbing with spectacular views.',
-      highlights: ['Safety cables', 'Panoramic views', 'Suitable for beginners', 'Adventure thrill'],
-      color: 'from-indigo-500 to-blue-500',
+      description:
+        "Protected climbing routes combining hiking and climbing with spectacular views.",
+      highlights: [
+        "Safety cables",
+        "Panoramic views",
+        "Suitable for beginners",
+        "Adventure thrill",
+      ],
+      color: "from-indigo-500 to-blue-500",
     },
     {
       id: 9,
-      slug: 'day-hikes',
-      title: 'Day Hikes',
-      category: 'trekking',
-      difficulty: 'Easy to Moderate',
-      duration: 'Half Day',
-      groupSize: '2-12 people',
-      price: 'From €20',
-      image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=800',
+      slug: "day-hikes",
+      title: "Day Hikes",
+      category: "trekking",
+      difficulty: "Easy to Moderate",
+      duration: "Half Day",
+      groupSize: "1-10 people per guide",
+      price: "From €20",
+      image:
+        "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=800",
       images: [
-        '/assets/day-hike-1.jpg',
-        '/assets/day-hike-2.jpg',
-        '/assets/day-hike-3.jpg',
-        '/assets/day-hike-4.jpg',
+        "/assets/day-hike-1.jpg",
+        "/assets/day-hike-2.jpg",
+        "/assets/day-hike-3.jpg",
+        "/assets/day-hike-4.jpg",
       ],
       icon: Footprints,
-      description: 'Explore Todra gorge and the surrounding high Atlas mountains on foot.',
-      highlights: ['Stunning Views', 'Berber Culture', 'Flexible Routes', 'All Levels', 'Professional Guide', 'Panoramic Plateaus'],
-      color: 'from-green-500 to-teal-500',
+      description:
+        "Explore Todra gorge and the surrounding high Atlas mountains on foot.",
+      highlights: [
+        "Stunning Views",
+        "Berber Culture",
+        "Flexible Routes",
+        "All Levels",
+        "Professional Guide",
+        "Panoramic Plateaus",
+      ],
+      color: "from-green-500 to-teal-500",
     },
     {
       id: 10,
-      slug: '3-day-nomadic-hiking-adventure',
-      title: '3-Day Nomadic Hiking Adventure',
-      category: 'trekking',
-      difficulty: 'Moderate',
-      duration: '3 Days / 2 Nights',
-      groupSize: '2-12 people',
-      price: 'From €300',
-      image: '/assets/vrcm/3dayhike3.jpeg',
+      slug: "3-day-nomadic-hiking-adventure",
+      title: "3-Day Nomadic Hiking Adventure",
+      category: "trekking",
+      difficulty: "Moderate",
+      duration: "3 Days / 2 Nights",
+      groupSize: "2-12 people",
+      price: "From €300",
+      image: "/assets/vrcm/3dayhike3.jpeg",
       images: [
-        '/assets/vrcm/3dayhike3.jpeg',
-        '/assets/vrcm/3dayhike2.jpeg',
-        '/assets/vrcm/3dayhike.jpeg',
-        '/assets/vrcm/3dayhike4-1.jpeg',
-        '/assets/vrcm/3dayhike6.jpeg',
-        '/assets/vrcm/3dayhike7-1.jpeg',
-
+        "/assets/vrcm/3dayhike3.jpeg",
+        "/assets/vrcm/3dayhike2.jpeg",
+        "/assets/vrcm/3dayhike.jpeg",
+        "/assets/vrcm/3dayhike4-1.jpeg",
+        "/assets/vrcm/3dayhike6.jpeg",
+        "/assets/vrcm/3dayhike7-1.jpeg",
       ],
       icon: Tent,
-      description: 'A truly nomadic experience across the high plateau.',
-      highlights: ['Nomadic Camps', 'Stargazing', 'Mule Support', 'Shepherd Culture', 'Remote Plateaus', 'Dades Valley'],
-      color: 'from-yellow-500 to-orange-500',
+      description: "A truly nomadic experience across the high plateau.",
+      highlights: [
+        "Nomadic Camps",
+        "Stargazing",
+        "Mule Support",
+        "Shepherd Culture",
+        "Remote Plateaus",
+        "Dades Valley",
+      ],
+      color: "from-yellow-500 to-orange-500",
     },
     {
       id: 11,
-      slug: '7-day-hiking-holiday',
-      title: '7-Day Hiking Holiday',
-      category: 'trekking',
-      difficulty: 'Easy to Moderate',
-      duration: '7 Days / 5 Nights',
-      groupSize: '2-12 people',
-      price: 'From €500',
-      image: '/assets/vrcm/7dayhike1.jpeg',
-       images: [
-        '/assets/vrcm/7dayhike2.jpeg',
-        '/assets/vrcm/7dayhike1.jpeg',
-        '/assets/vrcm/7dayhike3.jpeg',
-        '/assets/vrcm/7dayhike4.jpeg',
+      slug: "7-day-hiking-holiday",
+      title: "7-Day Hiking Holiday",
+      category: "trekking",
+      difficulty: "Easy to Moderate",
+      duration: "7 Days / 5 Nights",
+      groupSize: "2-12 people",
+      price: "From €500",
+      image: "/assets/vrcm/7dayhike1.jpeg",
+      images: [
+        "/assets/vrcm/7dayhike2.jpeg",
+        "/assets/vrcm/7dayhike1.jpeg",
+        "/assets/vrcm/7dayhike3.jpeg",
+        "/assets/vrcm/7dayhike4.jpeg",
       ],
       icon: Footprints,
-      description: 'A complete week-long all-inclusive hiking holiday.',
-      highlights: ['5-Day Guided Hiking', 'Gorges Exploration', 'Market Visits', 'Plateau Trails', 'Marrakech Included', 'Mixed Activities'],
-      color: 'from-purple-500 to-blue-500',
+      description: "A complete week-long all-inclusive hiking holiday.",
+      highlights: [
+        "5-Day Guided Hiking",
+        "Gorges Exploration",
+        "Market Visits",
+        "Plateau Trails",
+        "Marrakech Included",
+        "Mixed Activities",
+      ],
+      color: "from-purple-500 to-blue-500",
     },
     {
       id: 12,
-      slug: 'climbing-todra-gorges',
-      title: 'Climbing in Todra Gorges',
-      category: 'climbing',
-      difficulty: 'All Levels',
-      duration: 'Half Day / Full Day',
-      groupSize: '1-4 people',
-      price: 'From €70',
-      image: '/assets/rock1.jpg',
+      slug: "todra-gorges-climbing",
+      title: "Climbing in Todra Gorges",
+      category: "climbing",
+      difficulty: "All Levels",
+      duration: "Half Day / Full Day",
+      groupSize: "1-4 people",
+      price: "From €70",
+      image: "/assets/rock1.jpg",
       images: [
-        '/assets/rock1.jpg',
-        '/assets/rock2.jpg',
-        '/assets/rock3.jpg',
-        '/assets/rock4.jpg',
-        '/assets/rock6.jpg',
-        '/assets/rock7.jpg',
+        "/assets/rock1.jpg",
+        "/assets/rock2.jpg",
+        "/assets/rock3.jpg",
+        "/assets/rock4.jpg",
+        "/assets/rock6.jpg",
+        "/assets/rock7.jpg",
       ],
       icon: Mountain,
-      description: 'Explore over 600 bolted routes on sharp limestone cliffs in Todra Gorge, from 4a to 8b+. Learn climbing techniques with expert VRCM guides.',
-      highlights: ['600+ routes', '4a to 8b+ difficulty', 'Sharp limestone', 'Expert guides', 'All equipment provided', 'All levels welcome'],
-      color: 'from-red-500 to-orange-500',
+      description:
+        "Explore over 600 bolted routes on sharp limestone cliffs in Todra Gorge, from 4a to 8b+. Learn climbing techniques with expert VRCM guides.",
+      highlights: [
+        "600+ routes",
+        "4a to 8b+ difficulty",
+        "Sharp limestone",
+        "Expert guides",
+        "All equipment provided",
+        "All levels welcome",
+      ],
+      color: "from-red-500 to-orange-500",
     },
     {
       id: 13,
-      slug: '5-day-climbing-package',
-      title: '5-Day Climbing Package',
-      category: 'climbing',
-      difficulty: 'All Levels',
-      duration: '5 Days',
-      groupSize: '1-12 people',
-      price: 'From €250',
-      image: '/assets/rock1.jpg',
+      slug: "5-day-climbing-package",
+      title: "5-Day Climbing Package",
+      category: "climbing",
+      difficulty: "All Levels",
+      duration: "5 Days",
+      groupSize: "1-12 people",
+      price: "From €250",
+      image: "/assets/rock1.jpg",
       images: [
-        '/assets/rock1.jpg',
-        '/assets/rock2.jpg',
-        '/assets/rock3.jpg',
-        '/assets/rock4.jpg',
-        '/assets/rock6.jpg',
-        '/assets/rock7.jpg',
+        "/assets/rock1.jpg",
+        "/assets/rock2.jpg",
+        "/assets/rock3.jpg",
+        "/assets/rock4.jpg",
+        "/assets/rock6.jpg",
+        "/assets/rock7.jpg",
       ],
       icon: Mountain,
-      description: 'Spend more time on the rock with 5 days of climbing. Perfect for getting stronger and learning multi-pitch techniques.',
-      highlights: ['7 hours per day', 'Multi-pitch climbing', 'Mixed activities available', 'Save money', 'Professional guides', 'Equipment provided'],
-      color: 'from-orange-500 to-red-500',
+      description:
+        "Spend more time on the rock with 5 days of climbing. Perfect for getting stronger and learning multi-pitch techniques.",
+      highlights: [
+        "7 hours per day",
+        "Multi-pitch climbing",
+        "Mixed activities available",
+        "Save money",
+        "Professional guides",
+        "Equipment provided",
+      ],
+      color: "from-orange-500 to-red-500",
     },
     {
       id: 14,
-      slug: '7-day-climbing-holiday',
-      title: '7-Day Climbing Holiday',
-      category: 'climbing',
-      difficulty: 'All Levels',
-      duration: '7 Days / All-Inclusive',
-      groupSize: '1-12 people',
-      price: 'From €600',
-      image: '/assets/rock1.jpg',
+      slug: "7-day-climbing-holiday",
+      title: "7-Day Climbing Holiday",
+      category: "climbing",
+      difficulty: "All Levels",
+      duration: "7 Days / All-Inclusive",
+      groupSize: "1-12 people",
+      price: "From €600",
+      image: "/assets/rock1.jpg",
       images: [
-        '/assets/rock1.jpg',
-        '/assets/rock2.jpg',
-        '/assets/rock3.jpg',
-        '/assets/rock4.jpg',
-        '/assets/rock6.jpg',
-        '/assets/rock7.jpg',
+        "/assets/rock1.jpg",
+        "/assets/rock2.jpg",
+        "/assets/rock3.jpg",
+        "/assets/rock4.jpg",
+        "/assets/rock6.jpg",
+        "/assets/rock7.jpg",
       ],
       icon: Mountain,
-      description: 'Complete climbing holiday with accommodation, meals, and transportation. 4 days climbing plus mixed activities and bivouac in the sand dunes.',
-      highlights: ['All-inclusive', 'Marrakech accommodation', 'Private transport', 'Meals included', 'Sand dunes bivouac', 'Mixed activities'],
-      color: 'from-yellow-500 to-orange-500',
+      description:
+        "Complete climbing holiday with accommodation, meals, and transportation. 4 days climbing plus mixed activities and bivouac in the sand dunes.",
+      highlights: [
+        "All-inclusive",
+        "Marrakech accommodation",
+        "Private transport",
+        "Meals included",
+        "Sand dunes bivouac",
+        "Mixed activities",
+      ],
+      color: "from-yellow-500 to-orange-500",
     },
-    // {
-    //   id: 2,
-    //   slug: 'multi-pitch-climbing',
-    //   title: 'Multi-Pitch Climbing',
-    //   category: 'climbing',
-    //   difficulty: 'Advanced',
-    //   duration: 'Full Day',
-    //   groupSize: '2-4 people',
-    //   price: 'From €80',
-    //   image: 'https://images.unsplash.com/photo-1486311355911-65e04c1ae42e?q=80&w=800',
-    //   icon: Mountain,
-    //   description: 'Challenge yourself on spectacular multi-pitch routes with breathtaking views.',
-    //   highlights: ['Advanced techniques', 'Spectacular views', 'Professional belaying', 'Photo opportunities'],
-    //   color: 'from-red-500 to-pink-500',
-    // },
-    // {
-    //   id: 3,
-    //   slug: 'mountain-trekking',
-    //   title: 'Mountain Trekking',
-    //   category: 'trekking',
-    //   difficulty: 'Moderate',
-    //   duration: '2-7 Days',
-    //   groupSize: '4-12 people',
-    //   price: 'From €120',
-    //   image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=800',
-    //   icon: Footprints,
-    //   description: 'Explore the Atlas Mountains on guided treks through stunning landscapes.',
-    //   highlights: ['Mountain camping', 'Local villages', 'Berber hospitality', 'Varied terrain'],
-    //   color: 'from-green-500 to-teal-500',
-    // },
-    // {
-    //   id: 6,
-    //   slug: 'desert-camping',
-    //   title: 'Desert Camping',
-    //   category: 'camping',
-    //   difficulty: 'Easy',
-    //   duration: '1-3 Nights',
-    //   groupSize: '2-15 people',
-    //   price: 'From €90',
-    //   image: 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?q=80&w=800',
-    //   icon: Tent,
-    //   description: 'Sleep under the stars in traditional Berber camps with authentic local experience.',
-    //   highlights: ['Traditional meals', 'Campfire stories', 'Stargazing', 'Local music'],
-    //   color: 'from-yellow-500 to-orange-500',
-    // },
-    // {
-    //   id: 7,
-    //   slug: 'cultural-village-tours',
-    //   title: 'Cultural Village Tours',
-    //   category: 'cultural',
-    //   difficulty: 'Easy',
-    //   duration: 'Half Day',
-    //   groupSize: '2-12 people',
-    //   price: 'From €35',
-    //   image: 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=800',
-    //   icon: Map,
-    //   description: 'Visit traditional Berber villages and experience authentic Moroccan hospitality.',
-    //   highlights: ['Village visits', 'Traditional tea', 'Local crafts', 'Cultural exchange'],
-    //   color: 'from-teal-500 to-green-500',
-    // },
+  
+    {
+      id: 4,
+      slug: "biking",
+      title: "Biking",
+      category: "biking",
+      difficulty: "Moderate",
+      duration: "Half Day / Full Day",
+      groupSize: "1-5 people",
+      price: "From €10",
+      image:
+        '/assets/vrcm/biking.webp',
+      images: [
+        '/assets/vrcm/biking.webp'
+      ],
+      icon: Bike,
+      description:
+        "Explore the region on guided bike trails through stunning landscapes and authentic villages.",
+      highlights: [
+        "Quality bikes",
+        "Local villages",
+        "Berber hospitality",
+        "Varied terrain",
+      ],
+      color: "from-green-500 to-teal-500",
+    },
+
+    {
+      id: 6,
+      slug: "desert-camping",
+      title: "Desert Camping",
+      category: "camping",
+      difficulty: "Easy",
+      duration: "1 Night / 2 Days",
+      groupSize: "individual or small groups",
+      price: "From €90",
+      image:
+       '/assets/vrcm/camping.jpeg',
+      icon: Tent,
+      description:
+        "Sleep under the stars in traditional Berber camps with authentic local experience.",
+      highlights: [
+        "Traditional meals",
+        "Campfire stories",
+        "Stargazing",
+        "Local music",
+      ],
+      color: "from-yellow-500 to-orange-500",
+    },
+    {
+      id: 7,
+      slug: "cultural-village-tours",
+      title: "Cultural Village Tours",
+      category: "cultural",
+      difficulty: "Easy",
+      duration: "Half Day",
+      groupSize: "2-12 people",
+      price: "From €5 per person",
+      image:
+        '/assets/vrcm/culturaltours.jpeg',
+      icon: Map,
+      description:
+        "Visit traditional Berber villages and experience authentic Moroccan hospitality.",
+      highlights: [
+        "Village visits",
+        "Traditional tea",
+        "Local crafts",
+        "Cultural exchange",
+      ],
+      color: "from-teal-500 to-green-500",
+    },
   ];
 
   const categories = [
-    { id: 'all', name: t.activitiesPage.allActivities, icon: Compass },
-    { id: 'climbing', name: t.activitiesPage.climbing, icon: Mountain },
-    { id: 'trekking', name: t.activitiesPage.trekking, icon: Footprints },
-    // { id: 'biking', name: t.activitiesPage.biking, icon: Bike },
-    { id: 'cultural', name: t.activitiesPage.cultural, icon: Map },
-    { id: 'camping', name: t.activitiesPage.camping, icon: Tent },
+    { id: "all", name: t.activitiesPage.allActivities, icon: Compass },
+    { id: "climbing", name: t.activitiesPage.climbing, icon: Mountain },
+    { id: "trekking", name: t.activitiesPage.trekking, icon: Footprints },
+    { id: 'biking', name: t.activitiesPage.biking, icon: Bike },
+    { id: "cultural", name: t.activitiesPage.cultural, icon: Map },
+    { id: "camping", name: t.activitiesPage.camping, icon: Tent },
   ];
 
-  const filteredActivities = selectedCategory === 'all' 
-    ? activities 
-    : activities.filter(a => a.category === selectedCategory);
+  const filteredActivities =
+    selectedCategory === "all"
+      ? activities
+      : activities.filter((a) => a.category === selectedCategory);
 
   const features = [
     {
@@ -325,7 +419,7 @@ const ActivitiesPage = () => {
       months: t.activitiesPage.springMonths,
       description: t.activitiesPage.springDesc,
       activities: t.activitiesPage.springBest,
-      color: 'bg-green-50 border-green-200',
+      color: "bg-green-50 border-green-200",
     },
     {
       name: t.activitiesPage.summer,
@@ -333,7 +427,7 @@ const ActivitiesPage = () => {
       months: t.activitiesPage.summerMonths,
       description: t.activitiesPage.summerDesc,
       activities: t.activitiesPage.summerBest,
-      color: 'bg-yellow-50 border-yellow-200',
+      color: "bg-yellow-50 border-yellow-200",
     },
     {
       name: t.activitiesPage.autumn,
@@ -341,7 +435,7 @@ const ActivitiesPage = () => {
       months: t.activitiesPage.autumnMonths,
       description: t.activitiesPage.autumnDesc,
       activities: t.activitiesPage.autumnBest,
-      color: 'bg-orange-50 border-orange-200',
+      color: "bg-orange-50 border-orange-200",
     },
     {
       name: t.activitiesPage.winter,
@@ -349,7 +443,7 @@ const ActivitiesPage = () => {
       months: t.activitiesPage.winterMonths,
       description: t.activitiesPage.winterDesc,
       activities: t.activitiesPage.winterBest,
-      color: 'bg-blue-50 border-blue-200',
+      color: "bg-blue-50 border-blue-200",
     },
   ];
 
@@ -357,30 +451,30 @@ const ActivitiesPage = () => {
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="hero-shell h-[64vh] justify-center">
-        <div 
+        <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: 'url(https://images.unsplash.com/photo-1522163182402-834f871fd851?q=80&w=2000)',
+            backgroundImage:
+              "url(https://images.unsplash.com/photo-1522163182402-834f871fd851?q=80&w=2000)",
           }}
         >
           <div className="hero-overlay"></div>
         </div>
-        
+
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
-          <div className="hero-badge">
-            Adventure Awaits
-          </div>
-          <h1 className="hero-title">
-            {t.activities.title}
-          </h1>
+          <div className="hero-badge">Adventure Awaits</div>
+          <h1 className="hero-title">{t.activities.title}</h1>
           <p className="hero-description mx-auto">
-            From rock climbing to cultural tours, discover adventures for every passion
+            From rock climbing to cultural tours, discover adventures for every
+            passion
           </p>
-          
+
           {/* Booking Notice */}
           <div className="mt-8 inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-6 py-3 text-white">
             <AlertCircle className="h-5 w-5 mr-2" />
-            <span className="text-sm font-medium">{t.activities.bookingNote}</span>
+            <span className="text-sm font-medium">
+              {t.activities.bookingNote}
+            </span>
           </div>
         </div>
       </section>
@@ -390,14 +484,16 @@ const ActivitiesPage = () => {
         <div className="site-container">
           <div className="grid grid-cols-1 gap-4 rounded-lg border border-[#e8dece] bg-white p-4 shadow-[0_18px_45px_rgb(54_41_22/0.12)] md:grid-cols-4">
             {features.map((feature, index) => (
-              <div 
+              <div
                 key={index}
                 className="text-center group cursor-pointer rounded-lg bg-[#fbf8f2] p-5"
               >
                 <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-lg bg-[#E86C36]/10 transition-all duration-300 group-hover:bg-[#E86C36]">
                   <feature.icon className="h-8 w-8 text-[#E86C36] group-hover:text-white transition-colors duration-300" />
                 </div>
-                <h3 className="font-bold text-[#1A1A1A] mb-2">{feature.title}</h3>
+                <h3 className="font-bold text-[#1A1A1A] mb-2">
+                  {feature.title}
+                </h3>
                 <p className="text-sm text-gray-600">{feature.description}</p>
               </div>
             ))}
@@ -413,11 +509,11 @@ const ActivitiesPage = () => {
               <Button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
-                variant={selectedCategory === cat.id ? 'default' : 'outline'}
+                variant={selectedCategory === cat.id ? "default" : "outline"}
                 className={`${
                   selectedCategory === cat.id
-                    ? 'bg-[#E86C36] text-white hover:bg-[#d45a2a]'
-                    : 'hover:bg-[#E86C36]/10 hover:text-[#E86C36] hover:border-[#E86C36]'
+                    ? "bg-[#E86C36] text-white hover:bg-[#d45a2a]"
+                    : "hover:bg-[#E86C36]/10 hover:text-[#E86C36] hover:border-[#E86C36]"
                 } transition-all duration-300 transform hover:scale-105`}
               >
                 <cat.icon className="h-4 w-4 mr-2" />
@@ -447,15 +543,20 @@ const ActivitiesPage = () => {
                         <img
                           src={activity.images[imageIndexes[activity.id] || 0]}
                           alt={`${activity.title} ${imageIndexes[activity.id] || 0 + 1}`}
-                          className="w-full h-full object-cover"                        />
+                          className="w-full h-full object-cover"
+                        />
                         {/* Previous Button */}
                         <button
                           onClick={(e) => {
                             e.preventDefault();
                             e.stopPropagation();
-                            setImageIndexes(prev => ({
+                            setImageIndexes((prev) => ({
                               ...prev,
-                              [activity.id]: ((prev[activity.id] || 0) - 1 + activity.images.length) % activity.images.length
+                              [activity.id]:
+                                ((prev[activity.id] || 0) -
+                                  1 +
+                                  activity.images.length) %
+                                activity.images.length,
                             }));
                           }}
                           className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
@@ -467,9 +568,11 @@ const ActivitiesPage = () => {
                           onClick={(e) => {
                             e.preventDefault();
                             e.stopPropagation();
-                            setImageIndexes(prev => ({
+                            setImageIndexes((prev) => ({
                               ...prev,
-                              [activity.id]: ((prev[activity.id] || 0) + 1) % activity.images.length
+                              [activity.id]:
+                                ((prev[activity.id] || 0) + 1) %
+                                activity.images.length,
                             }));
                           }}
                           className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
@@ -478,7 +581,8 @@ const ActivitiesPage = () => {
                         </button>
                         {/* Image Counter */}
                         <div className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-black/60 text-white px-3 py-1 rounded-full text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                          {(imageIndexes[activity.id] || 0) + 1} / {activity.images.length}
+                          {(imageIndexes[activity.id] || 0) + 1} /{" "}
+                          {activity.images.length}
                         </div>
                         {/* Image Dots */}
                         <div className="absolute bottom-4 right-4 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -488,10 +592,15 @@ const ActivitiesPage = () => {
                               onClick={(e) => {
                                 e.preventDefault();
                                 e.stopPropagation();
-                                setImageIndexes(prev => ({ ...prev, [activity.id]: idx }));
+                                setImageIndexes((prev) => ({
+                                  ...prev,
+                                  [activity.id]: idx,
+                                }));
                               }}
                               className={`w-2 h-2 rounded-full transition-all ${
-                                idx === (imageIndexes[activity.id] || 0) ? 'bg-[#E86C36] w-6' : 'bg-white/60'
+                                idx === (imageIndexes[activity.id] || 0)
+                                  ? "bg-[#E86C36] w-6"
+                                  : "bg-white/60"
                               }`}
                             />
                           ))}
@@ -503,85 +612,85 @@ const ActivitiesPage = () => {
                         src={activity.image}
                         alt={activity.title}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                  )}
-                  <div className={`absolute inset-0 bg-gradient-to-t ${activity.color} opacity-0 group-hover:opacity-60 transition-opacity duration-300`}></div>
-                  
-                  {/* Floating Icon */}
-                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-3 rounded-full shadow-lg transform transition-transform duration-300 group-hover:scale-110">
-                    <activity.icon className="h-6 w-6 text-[#E86C36]" />
-                  </div>
+                      />
+                    )}
+                    <div
+                      className={`absolute inset-0 bg-gradient-to-t ${activity.color} opacity-0 group-hover:opacity-60 transition-opacity duration-300`}
+                    ></div>
 
-                  {/* Difficulty Badge */}
-                  <div className="absolute top-4 left-4">
-                    <Badge className="bg-white/90 backdrop-blur-sm text-[#1A1A1A] hover:bg-white">
-                      {activity.difficulty}
-                    </Badge>
-                  </div>
-
-                  {/* Price Tag */}
-                  <div className="absolute bottom-4 right-4 bg-[#E86C36] text-white px-4 py-2 rounded-full font-bold shadow-lg">
-                    {activity.price}
-                  </div>
-                </div>
-
-                {/* Content */}
-                <CardContent className="p-6">
-                  <h3 className="text-2xl font-bold text-[#1A1A1A] mb-3 group-hover:text-[#E86C36] transition-colors duration-300">
-                    {activity.title}
-                  </h3>
-                  
-                  <p className="text-gray-600 mb-4 line-clamp-2">
-                    {activity.description}
-                  </p>
-
-                  {/* Details */}
-                  <div className="space-y-2 mb-4 text-sm text-gray-600">
-                    <div className="flex items-center">
-                      <Clock className="h-4 w-4 mr-2 text-[#E86C36]" />
-                      <span>{activity.duration}</span>
+                    {/* Floating Icon */}
+                    <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-3 rounded-full shadow-lg transform transition-transform duration-300 group-hover:scale-110">
+                      <activity.icon className="h-6 w-6 text-[#E86C36]" />
                     </div>
-                    <div className="flex items-center">
-                      <Users className="h-4 w-4 mr-2 text-[#E86C36]" />
-                      <span>{activity.groupSize}</span>
+
+                    {/* Difficulty Badge */}
+                    <div className="absolute top-4 left-4">
+                      <Badge className="bg-white/90 backdrop-blur-sm text-[#1A1A1A] hover:bg-white">
+                        {activity.difficulty}
+                      </Badge>
+                    </div>
+
+                    {/* Price Tag */}
+                    <div className="absolute bottom-4 right-4 bg-[#E86C36] text-white px-4 py-2 rounded-full font-bold shadow-lg">
+                      {activity.price}
                     </div>
                   </div>
 
-                  {/* Highlights */}
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {activity.highlights.slice(0, 3).map((highlight, idx) => (
-                      <span
-                        key={idx}
-                        className="px-3 py-1 bg-[#E86C36]/10 text-[#E86C36] text-xs rounded-full"
+                  {/* Content */}
+                  <CardContent className="p-6">
+                    <h3 className="text-2xl font-bold text-[#1A1A1A] mb-3 group-hover:text-[#E86C36] transition-colors duration-300">
+                      {activity.title}
+                    </h3>
+
+                    <p className="text-gray-600 mb-4 line-clamp-2">
+                      {activity.description}
+                    </p>
+
+                    {/* Details */}
+                    <div className="space-y-2 mb-4 text-sm text-gray-600">
+                      <div className="flex items-center">
+                        <Clock className="h-4 w-4 mr-2 text-[#E86C36]" />
+                        <span>{activity.duration}</span>
+                      </div>
+                      <div className="flex items-center">
+                        <Users className="h-4 w-4 mr-2 text-[#E86C36]" />
+                        <span>{activity.groupSize}</span>
+                      </div>
+                    </div>
+
+                    {/* Highlights */}
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {activity.highlights.slice(0, 3).map((highlight, idx) => (
+                        <span
+                          key={idx}
+                          className="px-3 py-1 bg-[#E86C36]/10 text-[#E86C36] text-xs rounded-full"
+                        >
+                          {highlight}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Action Buttons */}
+                    <div className="flex gap-2">
+                      <Button className="flex-1 bg-[#E86C36] hover:bg-[#d45a2a] text-white">
+                        Book Now
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        className="hover:bg-[#E86C36]/10 hover:text-[#E86C36] hover:border-[#E86C36]"
                       >
-                        {highlight}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Action Buttons */}
-                  <div className="flex gap-2">
-                    <Button 
-                      className="flex-1 bg-[#E86C36] hover:bg-[#d45a2a] text-white"
-                    >
-                      Book Now
-                    </Button>
-                    <Button 
-                      variant="outline" 
-                      size="icon"
-                      className="hover:bg-[#E86C36]/10 hover:text-[#E86C36] hover:border-[#E86C36]"
-                    >
-                      <Heart className="h-4 w-4" />
-                    </Button>
-                    <Button 
-                      variant="outline" 
-                      size="icon"
-                      className="hover:bg-[#E86C36]/10 hover:text-[#E86C36] hover:border-[#E86C36]"
-                    >
-                      <Share2 className="h-4 w-4" />
-                    </Button>
-                  </div>
-                </CardContent>
+                        <Heart className="h-4 w-4" />
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        className="hover:bg-[#E86C36]/10 hover:text-[#E86C36] hover:border-[#E86C36]"
+                      >
+                        <Share2 className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </CardContent>
                 </Card>
               </Link>
             ))}
@@ -639,17 +748,18 @@ const ActivitiesPage = () => {
             Can&apos;t Decide? Let Us Help!
           </h2>
           <p className="text-xl text-white/80 mb-8">
-            Contact our expert team to design a custom adventure tailored to your interests and skill level
+            Contact our expert team to design a custom adventure tailored to
+            your interests and skill level
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
+            <Button
               size="lg"
               className="bg-[#E86C36] hover:bg-[#d45a2a] text-white px-8 py-6 text-lg font-semibold"
             >
               <Calendar className="mr-2 h-5 w-5" />
               Plan My Adventure
             </Button>
-            <Button 
+            <Button
               size="lg"
               variant="outline"
               className="border-2 border-white text-black hover:bg-white hover:text-[#1A1A1A] px-8 py-6 text-lg font-semibold"
@@ -664,5 +774,3 @@ const ActivitiesPage = () => {
 };
 
 export default ActivitiesPage;
-
-

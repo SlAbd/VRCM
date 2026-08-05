@@ -121,10 +121,10 @@ const ServicesSection = () => {
   const services = [
     { title: t.landingPage.climbing, image: '/assets/rock1.jpg' },
     { title: t.landingPage.trekking, image: '/assets/day-hike-1.jpg' },
-    { title: t.landingPage.biking, image: '/assets/rock2.jpg' },
-    { title: t.landingPage.donkeyRiding, image: '/assets/taljmart.jpg' },
-    { title: t.landingPage.camping, image: '/assets/day-hike-4.jpg' },
-    { title: t.landingPage.culturalTours, image: '/assets/VRCM copy.jpg' },
+    { title: t.landingPage.biking, image: '/assets/vrcm/biking.webp' },
+    { title: t.landingPage.donkeyRiding, image: '/assets/vrcm/donkeyriding.webp' },
+    { title: t.landingPage.camping, image: '/assets/vrcm/camping.jpeg' },
+    { title: t.landingPage.culturalTours, image: '/assets/vrcm/culturaltours.jpeg' },
     { title: t.landingPage.rockScrambling, image: '/assets/rock7.jpg' },
   ];
 
