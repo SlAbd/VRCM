@@ -31,15 +31,15 @@ const BlogPage = () => {
     id: 10,
     title: 'Top 10 Trails for Hiking in Morocco – Discover the Country\'s Natural Wonders',
     excerpt: 'Morocco offers a paradise for outdoor enthusiasts with diverse landscapes ranging from rugged mountains to sweeping deserts. Explore our comprehensive guide to the top 10 hiking trails.',
-    author: 'VRockclimbing',
-    authorImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150',
+    author: 'Hadi',
+    authorImage: '/assets/hadi.jpg',
     date: 'October 3, 2025',
     readTime: '15 min read',
-    image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=1200',
+    image: '/assets/vrcm/7dayhike8.jpeg',
     category: 'guides',
-    views: '3.2K',
-    likes: 445,
-    comments: 78,
+    // views: '3.2K',
+    // likes: 445,
+    // comments: 78,
     featured: true,
     slug: 'top-10-trails-for-hiking-in-morocco',
   };
@@ -49,62 +49,48 @@ const BlogPage = () => {
       id: 10,
       title: 'Top 10 Trails for Hiking in Morocco – Discover the Country\'s Natural Wonders',
       excerpt: 'Morocco offers a paradise for outdoor enthusiasts with diverse landscapes ranging from rugged mountains to sweeping deserts. Explore our comprehensive guide to the top 10 hiking trails.',
-      author: 'VRockclimbing',
-      authorImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150',
+      author: 'Hadi',
+      authorImage: '/assets/hadi.jpg',
       date: 'October 3, 2025',
       readTime: '15 min read',
-      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=600',
+      image: '/assets/vrcm/7dayhike8.jpeg',
       category: 'guides',
-      views: '3.2K',
-      likes: 445,
-      comments: 78,
+      // views: '3.2K',
+      // likes: 445,
+      // comments: 78,
       slug: 'top-10-trails-for-hiking-in-morocco',
     },
     {
       id: 11,
       title: 'Morocco Trekking Adventures: Experience the Thrill of High Altitude Hikes',
       excerpt: 'Embark on an unforgettable journey through Morocco\'s stunning landscapes. From the Atlas Mountains to the Rif Mountains, discover high-altitude hiking adventures.',
-      author: 'VRockclimbing',
-      authorImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150',
+      author: 'Hadi',
+      authorImage: '/assets/hadi.jpg',
       date: 'October 3, 2025',
       readTime: '14 min read',
-      image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=600',
+      image: '/assets/day-hike-4.jpg',
       category: 'stories',
-      views: '2.8K',
-      likes: 367,
-      comments: 62,
+      // views: '2.8K',
+      // likes: 367,
+      // comments: 62,
       slug: 'morocco-trekking-adventures',
     },
     {
       id: 12,
       title: 'From Atlas to Sahara: Unraveling Morocco\'s Diverse Terrain',
       excerpt: 'Morocco is a land of contrasts and natural beauty. From the towering peaks of the Atlas Mountains to the endless sands of the Sahara Desert, explore diverse terrains.',
-      author: 'VRockclimbing',
-      authorImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150',
+      author: 'Hadi',
+      authorImage: '/assets/hadi.jpg',
       date: 'October 3, 2025',
       readTime: '13 min read',
       image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=600',
       category: 'guides',
-      views: '2.5K',
-      likes: 328,
-      comments: 55,
+      // views: '2.5K',
+      // likes: 328,
+      // comments: 55,
       slug: 'from-atlas-to-sahara-unraveling-moroccos-diverse-terrain',
     },
-    // {
-    //   id: 13,
-    //   title: 'Hiking in Morocco: Complete Guide to Trails and Adventures',
-    //   excerpt: 'Discover the complete guide to hiking in Morocco. Learn about different trails, best seasons, essential tips, and immerse yourself in the natural beauty of this stunning country.',
-    //   author: 'VRockclimbing',
-    //   authorImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150',
-    //   date: 'October 3, 2025',
-    //   readTime: '12 min read',
-    //   image: 'https://images.unsplash.com/photo-1439066615861-d1af74d74000?q=80&w=600',
-    //   category: 'guides',
-    //   views: '3.0K',
-    //   likes: 402,
-    //   comments: 71,
-    //   slug: 'hiking-in-morocco',
-    // },
+   
   ];
 
   const popularTags = [
@@ -232,14 +218,14 @@ const BlogPage = () => {
                       <Clock className="h-4 w-4 mr-1" />
                       {featuredPost.readTime}
                     </div>
-                    <div className="flex items-center">
+                    {/* <div className="flex items-center">
                       <Eye className="h-4 w-4 mr-1" />
                       {featuredPost.views}
                     </div>
                     <div className="flex items-center">
                       <Heart className="h-4 w-4 mr-1" />
                       {featuredPost.likes}
-                    </div>
+                    </div> */}
                   </div>
 
                   {/* Author */}
@@ -318,7 +304,7 @@ const BlogPage = () => {
                             <Clock className="h-3 w-3 mr-1" />
                             {post.readTime}
                           </div>
-                          <div className="flex items-center">
+                          {/* <div className="flex items-center">
                             <Eye className="h-3 w-3 mr-1" />
                             {post.views}
                           </div>
@@ -329,7 +315,7 @@ const BlogPage = () => {
                           <div className="flex items-center">
                             <MessageCircle className="h-3 w-3 mr-1" />
                             {post.comments}
-                          </div>
+                          </div> */}
                         </div>
 
                         {/* Author & Date */}

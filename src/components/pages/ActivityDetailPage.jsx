@@ -52,7 +52,6 @@ const ActivityDetailPage = () => {
       price: "From €45",
       image: "/assets/rock1.jpg",
       images: [
-        "assets/vrcm/climbing.jpeg",
         "/assets/rock1.jpg",
         "/assets/rock2.jpg",
         "/assets/rock3.jpg",
@@ -72,8 +71,8 @@ const ActivityDetailPage = () => {
       ],
       color: "from-orange-500 to-red-500",
       location: "Todra Gorge",
-      rating: 4.8,
-      reviews: 156,
+      // rating: 4.8,
+      // reviews: 156,
       included: [
         "Professional guide",
         "All climbing gear",
@@ -792,7 +791,7 @@ const ActivityDetailPage = () => {
               </div>
 
               {/* Rating */}
-              <div className="flex items-center gap-4 mt-4">
+              {/* <div className="flex items-center gap-4 mt-4">
                 <div className="flex items-center gap-1">
                   {[...Array(5)].map((_, i) => (
                     <Star
@@ -807,7 +806,7 @@ const ActivityDetailPage = () => {
                 <span className="text-gray-600">
                   ({activity.reviews} reviews)
                 </span>
-              </div>
+              </div> */}
             </div>
 
             {/* Quick Info */}

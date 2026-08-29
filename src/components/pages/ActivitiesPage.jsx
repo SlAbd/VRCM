@@ -30,7 +30,6 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 const ActivitiesPage = () => {
@@ -675,7 +674,7 @@ const ActivitiesPage = () => {
                       <Button className="flex-1 bg-[#E86C36] hover:bg-[#d45a2a] text-white">
                         Book Now
                       </Button>
-                      <Button
+                      {/* <Button
                         variant="outline"
                         size="icon"
                         className="hover:bg-[#E86C36]/10 hover:text-[#E86C36] hover:border-[#E86C36]"
@@ -688,7 +687,7 @@ const ActivitiesPage = () => {
                         className="hover:bg-[#E86C36]/10 hover:text-[#E86C36] hover:border-[#E86C36]"
                       >
                         <Share2 className="h-4 w-4" />
-                      </Button>
+                      </Button> */}
                     </div>
                   </CardContent>
                 </Card>

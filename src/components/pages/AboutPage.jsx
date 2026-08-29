@@ -23,36 +23,50 @@ const AboutPage = () => {
     { icon: Award, value: '100%', label: t.about.stats.safety, color: 'text-purple-600' },
   ];
 
-  const team = [
-    {
-      name: 'Ait Abdellah Abdelhadi',
-      role: 'Founder & Lead Guide',
-      image: hadi_2,
-      bio: 'Expert climber with 15+ years of experience in Todra Gorge.',
-      specialties: ['Rock Climbing', 'Mountain Guide', 'Safety Expert'],
-    },
-    {
-      name: 'Fatima Zahra',
-      role: 'Cultural Experience Coordinator',
-      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400',
-      bio: 'Passionate about sharing Berber culture and traditions.',
-      specialties: ['Cultural Tours', 'Local Cuisine', 'Language'],
-    },
-    {
-      name: 'Mohammed Ali',
-      role: 'Trekking Specialist',
-      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400',
-      bio: 'Mountain trekking expert and wilderness survival specialist.',
-      specialties: ['Trekking', 'Navigation', 'First Aid'],
-    },
-    {
-      name: 'Amina Brahim',
-      role: 'Equipment Manager',
-      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=400',
-      bio: 'Ensures all equipment meets international safety standards.',
-      specialties: ['Equipment', 'Safety', 'Logistics'],
-    },
-  ];
+ const team = [
+  {
+    name: 'Ait Abdellah Abdelhadi',
+    role: 'Founder & Lead Guide',
+    image: "/assets/vrcm/7dayhike2.jpeg",
+    bio: 'Expert climber with 15+ years of experience in Todra Gorge.',
+    specialties: ['Rock Climbing', 'Mountain Guide', 'Safety Expert'],
+  },
+  {
+    name: 'Khalid',
+    role: 'Local Guide',
+    image: '/assets/vrcm/khalid.jpeg',
+    bio: 'Experienced local guide who knows the Todra Valley, its trails, and its hidden gems.',
+    specialties: ['Local Tours', 'Trekking', 'Berber Culture'],
+  },
+  {
+    name: 'Lhoussaine',
+    role: 'Local Mountain Guide',
+    image: '/assets/vrcm/lhoussaine.jpeg',
+    bio: 'Passionate local guide with extensive knowledge of mountain trails and the surrounding landscapes.',
+    specialties: ['Trekking', 'Mountain Hiking', 'Navigation'],
+  },
+  {
+    name: 'Mustapha',
+    role: 'Local Guide',
+    image: '/assets/vrcm/mustapha.jpeg',
+    bio: 'Friendly local guide dedicated to helping visitors discover the authentic beauty and culture of the region.',
+    specialties: ['Local Experiences', 'Trekking', 'Cultural Tours'],
+  },
+  {
+    name:'Mohamed',
+    role: 'Hiking and via ferrata guide',
+    image: '/assets/vrcm/mohamed.jpeg',
+    bio: 'Skilled guide specializing in hiking and via ferrata routes, ensuring safe and enjoyable experiences for all adventurers.',
+    specialties: ['Hiking', 'Via Ferrata', 'Safety'],
+  },
+  {
+    name:'kamal',
+    role: 'Rock climbing guide',
+    image: '/assets/vrcm/kamal.jpeg',
+    bio: 'Experienced rock climbing guide with a passion for teaching and leading climbers of all skill levels.',
+    specialties: ['Rock Climbing', 'Lead Climbing', 'Belaying'],
+  }
+];
 
   const values = [
     {
@@ -126,14 +140,19 @@ const AboutPage = () => {
     },
     {
       name: 'Dar Lalla',
-      description: 'Authentic mountain experience with stunning gorge views',
-      icon: Mountain,
+      description: 'Charming guesthouse offering a cozy and authentic Moroccan experience',
+      icon: Hotel,
     },
     {
       name: 'Les Jardins des Gorges',
       description: 'Scenic garden retreat nestled in the heart of Todra',
-      icon: Globe,
+      icon: Hotel,
     },
+    {
+      name : 'Royal Palmas',
+      description: 'Luxury accommodations with modern amenities and comfort',
+      icon: Hotel,
+    }
   ];
 
   return (
@@ -143,7 +162,7 @@ const AboutPage = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center transform transition-transform duration-700 hover:scale-105"
           style={{
-            backgroundImage: 'url(https://images.unsplash.com/photo-1486311355911-65e04c1ae42e?q=80&w=2000)',
+            backgroundImage: '/assets/vrcm/7dayhike2.jpeg',
           }}
         >
           <div className="hero-overlay"></div>
@@ -205,23 +224,23 @@ const AboutPage = () => {
             <div className="relative">
               <div className="grid grid-cols-2 gap-4">
                 <img
-                  src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=400"
-                  alt="Climbing"
+                  src="/assets/vrcm/camping.jpeg"
+                  alt="Camping"
                   className="rounded-lg shadow-xl h-64 object-cover transform transition-transform duration-300 hover:scale-105"
                 />
                 <img
-                  src="https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?q=80&w=400"
-                  alt="Mountain"
+                  src="/assets/vrcm/viaferrata2.jpeg"
+                  alt="via ferrata"
                   className="rounded-lg shadow-xl h-64 object-cover mt-8 transform transition-transform duration-300 hover:scale-105"
                 />
                 <img
-                  src="https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=400"
-                  alt="Trekking"
+                  src="/assets/vrcm/7dayhike8.jpeg"
+                  alt="hiking"
                   className="rounded-lg shadow-xl h-64 object-cover -mt-8 transform transition-transform duration-300 hover:scale-105"
                 />
                 <img
-                  src="https://images.unsplash.com/photo-1452587925148-ce544e77e70d?q=80&w=400"
-                  alt="Adventure"
+                  src="/assets/satisfied-client.jpg"
+                  alt="climbing"
                   className="rounded-lg shadow-xl h-64 object-cover transform transition-transform duration-300 hover:scale-105"
                 />
               </div>
@@ -280,7 +299,7 @@ const AboutPage = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {team.map((member, index) => (
               <Card 
                 key={index}
@@ -371,7 +390,7 @@ const AboutPage = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {accommodations.map((accommodation, index) => (
               <Card 
                 key={index}
@@ -406,7 +425,7 @@ const AboutPage = () => {
             Join thousands of climbers who have experienced the magic of Todra Gorge with VRCM
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/shop">
+            <Link href="/activities">
             <Button 
               size="lg"
               className="bg-white text-[#E86C36] hover:bg-gray-100 px-8 py-6 text-lg font-semibold"
@@ -419,7 +438,7 @@ const AboutPage = () => {
             <Button 
               size="lg"
               variant="outline"
-              className="border-2 border-white text-white hover:bg-white hover:text-[#E86C36] px-8 py-6 text-lg font-semibold"
+              className="bg-white text-[#E86C36] hover:bg-gray-100 px-8 py-6 text-lg font-semibold"
             >
               Contact Us
             </Button>
