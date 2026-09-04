@@ -1,83 +1,103 @@
-﻿'use client';
+﻿"use client";
 
-import { useState } from 'react';
-import { 
-  Phone, Mail, MapPin, Clock, Send, MessageSquare, Globe,
-  Facebook, Instagram, Twitter, Youtube, CheckCircle, AlertCircle
-} from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Label } from '@/components/ui/label';
+import { useState } from "react";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
+  Send,
+  MessageSquare,
+  Globe,
+  Facebook,
+  Instagram,
+  Twitter,
+  Youtube,
+  CheckCircle,
+  AlertCircle,
+} from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    subject: '',
-    message: '',
+    name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
   });
   const [formStatus, setFormStatus] = useState(null);
 
   const contactInfo = [
     {
       icon: Phone,
-      title: 'Phone',
-      details: ['+212 700-701834'],
-      color: 'bg-blue-50 text-blue-600',
+      title: "Phone",
+      details: ["+212 700-701834"],
+      color: "bg-blue-50 text-blue-600",
     },
     {
       icon: Mail,
-      title: 'Email',
-      details: ['aitabdellah.abdelhadi@gmail.com'],
-      color: 'bg-red-50 text-red-600',
+      title: "Email",
+      details: ["aitabdellah.abdelhadi@gmail.com"],
+      color: "bg-red-50 text-red-600",
     },
     {
       icon: MapPin,
-      title: 'Location',
-      details: ['Todra Gorge, Tinghir', 'DrÃ¢a-Tafilalet, Morocco'],
-      color: 'bg-green-50 text-green-600',
+      title: "Location",
+      details: ["Todra Gorge, Tinghir", "DrÃ¢a-Tafilalet, Morocco"],
+      color: "bg-green-50 text-green-600",
     },
     {
       icon: Clock,
-      title: 'Business Hours',
-      details: ['Mon-Sun: 7:00 AM - 8:00 PM', 'Available 24/7 for emergencies'],
-      color: 'bg-orange-50 text-orange-600',
+      title: "Business Hours",
+      details: ["Mon-Sun: 7:00 AM - 8:00 PM", "Available 24/7 for emergencies"],
+      color: "bg-orange-50 text-orange-600",
     },
   ];
 
   const socialLinks = [
-    { icon: Instagram, name: 'Instagram', url: 'https://www.instagram.com/verticalrockclimbingmorocco/', color: 'hover:bg-pink-600' },
+    {
+      icon: Instagram,
+      name: "Instagram",
+      url: "https://www.instagram.com/verticalrockclimbingmorocco/",
+      color: "hover:bg-pink-600",
+    },
   ];
 
   const faqs = [
     {
-      question: 'What experience level do I need?',
-      answer: 'We offer programs for all levels, from complete beginners to advanced climbers.',
+      question: "What experience level do I need?",
+      answer:
+        "We offer programs for all levels, from complete beginners to advanced climbers.",
     },
     {
-      question: 'Do you provide equipment?',
-      answer: 'Yes, all climbing equipment is included in our packages and meets international safety standards.',
+      question: "Do you provide equipment?",
+      answer:
+        "Yes, all climbing equipment is included in our packages and meets international safety standards.",
     },
     {
-      question: 'What\'s the best time to visit?',
-      answer: 'Spring (March-May) and Autumn (September-November) offer the best climbing conditions.',
+      question: "What's the best time to visit?",
+      answer:
+        "Spring (March-May) and Autumn (September-November) offer the best climbing conditions.",
     },
     {
-      question: 'How do I book an activity?',
-      answer: 'You can book through our website, email, or by calling us directly. We recommend booking at least 2 weeks in advance.',
+      question: "How do I book an activity?",
+      answer:
+        "You can book through our website, email, or by calling us directly. We recommend booking at least 2 weeks in advance.",
     },
   ];
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Simulate form submission
-    setFormStatus('loading');
+    setFormStatus("loading");
     setTimeout(() => {
-      setFormStatus('success');
-      setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+      setFormStatus("success");
+      setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
       setTimeout(() => setFormStatus(null), 5000);
     }, 2000);
   };
@@ -93,23 +113,21 @@ const ContactPage = () => {
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="hero-shell h-[54vh] justify-center">
-        <div 
+        <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: 'url(/assets/rock4.jpg)',
+            backgroundImage: "url(/assets/rock4.jpg)",
           }}
         >
           <div className="hero-overlay"></div>
         </div>
-        
+
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
           <div className="hero-badge">
             <MessageSquare className="h-4 w-4" />
             Contact
           </div>
-          <h1 className="hero-title">
-            Get in Touch
-          </h1>
+          <h1 className="hero-title">Get in Touch</h1>
           <p className="hero-description mx-auto">
             We&apos;re here to help plan your perfect climbing adventure
           </p>
@@ -121,12 +139,11 @@ const ContactPage = () => {
         <div className="site-container">
           <div className="grid grid-cols-1 gap-4 rounded-lg border border-[#e8dece] bg-white p-4 shadow-[0_18px_45px_rgb(54_41_22/0.12)] md:grid-cols-2 lg:grid-cols-4">
             {contactInfo.map((info, index) => (
-              <Card
-                key={index}
-                className="site-card cursor-pointer group"
-              >
+              <Card key={index} className="site-card cursor-pointer group">
                 <CardContent className="p-6 text-center">
-                  <div className={`${info.color} w-14 h-14 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:scale-105 transition-transform duration-300`}>
+                  <div
+                    className={`${info.color} w-14 h-14 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:scale-105 transition-transform duration-300`}
+                  >
                     <info.icon className="h-8 w-8" />
                   </div>
                   <h3 className="font-black text-[#1f211b] mb-3 text-lg">
@@ -151,11 +168,10 @@ const ContactPage = () => {
             {/* Contact Form */}
             <div>
               <span className="site-eyebrow">Booking support</span>
-              <h2 className="site-heading mb-4">
-                Send us a Message
-              </h2>
+              <h2 className="site-heading mb-4">Send us a Message</h2>
               <p className="site-copy mb-8">
-                Fill out the form below and we&apos;ll get back to you within 24 hours
+                Fill out the form below and we&apos;ll get back to you within 24
+                hours
               </p>
 
               <Card className="site-card">
@@ -163,7 +179,10 @@ const ContactPage = () => {
                   <form onSubmit={handleSubmit} className="space-y-6">
                     {/* Name */}
                     <div>
-                      <Label htmlFor="name" className="text-[#1A1A1A] font-semibold mb-2 block">
+                      <Label
+                        htmlFor="name"
+                        className="text-[#1A1A1A] font-semibold mb-2 block"
+                      >
                         Full Name *
                       </Label>
                       <Input
@@ -180,7 +199,10 @@ const ContactPage = () => {
 
                     {/* Email */}
                     <div>
-                      <Label htmlFor="email" className="text-[#1A1A1A] font-semibold mb-2 block">
+                      <Label
+                        htmlFor="email"
+                        className="text-[#1A1A1A] font-semibold mb-2 block"
+                      >
                         Email Address *
                       </Label>
                       <Input
@@ -197,7 +219,10 @@ const ContactPage = () => {
 
                     {/* Phone */}
                     <div>
-                      <Label htmlFor="phone" className="text-[#1A1A1A] font-semibold mb-2 block">
+                      <Label
+                        htmlFor="phone"
+                        className="text-[#1A1A1A] font-semibold mb-2 block"
+                      >
                         Phone Number
                       </Label>
                       <Input
@@ -213,7 +238,10 @@ const ContactPage = () => {
 
                     {/* Subject */}
                     <div>
-                      <Label htmlFor="subject" className="text-[#1A1A1A] font-semibold mb-2 block">
+                      <Label
+                        htmlFor="subject"
+                        className="text-[#1A1A1A] font-semibold mb-2 block"
+                      >
                         Subject *
                       </Label>
                       <Input
@@ -230,7 +258,10 @@ const ContactPage = () => {
 
                     {/* Message */}
                     <div>
-                      <Label htmlFor="message" className="text-[#1A1A1A] font-semibold mb-2 block">
+                      <Label
+                        htmlFor="message"
+                        className="text-[#1A1A1A] font-semibold mb-2 block"
+                      >
                         Message *
                       </Label>
                       <Textarea
@@ -245,16 +276,17 @@ const ContactPage = () => {
                     </div>
 
                     {/* Status Messages */}
-                    {formStatus === 'success' && (
+                    {formStatus === "success" && (
                       <div className="flex items-center p-4 bg-green-50 border border-green-200 rounded-lg">
                         <CheckCircle className="h-5 w-5 text-green-600 mr-3" />
                         <p className="text-green-800 font-medium">
-                          Message sent successfully! We&apos;ll get back to you soon.
+                          Message sent successfully! We&apos;ll get back to you
+                          soon.
                         </p>
                       </div>
                     )}
 
-                    {formStatus === 'error' && (
+                    {formStatus === "error" && (
                       <div className="flex items-center p-4 bg-red-50 border border-red-200 rounded-lg">
                         <AlertCircle className="h-5 w-5 text-red-600 mr-3" />
                         <p className="text-red-800 font-medium">
@@ -267,10 +299,10 @@ const ContactPage = () => {
                     <Button
                       type="submit"
                       className="w-full bg-[#E86C36] hover:bg-[#d45a2a] text-white py-6 text-lg font-semibold"
-                      disabled={formStatus === 'loading'}
+                      disabled={formStatus === "loading"}
                     >
-                      {formStatus === 'loading' ? (
-                        'Sending...'
+                      {formStatus === "loading" ? (
+                        "Sending..."
                       ) : (
                         <>
                           <Send className="mr-2 h-5 w-5" />
@@ -289,15 +321,15 @@ const ContactPage = () => {
               <Card className="overflow-hidden">
                 <div className="relative h-96">
                   <iframe
-                    src="https://maps.app.goo.gl/g3P9aDPL31kmLi8L7"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.6785089677232!2d-5.5884396999999995!3d31.578857!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda2d36c043f4009%3A0x6f03066f4dc57698!2sVertical%20Rock%20Climbing%20Morocco!5e1!3m2!1sfr!2sma!4v1788548128413!5m2!1sfr!2sma"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
-                    allowFullScreen=""
+                    allowFullScreen
                     loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
+                    referrerPolicy="strict-origin-when-cross-origin"
                     className="absolute inset-0"
-                  ></iframe>
+                  />
                 </div>
               </Card>
 
@@ -309,7 +341,8 @@ const ContactPage = () => {
                     Follow Us
                   </h3>
                   <p className="text-gray-600 mb-6">
-                    Stay connected and see the latest from our climbing community
+                    Stay connected and see the latest from our climbing
+                    community
                   </p>
                   <div className="flex space-x-3">
                     {socialLinks.map((social, index) => (
@@ -340,9 +373,7 @@ const ContactPage = () => {
                         <h4 className="font-semibold text-[#1A1A1A] mb-2 group-hover:text-[#E86C36] transition-colors">
                           {faq.question}
                         </h4>
-                        <p className="text-sm text-gray-600">
-                          {faq.answer}
-                        </p>
+                        <p className="text-sm text-gray-600">{faq.answer}</p>
                       </div>
                     ))}
                   </div>
@@ -363,21 +394,19 @@ const ContactPage = () => {
       <section className="py-16 bg-red-600 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AlertCircle className="h-16 w-16 mx-auto mb-4" />
-          <h2 className="text-3xl font-bold mb-4">
-            Emergency Contact
-          </h2>
+          <h2 className="text-3xl font-bold mb-4">Emergency Contact</h2>
           <p className="text-xl mb-6 text-white/90">
             For urgent matters or emergencies during your adventure
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
+            <Button
               size="lg"
               className="bg-white text-red-600 hover:bg-gray-100 px-8 py-6 text-lg font-semibold cursor-pointer"
             >
               <Phone className="mr-2 h-5 w-5" />
               Call Now: +212 700-701834
             </Button>
-            <Button 
+            <Button
               size="lg"
               variant="outline"
               className="bg-white text-red-600 hover:bg-gray-100 px-8 py-6 text-lg font-semibold cursor-pointer"
@@ -418,5 +447,3 @@ const ContactPage = () => {
 };
 
 export default ContactPage;
-
-
