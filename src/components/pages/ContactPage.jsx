@@ -289,7 +289,7 @@ const ContactPage = () => {
               <Card className="overflow-hidden">
                 <div className="relative h-96">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d54628.05086!2d-5.584!3d31.574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda0!2sTodra%20Gorge!5e0!3m2!1sen!2sma!4v1234567890"
+                    src="https://maps.app.goo.gl/g3P9aDPL31kmLi8L7"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
@@ -346,12 +346,12 @@ const ContactPage = () => {
                       </div>
                     ))}
                   </div>
-                  <Button 
+                  {/* <Button 
                     variant="outline" 
                     className="w-full mt-6 hover:bg-[#E86C36] hover:text-white hover:border-[#E86C36]"
                   >
                     View All FAQs
-                  </Button>
+                  </Button> */}
                 </CardContent>
               </Card>
             </div>
