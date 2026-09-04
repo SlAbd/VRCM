@@ -83,7 +83,7 @@ const BlogPage = () => {
       authorImage: '/assets/hadi.jpg',
       date: 'October 3, 2025',
       readTime: '13 min read',
-      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=600',
+      image: '/assets/vrcm/sahara.jpg',
       category: 'guides',
       // views: '2.5K',
       // likes: 328,

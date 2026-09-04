@@ -27,7 +27,7 @@ const AboutPage = () => {
   {
     name: 'Ait Abdellah Abdelhadi',
     role: 'Founder & Lead Guide',
-    image: "/assets/vrcm/7dayhike2.jpeg",
+    image: "/assets/vrcm/hadi.jpeg",
     bio: 'Expert climber with 15+ years of experience in Todra Gorge.',
     specialties: ['Rock Climbing', 'Mountain Guide', 'Safety Expert'],
   },

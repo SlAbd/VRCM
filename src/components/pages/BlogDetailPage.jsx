@@ -20,15 +20,15 @@ const blogPosts = {
     title: 'Top 10 Trails for Hiking in Morocco – Discover the Country\'s Natural Wonders',
     excerpt:
       'Morocco offers a spectacular mix of mountain routes, desert landscapes, and cultural villages for unforgettable hikes.',
-    author: 'VRockclimbing',
-    authorImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150',
+    author: 'Hadi',
+    authorImage: '/assets/hadi.jpg',
     date: 'October 3, 2025',
     readTime: '15 min read',
-    image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=1400',
+    image: '/assets/vrcm/hero_top10.jpeg',
     category: 'guides',
-    views: '3.0K',
-    likes: 402,
-    comments: 71,
+    // views: '3.0K',
+    // likes: 402,
+    // comments: 71,
     tags: ['Hiking', 'Morocco', 'Adventure', 'Travel Guide', 'Atlas Mountains'],
     relatedSlugs: ['morocco-trekking-adventures', 'from-atlas-to-sahara-unraveling-moroccos-diverse-terrain'],
     sections: [
@@ -40,14 +40,14 @@ const blogPosts = {
         type: 'trail',
         number: 1,
         heading: 'Atlas Mountains – Toubkal Circuit',
-        image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=800',
+        image: '/assets/vrcm/toubkal.jpeg',
         text: 'The Toubkal Circuit is one of the most iconic hikes in Morocco, taking you through Berber villages, alpine valleys, and dramatic ridgelines before reaching North Africa’s highest peak.',
       },
       {
         type: 'trail',
         number: 2,
         heading: 'Todgha Gorge – Canyon of Legends',
-        image: 'https://images.unsplash.com/photo-1528360983277-13d401cdc186?q=80&w=800',
+        image: '/assets/vrcm/toudgha.jpeg',
         text: 'Todra Gorge offers impressive limestone walls, narrow passages, and a memorable trekking experience through one of Morocco’s most striking landscapes.',
       },
       {
@@ -71,11 +71,11 @@ const blogPosts = {
     title: "Morocco Trekking Adventures: Experience the Thrill of High Altitude Hikes",
     excerpt:
       "Embark on an unforgettable journey through Morocco's stunning landscapes with our guide to trekking adventures.",
-    author: 'VRockclimbing',
-    authorImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150',
+    author: 'Hadi',
+    authorImage: '/assets/hadi.jpg',
     date: 'October 3, 2025',
     readTime: '14 min read',
-    image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1400',
+    image: '/assets/vrcm/rif.jpg',
     category: 'stories',
     views: '2.8K',
     likes: 367,
@@ -90,7 +90,7 @@ const blogPosts = {
       {
         type: 'section',
         heading: 'Atlas Mountains: Conquer North Africa\'s Highest Peaks',
-        image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=800',
+        image: '/assets/vrcm/atlas.webp',
         text: "The Atlas Mountains, Morocco's most iconic mountain range, are a paradise for trekking enthusiasts. Stretching over 2,500 kilometers across the country, the Atlas Mountains offer a diverse range of trails catering to all levels of hikers. For those seeking a challenge, summiting Mount Toubkal, North Africa's highest peak, is a bucket-list achievement. As you ascend to the summit, you'll traverse rocky terrain, cross snowfields, and be rewarded with panoramic views stretching as far as the eye can see.",
       },
       {
@@ -102,7 +102,7 @@ const blogPosts = {
       {
         type: 'section',
         heading: 'Rif Mountains: Discover Hidden Valleys and Lush Forests',
-        image: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=800',
+        image: '/assets/vrcm/rif.jpg',
         text: "In the northern reaches of Morocco lies the Rif Mountains, a lesser-known but equally enchanting destination for trekking adventures. Explore hidden valleys, traverse lush forests, and encounter traditional Berber villages as you hike through this scenic region. With its mild climate and diverse ecosystems, the Rif Mountains offer a refreshing escape from the hustle and bustle of city life, allowing you to reconnect with nature and rejuvenate your spirit.",
       },
       {
@@ -131,11 +131,11 @@ const blogPosts = {
     title: "From Atlas to Sahara: Unraveling Morocco's Diverse Terrain",
     excerpt:
       "Morocco, a land of contrasts and natural beauty, beckons travelers from around the globe to explore its diverse terrain.",
-    author: 'VRockclimbing',
-    authorImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150',
+    author: 'Hadi',
+    authorImage: '/assets/hadi.jpg',
     date: 'October 3, 2025',
     readTime: '13 min read',
-    image: 'https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?q=80&w=1400',
+    image: '/assets/vrcm/sahara2.jpg',
     category: 'guides',
     views: '2.5K',
     likes: 328,
@@ -150,19 +150,19 @@ const blogPosts = {
       {
         type: 'section',
         heading: 'Atlas Mountains: Majestic Peaks and Berber Villages',
-        image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=800',
+        image: '/assets/vrcm/atlas.webp',
         text: "Our adventure begins amidst the rugged grandeur of the Atlas Mountains, North Africa's most extensive mountain range. Stretching over 2,500 kilometers across Morocco, Algeria, and Tunisia, the Atlas Mountains are a haven for outdoor enthusiasts and cultural explorers alike. Here, ancient Berber villages cling to steep slopes, their terraced fields a testament to centuries of mountain living. As we trek through the High Atlas, we'll encounter breathtaking vistas, lush valleys, and snow-capped peaks, immersing ourselves in the timeless beauty of this majestic range.",
       },
       {
         type: 'section',
         heading: 'Sahara Desert: A Sea of Sand and Endless Horizons',
-        image: 'https://images.unsplash.com/photo-1509316785289-025f5b846b35?q=80&w=800',
+        image: '/assets/vrcm/sahara.jpg',
         text: "Leaving the mountains behind, we venture southward into the vast expanse of the Sahara Desert, the world's largest hot desert and one of Morocco's most iconic landscapes. Here, the rhythm of life is dictated by the shifting sands and the endless dance of sunlight and shadow. From the golden dunes of Erg Chebbi to the rugged beauty of the Draa Valley, the Sahara captivates with its otherworldly allure. As we traverse this ancient landscape, we'll discover the resilience of desert life, encounter nomadic tribes, and witness spectacular sunsets that paint the sky in hues of orange and gold.",
       },
       {
         type: 'section',
         heading: 'Oases and Valleys: Green Havens Amidst the Arid Terrain',
-        image: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=800',
+        image: '/assets/vrcm/oasis.jpeg',
         text: "Nestled amidst the arid terrain of Morocco are verdant oases and fertile valleys, hidden gems that offer respite from the desert heat. In places like the Draa Valley and the Todgha Gorge, date palms sway in the breeze, and lush vegetation thrives against the backdrop of rocky cliffs. These green havens provide a stark contrast to the surrounding desert landscape, serving as vital lifelines for both humans and wildlife alike.",
       },
       {
@@ -178,19 +178,19 @@ const blogPosts = {
 const relatedPostsData = {
   'hiking-in-morocco': {
     title: 'Top 10 Trails for Hiking in Morocco',
-    image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=600',
+    image: '/assets/vrcm/hero_top10.jpeg',
     date: 'October 3, 2025',
     readTime: '15 min read',
   },
   'morocco-trekking-adventures': {
     title: 'Morocco Trekking Adventures: Experience the Thrill of High Altitude Hikes',
-    image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=600',
+    image: '/assets/vrcm/rif.jpg',
     date: 'October 3, 2025',
     readTime: '14 min read',
   },
   'from-atlas-to-sahara-unraveling-moroccos-diverse-terrain': {
     title: "From Atlas to Sahara: Unraveling Morocco's Diverse Terrain",
-    image: 'https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?q=80&w=600',
+    image: '/assets/vrcm/atlas.webp',
     date: 'October 3, 2025',
     readTime: '13 min read',
   },
@@ -350,10 +350,10 @@ const BlogDetailPage = ({ slug }) => {
               <Clock className="h-4 w-4" />
               <span>{post.readTime}</span>
             </div>
-            <div className="flex items-center gap-1">
+            {/* <div className="flex items-center gap-1">
               <Eye className="h-4 w-4" />
               <span>{post.views} views</span>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
@@ -421,7 +421,7 @@ const BlogDetailPage = ({ slug }) => {
 
         {/* Share & reactions */}
         <div className="mt-8 flex flex-wrap items-center justify-between gap-4 p-6 bg-gray-50 rounded-2xl">
-          <div className="flex items-center gap-6 text-gray-600">
+          {/* <div className="flex items-center gap-6 text-gray-600">
             <button className="flex items-center gap-2 hover:text-red-500 transition-colors">
               <Heart className="h-5 w-5" />
               <span>{post.likes} Likes</span>
@@ -434,7 +434,7 @@ const BlogDetailPage = ({ slug }) => {
           <button className="flex items-center gap-2 text-[#E86C36] hover:text-[#d45a2a] font-medium transition-colors">
             <Share2 className="h-5 w-5" />
             Share
-          </button>
+          </button> */}
         </div>
       </article>
 
