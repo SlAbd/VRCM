@@ -1,6 +1,4 @@
-﻿'use client';
-
-import { Inter } from 'next/font/google';
+﻿import { Inter } from 'next/font/google';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { LanguageProvider } from '@/lib/i18n/LanguageContext';
@@ -8,7 +6,7 @@ import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
-const metadata = {
+export const metadata = {
   title: {
     default: 'VRCM - Morocco\'s Premier Rock Climbing Destination',
     template: '%s | VRCM',
@@ -66,6 +64,9 @@ const metadata = {
     card: 'summary_large_image',
     title: 'VRCM - Rock Climbing Morocco',
     description: 'Experience authentic climbing adventures in Morocco',
+  },
+  verification: {
+    google: 'cQFPTB-PWbTXZfSoQ3C-hYuOGny1J5fO9RENdVdpwgI',
   },
 };
 
