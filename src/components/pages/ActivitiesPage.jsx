@@ -69,7 +69,7 @@ const ActivitiesPage = () => {
       price: "From €45",
       image: "/assets/rock1.jpg",
       images: [
-        "assets/vrcm/climbing.jpeg",
+        "/assets/vrcm/climbing.jpeg",
         "/assets/rock1.jpg",
         "/assets/rock2.jpg",
         "/assets/rock3.jpg",

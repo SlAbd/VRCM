@@ -77,10 +77,9 @@ const ActivityDetailPage = () => {
         "Professional guide",
         "All climbing gear",
         "Safety equipment",
-        "Water",
         "Photos of your climb",
       ],
-      notIncluded: ["Meals", "Transportation to site", "Additional insurance"],
+      notIncluded: ["Meals", "Transportation to site", "Additional insurance", "Water & snacks"],
       requirements: ["Age 6+"],
       email: "aitabdellah.abdelhadi@gmail.com",
     },
@@ -304,7 +303,6 @@ const ActivityDetailPage = () => {
       reviews: 189,
       included: [
         "Professional guide",
-        "Water",
         "Cultural insights",
         "Flexible pace options",
       ],
@@ -488,8 +486,7 @@ const ActivityDetailPage = () => {
             "Equipment provided",
             "Professional guide",
             "Climbing instruction",
-            "Belay support",
-            "Water & snacks",
+            "Belay support"
           ],
           note: "For larger groups, please contact us",
         },
@@ -534,7 +531,6 @@ const ActivityDetailPage = () => {
         "All climbing gear & safety equipment",
         "Climbing instruction & techniques",
         "Belay support",
-        "Water & refreshments",
       ],
       notIncluded: [
         "Meals (except all-inclusive packages)",
@@ -601,7 +597,6 @@ const ActivityDetailPage = () => {
         "All climbing gear & safety equipment",
         "Climbing instruction & techniques",
         "Belay support",
-        "Water & refreshments",
       ],
       notIncluded: [
         "Accommodation",
@@ -675,7 +670,7 @@ const ActivityDetailPage = () => {
         "Expert VRCM guide throughout",
         "Return transportation to Marrakech",
         "Professional belay support",
-        "Water & refreshments",
+        
       ],
       notIncluded: [
         "Flights to Morocco",
