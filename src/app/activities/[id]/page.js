@@ -5,7 +5,7 @@ const activities = [
   { slug: 'rock-climbing' },
   { slug: 'multi-pitch-climbing' },
   { slug: 'mountain-trekking' },
-  { slug: 'mountain-biking' },
+  { slug: 'biking' },
   { slug: 'desert-camping' },
   { slug: 'cultural-village-tours' },
   { slug: 'via-ferrata' },

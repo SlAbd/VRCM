@@ -738,7 +738,11 @@ const ActivityDetailPage = () => {
       {/* Image Gallery */}
       <section className="bg-white py-6 md:py-8">
         <div className="max-w-none overflow-x-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex snap-x snap-mandatory gap-4">
+          <div
+            className={`flex snap-x snap-mandatory gap-4 ${
+              images.length === 1 ? "justify-center" : ""
+            }`}
+          >
             {images.map((image, idx) => (
               <figure
                 key={`${image}-${idx}`}
