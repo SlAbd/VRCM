@@ -22,6 +22,9 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 
+const CONTACT_EMAIL = "aitabdellah.abdelhadi@gmail.com";
+const CONTACT_ENDPOINT = `https://formsubmit.co/ajax/${CONTACT_EMAIL}`;
+
 const ContactPage = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -42,7 +45,7 @@ const ContactPage = () => {
     {
       icon: Mail,
       title: "Email",
-      details: ["aitabdellah.abdelhadi@gmail.com"],
+      details: [CONTACT_EMAIL],
       color: "bg-red-50 text-red-600",
     },
     {
@@ -91,15 +94,44 @@ const ContactPage = () => {
     },
   ];
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Simulate form submission
     setFormStatus("loading");
-    setTimeout(() => {
+
+    try {
+      const response = await fetch(CONTACT_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone || "Not provided",
+          subject: formData.subject,
+          message: formData.message,
+          _subject: `VRCM contact: ${formData.subject}`,
+          _replyto: formData.email,
+          _template: "table",
+          _captcha: "false",
+          _honey: "",
+        }),
+      });
+      const result = await response.json().catch(() => null);
+
+      if (!response.ok || result?.success === false) {
+        throw new Error(result?.message || "Unable to submit the contact form.");
+      }
+
       setFormStatus("success");
       setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
       setTimeout(() => setFormStatus(null), 5000);
-    }, 2000);
+    } catch (error) {
+      console.error("Contact form submission failed:", error);
+      setFormStatus("error");
+      setTimeout(() => setFormStatus(null), 7000);
+    }
   };
 
   const handleChange = (e) => {
