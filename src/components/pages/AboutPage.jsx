@@ -58,13 +58,6 @@ const AboutPage = () => {
     image: '/assets/vrcm/mohamed.jpeg',
     bio: 'Skilled guide specializing in hiking and via ferrata routes, ensuring safe and enjoyable experiences for all adventurers.',
     specialties: ['Hiking', 'Via Ferrata', 'Safety'],
-  },
-  {
-    name:'kamal',
-    role: 'Rock climbing guide',
-    image: '/assets/vrcm/kamal.jpeg',
-    bio: 'Experienced rock climbing guide with a passion for teaching and leading climbers of all skill levels.',
-    specialties: ['Rock Climbing', 'Lead Climbing', 'Belaying'],
   }
 ];
 
