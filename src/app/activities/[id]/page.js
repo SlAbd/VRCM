@@ -14,8 +14,8 @@ const activities = [
   { slug: '7-day-hiking-holiday' },
   { slug: 'climbing-todra-gorges'},
   { slug: '5-day-climbing-package'},
-  { slug: '7-day-climbing-holiday' }
-
+  { slug: '7-day-climbing-holiday' },
+  { slug: "todra-gorges-climbing" },
 ];
 
 export async function generateStaticParams() {
